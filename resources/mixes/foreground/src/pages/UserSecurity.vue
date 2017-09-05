@@ -1,6 +1,4 @@
 <script>
-    import code from '../assets/images/weixin.png';
-
     export default{
         computed: {
             phoneNumber() {
@@ -17,114 +15,12 @@
             },
         },
         data() {
-            const passwordReg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
-            const passwordValidator = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('请输入密码'));
-                } else if (!passwordReg.test(value)) {
-                    callback(new Error('请输入符合规则的密码'));
-                } else {
-                    callback();
-                }
-            };
-            const checkPasswordAgain = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('请再次输入密码'));
-                } else if (value !== this.resetData.newPassword) {
-                    callback(new Error('两次输入密码不一致!'));
-                } else {
-                    callback();
-                }
-            };
             return {
-                codeImg: code,
-                resetCodeImg: code,
-                countdown: 60,
-                countdownStart: false,
-                identityData: {
-                    phoneCode: '',
-                    code: '',
-                },
-                identityRule: {
-                    phoneCode: {
-                        required: true,
-                        message: '请填写手机验证码',
-                        trigger: 'blur',
-                    },
-                    code: {
-                        required: true,
-                        message: '请填写验证码',
-                        trigger: 'blur',
-                    },
-                },
-                loading: false,
-                resetData: {
-                    newPassword: '',
-                    passwordAgain: '',
-                    code: '',
-                },
-                resetRule: {
-                    newPassword: {
-                        required: true,
-                        trigger: 'blur',
-                        validator: passwordValidator,
-                    },
-                    passwordAgain: {
-                        required: true,
-                        trigger: 'blur',
-                        validator: checkPasswordAgain,
-                    },
-                    code: {
-                        required: true,
-                        message: '请填写验证码',
-                        trigger: 'blur',
-                    },
-                },
-                temp: 1,
                 userInfo: {
                     email: 'zhhu_123@163.com',
                     phone: '13429763663',
                 },
             };
-        },
-        methods: {
-            getCode() {
-                const self = this;
-                self.$refs.identityForm.validateField('phone', valid => {
-                    if (valid) {
-                        self.$message.success('提交成功!');
-                    } else {
-                        self.loading = false;
-                        self.$message.error('请输入正确手机号');
-                    }
-                });
-            },
-            submitResultIdentity() {
-                const self = this;
-                self.loading = true;
-                this.$refs.identityForm.validate(valid => {
-                    if (valid) {
-                        this.temp += 1;
-                        self.loading = false;
-                    } else {
-                        self.loading = false;
-                        self.$message.error('表单验证失败!');
-                    }
-                });
-            },
-            submitResetData() {
-                const self = this;
-                self.loading = true;
-                this.$refs.resetPassword.validate(valid => {
-                    if (valid) {
-                        this.temp += 1;
-                        self.loading = false;
-                    } else {
-                        self.loading = false;
-                        self.$message.error('表单验证失败!');
-                    }
-                });
-            },
         },
     };
 </script>
@@ -139,7 +35,7 @@
                     <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
                     <span class="span-password">登录密码</span>
                     <span class="span-tip">为了您的账户安全，请您定期变更登录密码</span>
-                    <span class="span-edit" @click="editPassword">编辑</span>
+                    <span class="span-edit"><router-link to="/mall/user/password/edit">编辑</router-link></span>
                 </li>
                 <li class="account-item clearfix">
                     <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
