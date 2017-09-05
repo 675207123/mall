@@ -209,11 +209,11 @@
                             <img :src="headData.headImg" alt="">
                         </div>
                         <div class="prompt">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
-                        <Upload
+                        <upload
                             :on-success="handleSuccess"
                             action="//jsonplaceholder.typicode.com/posts/">
                             图片上传
-                        </Upload>
+                        </upload>
                     </i-form>
                 </div>
             </div>

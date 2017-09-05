@@ -66,25 +66,29 @@
             .address-content {
                 .modal-title {
                     font-size: 18px;
-                    font-weight: 500;
                     height: 94px;
                     line-height: 94px;
                 }
                 .signup-form {
                     padding-left: 54px;
                     .signup-form-group {
-                        height: 40px;
                         margin-bottom: 20px;
+                        &:before {
+                            content: " ";
+                            display: table;
+                        }
+                        &:after {
+                            content: '';
+                            clear: both;
+                        }
                         .signup-form-control {
-                            border: solid 1px #e5e5e5;
                             float: left;
-                            height: 40px;
                             width: 484px;
                             &:focus {
                                 outline: none;
                             }
                         }
-                        .form-title {
+                        .ivu-form-item-label {
                             float: left;
                             font-weight: 500;
                             height: 40px;
@@ -94,25 +98,7 @@
                             text-align: right;
                             width: 70px;
                         }
-                        .select-province {
-                            padding-left: 0;
-                            .ivu-select-single {
-                                float: left;
-                                margin-right: 17px;
-                                .ivu-select-selection {
-                                    border-radius: 0;
-                                    height: 40px;
-                                    span {
-                                        margin-left: 12px;
-                                        line-height: 40px;
-                                    }
-                                }
-                            }
-                        }
-                        .details-address {
-                            height: 94px;
-                            resize: none;
-                        }
+
                     }
                     .group-address {
                         height: 94px;
@@ -126,6 +112,38 @@
                             margin-top: -1px;
                         }
                     }
+                    .ivu-form-item-error-tip {
+                        left: 110px;
+                    }
+                }
+                .default-edit {
+                    margin-left: 88px;
+                    margin-bottom: 20px;
+                }
+                .select-province {
+                    padding-left: 0;
+                    .ivu-select-single {
+                        float: left;
+                        margin-right: 17px;
+                        .ivu-select-selection {
+                            border-radius: 0;
+                            height: 40px;
+                            span {
+                                margin-left: 12px;
+                                line-height: 40px;
+                            }
+                        }
+                    }
+                }
+                .details-address-box {
+                    min-height: 60px;
+                    .ivu-form-item-content {
+                        min-height: 70px;
+                    }
+                }
+                .details-address {
+                    height: 94px;
+                    resize: none;
                 }
                 .close-btn {
                     border: 0 none;
@@ -141,6 +159,20 @@
             .signup-form-group {
                 padding-left: 142px;
             }
+        }
+    }
+    .ivu-select-dropdown {
+        position: absolute !important;
+    }
+    .ivu-form-item-content {
+        min-height: 40px;
+        &:before {
+            content: " ";
+            display: table;
+        }
+        &:after {
+            content: '';
+            clear: both;
         }
     }
     .order-btn {

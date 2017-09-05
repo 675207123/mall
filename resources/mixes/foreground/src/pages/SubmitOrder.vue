@@ -1,4 +1,5 @@
 <script>
+    import Message from 'iview/src/components/message';
     import Modal from '../components/Modal.vue';
     import order from '../assets/images/details/order.png';
     import RightSide from '../layouts/RightSide.vue';
@@ -6,6 +7,7 @@
     export default {
         components: {
             Modal,
+            Message,
             RightSide,
         },
         computed: {
@@ -43,6 +45,16 @@
             },
         },
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorPhone = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 activeTab: 1,
                 address: {
@@ -50,6 +62,45 @@
                     phone: '',
                     area: [],
                     detail: '',
+                    isdefault: false,
+                },
+                addressRule: {
+                    name: [
+                        {
+                            required: true,
+                            message: '请填写收货人姓名',
+                            trigger: 'blur',
+                        },
+                    ],
+                    phone: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            type: 'number',
+                            validator: validatorPhone,
+                        },
+                    ],
+                    area: [
+                        {
+                            message: '请选择所在地区',
+                            required: true,
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    detail: [
+                        {
+                            required: true,
+                            message: '请填写详细地址',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'string',
+                            max: 20,
+                            message: '详细地址最多50个字',
+                            trigger: 'blur',
+                        },
+                    ],
                     isdefault: false,
                 },
                 addStatus: 1,
@@ -291,8 +342,15 @@
                 this.$refs.modal.close();
             },
             saveAddress() {
-                this.addressSelect.push(this.address);
-                this.addStatus = 1;
+                this.$refs.addressForm.validate(valid => {
+                    if (valid) {
+                        Message.success('提交成功!');
+                        this.addressSelect.push(this.address);
+                        this.addStatus = 1;
+                    } else {
+                        Message.error('表单验证失败!');
+                    }
+                });
             },
             switchUseOffer(index) {
                 this.activeTab = index;
@@ -333,38 +391,36 @@
                        @click="addAddress"
                        v-if="addStatus === 1">新增收货地址</a>
                     <div class="add-address" v-if="addStatus === 2">
-                        <div class="clearfix">
-                            <span class="text-right pull-left">收货人姓名</span>
-                            <input
-                                class="form-control pull-left"
-                                type="text"
-                                placeholder="请输入收货人姓名"
-                                v-model="address.name">
-                        </div>
-                        <div class="clearfix">
-                            <span class="text-right pull-left">手机号码</span>
-                            <input
-                                class="form-control pull-left"
-                                type="number"
-                                placeholder="手机号码为必填项"
-                                v-model.number="address.phone">
-                        </div>
-                        <div class="clearfix">
-                            <span class="text-right pull-left">所在地区</span>
-                            <cascader class="destination pull-left"
-                                      :data="data"
-                                      v-model="address.area">
-                            </cascader>
-                        </div>
-                        <div class="clearfix">
-                            <span class="text-right pull-left">详细地址</span>
-                            <textarea
-                                class="form-control pull-left"
-                                placeholder="无需重复填写省市区，小于50个字"
-                                v-model="address.detail">
-                            </textarea>
-                        </div>
-                        <label class="clearfix">
+                        <i-form class="signup-form" ref="addressForm" :model="address" :rules="addressRule">
+                            <form-item class="signup-form-group clearfix" label="收货人姓名" prop="name">
+                                <i-input v-model="address.name"
+                                         class="signup-form-control"
+                                         placeholder="请输入收货人姓名">
+                                </i-input>
+                            </form-item>
+                            <form-item class="signup-form-group clearfix" label="手机号码" prop="phone">
+                                <i-input v-model="address.phone"
+                                         class="signup-form-control"
+                                         placeholder="手机号码为必填项">
+                                </i-input>
+                            </form-item>
+                            <form-item class="signup-form-group clearfix" label="所在地区" prop="area">
+                                <cascader class="destination pull-left"
+                                          :data="data"
+                                          width="180px"
+                                          v-model="address.area">
+                                </cascader>
+                            </form-item>
+                            <form-item class="signup-form-group clearfix" label="详细地址" prop="detail">
+                                <i-input v-model="address.detail"
+                                         class="signup-form-control"
+                                         type="textarea"
+                                         :autosize="{minRows: 3,maxRows: 5}"
+                                         placeholder="无需重复填写省市区，小于50个字">
+                                </i-input>
+                            </form-item>
+                        </i-form>
+                        <label class="clearfix select-default">
                             <div class="pull-left">
                                 <input type="checkbox" v-model="address.isdefault">
                                 <span></span>
@@ -382,7 +438,7 @@
                 <h5>使用自提门店</h5>
                 <div>
                     <label class="form-control-radio" v-for="(take, index) in selfTake" :key="index">
-                        <input type="radio" name="address">
+                        <input type="radio" name="takeAddress">
                         <div class="address clearfix">
                             <p>
                                 <span>{{ take.name }}</span>

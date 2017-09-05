@@ -26,6 +26,24 @@
 @import "../../../node_modules/iview/src/styles/mixins/select.less";
 @import "../../../node_modules/iview/src/styles/components/cascader.less";
 .businessmen-box {
+    .ivu-date-picker {
+        .ivu-date-picker-prev-btn-arrow-double .ivu-icon-ios-arrow-left:before,
+        .ivu-date-picker-prev-btn-arrow-double .ivu-icon-ios-arrow-left:after {
+            content: "\e600";
+        }
+        .ivu-icon-ios-arrow-left:after {
+            content: "\e600";
+            margin-left: -7px;
+        }
+        .ivu-icon-ios-arrow-right:before,
+        .ivu-icon-ios-arrow-right:after {
+            content: "\e601";
+            margin-right: -7px;
+        }
+        .ivu-date-picker-next-btn-arrow-double .ivu-icon-ios-arrow-right:after {
+            content: "";
+        }
+    }
     .shop_banner {
         background: #ffffff url("../images/shop-banner.png") center no-repeat;
         height: 480px;
@@ -213,22 +231,72 @@
                         padding: 36px;
                     }
                 }
+                .after-text {
+                    width: -webkit-fill-available;
+                }
+                .ivu-input {
+                    display: block;
+                }
                 .form-horizontal {
                     margin-top: 20px;
                 }
                 .form-group {
                     margin-bottom: 20px;
+                    &.date_div {
+                        > .ivu-form-item-content {
+                            .ivu-form-item-content {
+                                margin-left: 0;
+                            }
+                        }
+                    }
                 }
-                .form-horizontal .control-label {
-                    font-size: 14px;
-                    padding-top: 10px;
-                    padding-right: 5px;
-                    width: 170px;
+                .diamond-upload-file {
+                    position: relative;
+                    .icon-tupian {
+                        align-items: center;
+                        -webkit-align-items: center;
+                        background-color: #f7f7f7;
+                        border: 1px solid #ccc;
+                        color: #b0b0b0;
+                        display: flex;
+                        display: -webkit-flex;
+                        font-size: 40px;
+                        height: 100%;
+                        justify-content: center;
+                        -webkit-justify-content: center;
+                        width: 100%;
+                    }
+                }
+                .ivu-upload {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    .ivu-upload-input {
+                        visibility: hidden;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .col-flex {
+                    .ivu-form-item-content {
+                        flex-direction: column;
+                        -webkit-flex-direction: column;
+                    }
+                }
+                .ivu-checkbox-wrapper {
+                    height: 42px;
+                    line-height: 42px;
                 }
                 p {
                     color: #999999;
                     &.p_first {
-                        margin-top: 9px;
+                    }
+                }
+                .ivu-cascader {
+                    input {
+                        width: 100%;
                     }
                 }
                 input {
@@ -237,40 +305,14 @@
                     height: 42px;
                     margin-right: 7px;
                     width: 324px;
-                    &.ivu-input {
-                        width: 180px;
-                    }
                 }
                 textarea {
                     height: 94px;
                     resize: none;
                 }
-                .date_div {
-                    position: relative;
-                    .date_icon {
-                        color: #d0d0d0;
-                        display: block;
-                        font-size: 24px;
-                        height: 24px;
-                        left: 10px;
-                        line-height: 24px;
-                        position: absolute;
-                        top: 10px;
-                        text-align: center;
-                        width: 24px;
-                    }
-                }
-                .date_long {
-                    line-height: 41px;
-                    margin-left: 10px;
-                    padding: 0;
-                    width: auto;
-                    input {
-                        display: none;
-                        & + span {
-                            margin-right: 5px;
-                        }
-                    }
+                .p_prompt {
+                    line-height: 1;
+                    margin-top: 0;
                 }
                 .connect {
                     background-color: #444444;
@@ -283,7 +325,33 @@
                     margin-top: 0;
                 }
             }
+
+            .ivu-form-item-label {
+                font-size: 14px;
+                float: left;
+                padding-top: 10px;
+                padding-right: 5px;
+                text-align: right;
+                width: 170px;
+            }
+            .ivu-select-placeholder {
+                margin-left: 10px;
+            }
+            .ivu-form-item-content {
+                display: flex;
+                float: left;
+                margin-left: 20px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
             .progress_04, .progress_05, .progress_06 {
+                .ivu-form-item-content {
+                    width: 324px;
+                    input {
+                        width: inherit;
+                    }
+                }
                 .prompt {
                     background-color: #f7f7f7;
                     margin-top: 20px;
@@ -315,16 +383,10 @@
                     .p_first {
                         color: #444444;
                     }
-                    .col-sm-2 {
-                        width: 15%;
-                    }
-                    .col-sm-10 {
-                        padding-left: 5px;
-                        text-align: left;
-                    }
                     span {
                         line-height: 42px;
                         margin-right: 10px;
+                        margin-left: 10px;
                     }
                     .input_suffix {
                         display: block;
@@ -426,16 +488,13 @@
             margin-bottom: 0;
         }
     }
-    .ivu-cascader {
-        width: 180px;
-    }
     .vdp-datepicker input {
         padding-left: 50px;
     }
 
     .ivu-cascader-arrow {
         position: absolute;
-        top: 64%;
+        top: 53%;
         right: 8px;
         line-height: 1;
         margin-top: -7px;

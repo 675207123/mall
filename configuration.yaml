@@ -17,6 +17,7 @@ assets:
             stylesheets: assets/mall/seller/css/module.min.css
 csrf:
     - 'api/mall*'
+entry: '/mall'
 events:
     listeners:
         Notadd\Foundation\Http\Events\RequestHandled: Notadd\Mall\Listeners\RouteRegister
@@ -661,3 +662,7 @@ permissions:
                         identification: remove
         identification: mall-user
         name: 商城用户
+publishes:
+    assets/mall/administration: resources/mixes/administration/dist/assets/mall/administration
+    assets/mall/foreground: resources/mixes/foreground/dist/assets/mall/foreground
+    assets/mall/seller: resources/mixes/seller/dist/assets/mall/seller
