@@ -17,6 +17,7 @@ import UserCollect from '../pages/UserCollect.vue';
 import UserNotice from '../pages/UserNotice.vue';
 import ResetPassword from '../pages/ResetPassword.vue';
 import UserPasswordEdit from '../pages/UserPasswordEdit.vue';
+import UserEmailEdit from '../pages/UserEmailEdit.vue';
 
 import SignUp from '../pages/SignUp.vue';
 import SignIn from '../pages/SignIn.vue';
@@ -268,6 +269,11 @@ export default [
                         component: UserPasswordEdit,
                         name: 'password-edit',
                         path: 'password/edit',
+                    },
+                    {
+                        component: UserEmailEdit,
+                        name: 'email-edit',
+                        path: 'email/edit',
                     },
                     {
                         component: UserCoupon,

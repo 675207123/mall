@@ -64,21 +64,27 @@
                     code: '',
                 },
                 resetRule: {
-                    newPassword: {
-                        required: true,
-                        trigger: 'blur',
-                        validator: passwordValidator,
-                    },
-                    passwordAgain: {
-                        required: true,
-                        trigger: 'blur',
-                        validator: checkPasswordAgain,
-                    },
-                    code: {
-                        required: true,
-                        message: '请填写验证码',
-                        trigger: 'blur',
-                    },
+                    newPassword: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            validator: passwordValidator,
+                        },
+                    ],
+                    passwordAgain: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            validator: checkPasswordAgain,
+                        },
+                    ],
+                    code: [
+                        {
+                            required: true,
+                            message: '请填写验证码',
+                            trigger: 'blur',
+                        },
+                    ],
                 },
                 temp: 1,
                 userInfo: {

@@ -41,19 +41,19 @@
                     <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
                     <span class="span-password">邮箱验证</span>
                     <span class="span-tip">您的验证邮箱为：{{ privateMailbox }}</span>
-                    <span class="span-edit">编辑</span>
+                    <span class="span-edit"><router-link to="/mall/user/email/edit">编辑</router-link></span>
                 </li>
                 <li class="account-item clearfix">
                     <span class="span-icon"><i class="icon iconfont icon-tixing"></i></span>
                     <span class="span-password">手机验证</span>
                     <span class="span-tip">您验证的手机：{{ phoneNumber }} 若已丢失或停用，请立即更换</span>
-                    <span class="span-edit">编辑</span>
+                    <span class="span-edit"><router-link to="/mall/user/phone/edit">编辑</router-link></span>
                 </li>
                 <li class="account-item clearfix">
                     <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
                     <span class="span-password">支付密码</span>
                     <span class="span-tip">建议您定期更换新的支付密码，提高安全性</span>
-                    <span class="span-edit">编辑</span>
+                    <span class="span-edit"><router-link to="/mall/user/pay/edit">编辑</router-link></span>
                 </li>
             </ul>
             <div class="security-tip">
