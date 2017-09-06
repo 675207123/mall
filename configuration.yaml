@@ -23,10 +23,8 @@ events:
         Notadd\Foundation\Http\Events\RequestHandled: Notadd\Mall\Listeners\RouteRegister
     subscribes:
         - Notadd\Mall\Listeners\RouteRegister
-installer:
-    - Notadd\Mall\Injections\Installer
-uninstaller:
-    - Notadd\Mall\Injections\Uninstaller
+migrations:
+    - databases/migrations
 permissions:
     -
         description: 商城后台权限

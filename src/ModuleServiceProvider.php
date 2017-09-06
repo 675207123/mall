@@ -20,7 +20,6 @@ class ModuleServiceProvider extends Module
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(realpath(__DIR__ . '/../databases/migrations'));
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'mall');
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'mall');
     }
