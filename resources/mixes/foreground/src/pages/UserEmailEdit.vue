@@ -17,25 +17,6 @@
             },
         },
         data() {
-            const passwordReg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
-            const passwordValidator = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('请输入密码'));
-                } else if (!passwordReg.test(value)) {
-                    callback(new Error('请输入符合规则的密码'));
-                } else {
-                    callback();
-                }
-            };
-            const checkPasswordAgain = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('请再次输入密码'));
-                } else if (value !== this.resetData.newPassword) {
-                    callback(new Error('两次输入密码不一致!'));
-                } else {
-                    callback();
-                }
-            };
             return {
                 codeImg: code,
                 resetCodeImg: code,
@@ -43,6 +24,9 @@
                 countdownStart: false,
                 identityData: {
                     phoneCode: '',
+                    code: '',
+                },
+                identityData2: {
                     code: '',
                 },
                 identityRule: {
@@ -57,25 +41,29 @@
                         trigger: 'blur',
                     },
                 },
+                identityRule2: {
+                    code: {
+                        required: true,
+                        message: '请填写验证码',
+                        trigger: 'blur',
+                    },
+                },
                 loading: false,
                 resetData: {
-                    newPassword: '',
-                    passwordAgain: '',
+                    email: '',
                     code: '',
                 },
                 resetRule: {
-                    newPassword: [
+                    email: [
                         {
                             required: true,
+                            message: '邮箱不能为空',
                             trigger: 'blur',
-                            validator: passwordValidator,
                         },
-                    ],
-                    passwordAgain: [
                         {
-                            required: true,
+                            type: 'email',
+                            message: '邮箱格式不正确',
                             trigger: 'blur',
-                            validator: checkPasswordAgain,
                         },
                     ],
                     code: [
@@ -113,7 +101,7 @@
             submitResetData() {
                 const self = this;
                 self.loading = true;
-                this.$refs.resetPassword.validate(valid => {
+                this.$refs.resetEmail.validate(valid => {
                     if (valid) {
                         this.temp += 1;
                         self.loading = false;
@@ -199,7 +187,7 @@
                     </i-form>
                 </div>
                 <div class="modify-content1" v-if="temp===2">
-                    <i-form class="signup-form" ref="identityForm" :model="identityData" :rules="identityRule">
+                    <i-form class="signup-form" ref="identityForm" :model="identityData2" :rules="identityRule2">
                         <form-item class="clearfix" label="手机号">
                             <span class="default-telphone">{{ privateMailbox }}</span>
                             <span> <a>通过已绑定手机验证</a> <a>通过支付密码验证</a></span>
@@ -207,7 +195,7 @@
                         <form-item  class="clearfix" prop="code" label="验证码">
                             <i-input class="signup-form-control pull-left signup-form-code"
                                      type="text"
-                                     v-model="identityData.code">
+                                     v-model="identityData2.code">
                             </i-input>
                             <div class="signup-form-control verification-code pull-left">
                                 <img :src="codeImg" alt="">
@@ -216,26 +204,20 @@
                         </form-item>
                         <form-item>
                             <i-button :loading="loading" class="order-btn" @click.prevent="submitResultIdentity">
-                                <span v-if="!loading">提交</span>
+                                <span v-if="!loading">发送验证邮件</span>
                                 <span v-else>正在提交…</span>
                             </i-button>
                         </form-item>
                     </i-form>
                 </div>
                 <div class="modify-content2" v-if="temp===3">
-                    <i-form class="signup-form" ref="resetPassword" :model="resetData" :rules="resetRule">
-                        <form-item class="clearfix" prop="newPassword" label="新的登录密码">
+                    <i-form class="signup-form" ref="resetEmail" :model="resetData" :rules="resetRule">
+                        <form-item class="clearfix" prop="email" label="我的邮箱">
                             <i-input class="signup-form-control"
                                      type="text"
-                                     v-model="resetData.newPassword">
+                                     v-model="resetData.email">
                             </i-input>
-                            <p class="tip">由字母加数字符号至少两种以上数字组成的密码，6-20位半角字符，区分大小写</p>
-                        </form-item>
-                        <form-item class="clearfix" prop="passwordAgain" label="再次输入密码">
-                            <i-input class="signup-form-control"
-                                     type="text"
-                                     v-model="resetData.passwordAgain">
-                            </i-input>
+                            <p class="tip">请输入您要绑定的邮箱</p>
                         </form-item>
                         <form-item class="clearfix" prop="code" label="验证码">
                             <i-input class="signup-form-control pull-left signup-form-code"
@@ -249,7 +231,7 @@
                         </form-item>
                         <form-item>
                             <i-button :loading="loading" class="order-btn" @click.prevent="submitResetData">
-                                <span v-if="!loading">提交</span>
+                                <span v-if="!loading">发送验证邮件</span>
                                 <span v-else>正在提交…</span>
                             </i-button>
                         </form-item>
