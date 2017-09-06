@@ -238,7 +238,7 @@
                     </i-form>
                 </div>
                 <div class="modify-content3" v-if="temp===4">
-                    <div class="modify-success text-center">密码修改成功!</div>
+                    <div class="modify-success text-center">请点击邮箱链接完成验证！!</div>
                 </div>
             </div>
         </div>
