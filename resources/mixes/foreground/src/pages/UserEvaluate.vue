@@ -28,13 +28,15 @@
     <div class="user-evaluation">
         <div class="address-title">
             <h4>交易评价</h4>
-            <ul>
-                <li v-for="evaluation in evaluations">
-                    <div>
-                        <span>{{ evaluation.createAt }}</span>
-                        <span>订单号： {{ evaluation.orderNumber }}</span>
-                        <span>{{ evaluation.storeName }}</span>
-                    </div>
+        </div>
+        <ul>
+            <li v-for="evaluation in evaluations">
+                <div>
+                    <span>{{ evaluation.createAt }}</span>
+                    <span>订单号： {{ evaluation.orderNumber }}</span>
+                    <span>{{ evaluation.storeName }}</span>
+                </div>
+                <div class="clearfix">
                     <div class="pull-left clearfix">
                         <img :src="evaluation.img" alt="" class="pull-left">
                         <div>
@@ -62,8 +64,8 @@
                             </div>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
