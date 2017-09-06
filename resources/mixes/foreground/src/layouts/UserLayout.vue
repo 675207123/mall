@@ -25,6 +25,10 @@
                         text: '我的订单',
                     },
                     {
+                        to: '/mall/user/evaluation',
+                        text: '交易评价',
+                    },
+                    {
                         to: '/mall/user/notice',
                         text: '预约/到货通知',
                     },
