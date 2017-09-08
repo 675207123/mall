@@ -139,7 +139,6 @@
     .pagination > li:first-child > a,
     .pagination > li:last-child > a {
         border-color: #cccccc;
-        border-radius: 6px;
         color: #cccccc;
     }
 
@@ -155,9 +154,8 @@
 
     .pagination > li > a:hover,
     .pagination > li.active > a {
-        background: #3498db;
-        border-color: #3498db;
-        border-radius: 6px;
+        background: #de2634;
+        border-color: #de2634;
         color: #ffffff;
         margin-bottom: 1px;
         margin-top: 1px;

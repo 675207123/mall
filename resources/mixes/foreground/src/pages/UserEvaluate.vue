@@ -81,7 +81,7 @@
                 </div>
             </li>
         </ul>
-        <div class="text-center hidden-xs" v-show="pages > 1">
+        <div class="text-right hidden-xs" v-show="pages > 1">
             <paginate
                 :pageCount="pages"
                 :pageRange="3"
