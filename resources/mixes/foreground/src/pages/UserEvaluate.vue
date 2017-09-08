@@ -39,23 +39,26 @@
                 <div class="clearfix">
                     <div class="pull-left clearfix">
                         <img :src="evaluation.img" alt="" class="pull-left">
-                        <div>
+                        <div class="pull-left">
                             <p>{{ evaluation.productName }}
-                                <span>尺码{{ evaluation.size }}</span>
+                                  <span>尺码: {{ evaluation.size }}</span>
                             </p>
-                            <p>{{ evaluation.price }}</p>
+                            <p>￥ {{ evaluation.price }}</p>
                         </div>
                     </div>
                     <div class="pull-right">
-                        <div>
-                            <span>商品评分</span>
-                            <p>
-                                <i class="icon iconfont icon-xing" v-for="item in 5"></i>
+                        <div class="clearfix">
+                            <span class="pull-left">商品评分</span>
+                            <p class="pull-left">
+                                <i class="icon iconfont icon-xing"
+                                   :class="{ 'star': index < evaluation.star }"
+                                   v-for="(item, index) in 5" :key="index">
+                                </i>
                             </p>
                         </div>
-                        <div>
-                            <span>评价晒单</span>
-                            <div>
+                        <div class="clearfix">
+                            <span class="pull-left">评价晒单</span>
+                            <div class="pull-left">
                                 <p>{{ evaluation.evaluation }}</p>
                                 <div>
                                     <img :src="item" alt=""
