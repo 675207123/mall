@@ -1,9 +1,14 @@
 <script>
+    import Paginate from '../components/Paginate.vue';
     import product from '../assets/images/phone.png';
 
     export default {
+        components: {
+            Paginate,
+        },
         data() {
             return {
+                current_page: 1,
                 evaluations: [
                     {
                         createdAt: '2017-02-09',
@@ -20,7 +25,13 @@
                         evaluationImg: [product, product],
                     },
                 ],
+                pages: 3,
             };
+        },
+        methods: {
+            switchPage(page) {
+                this.current_page = page;
+            },
         },
     };
 </script>
@@ -70,5 +81,17 @@
                 </div>
             </li>
         </ul>
+        <div class="text-center hidden-xs" v-show="pages > 1">
+            <paginate
+                :pageCount="pages"
+                :pageRange="3"
+                :marginPages="2"
+                :clickHandler="switchPage"
+                prevText="上一页"
+                nextText="下一页"
+                containerClass="pagination no-margin"
+                pageClass="page-item">
+            </paginate>
+        </div>
     </div>
 </template>
