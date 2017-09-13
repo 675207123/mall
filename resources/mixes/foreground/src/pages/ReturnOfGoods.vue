@@ -120,7 +120,11 @@
                         </div>
                         <div class="group-input">
                             <div class="lable">退款金额</div>
-                            <div class="input-main"><input type="text">最多￥99.00（含运费0.00）</div>
+                            <div class="input-main"><input type="text">最多￥99.00 ( 含运费0.00 )</div>
+                        </div>
+                        <div class="group-input">
+                            <div class="lable">退货数量</div>
+                            <div class="input-main"><input type="text"></div>
                         </div>
                         <div class="group-input">
                             <div class="lable">退款说明</div>
