@@ -24,8 +24,6 @@
                 font-weight: bold;
                 height: 32px;
                 line-height: 32px;
-                margin: 58px auto 0;
-                margin-bottom: 15px;
                 position: relative;
                 text-align: center;
                 width: 32px;
@@ -41,7 +39,8 @@
                     width: 130px;
                 }
             }
-            .bar-main {
+            .bar-main-left {
+                margin: 58px 102px 15px 100px;
                 &:before {
                     background: #d0d0d0;
                     content: '';
@@ -55,7 +54,28 @@
                     background: #d0d0d0;
                     content: '';
                     height: 2px;
-                    left: -147px;
+                    left: -145px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+            }
+            .bar-main-right {
+                margin: 58px 102px 15px 115px;
+                &:before {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: 42px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+                &::after {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: -140px;
                     position: absolute;
                     top: 15px;
                     width: 130px;

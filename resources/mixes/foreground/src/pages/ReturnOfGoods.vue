@@ -54,7 +54,7 @@
                 </div>
 
                 <div v-if="status != 6" class="col-sm-3">
-                    <div class="bar bar-main"
+                    <div class="bar bar-main-left"
                          :class="{activeBar :  status ===2 || status === 3 || status === 4 || status === 5}">2
                     </div>
                     <div class="progress"
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div v-if="status != 6" class="col-sm-3">
-                    <div class="bar bar-main" :class="{activeBar : status ===3 || status === 4 || status === 5  }">3
+                    <div class="bar bar-main-right" :class="{activeBar : status ===3 || status === 4 || status === 5  }">3
                     </div>
                     <div class="progress"
                          :class="{activeProgress : status ===3 || status === 4 || status === 5 }">买家退货给商家
