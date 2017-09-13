@@ -22,7 +22,7 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 2,
+                status: 4,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
@@ -221,12 +221,12 @@
                         </div>
                         <div class="group-input">
                             <div class="lable">物流单号</div>
-                            <div class="input-main"><input type="text"></div>
+                            <div class="input-main"><input type="text" class="longtext"></div>
                         </div>
                         <div class="group-input ">
                             <div class="lable"></div>
                             <div class="input-main">
-                                <div class="submit-btn">提交退款申请</div>
+                                <div class="submit-btn">确认提交</div>
                             </div>
                         </div>
                     </div>
@@ -257,10 +257,14 @@
                     <div class="trader-deal complate">
                         <p class="title-caveat">
                             <span class="caveat">!</span>
-                            <span class="caveat-msg">商家已同意，请尽快填写退货信息</span>
+                            <span class="caveat-msg">等待商家确认收货</span>
                         </p>
-                        <p class="msg-main">商家收货信息：王某某  139995554545 <br>
-                            陕西省西安市雁塔区科技四路中段国土资源大厦公寓楼2304</p>
+                        <p v-if="this.onOff" class="msg-main">如果
+                            <span class="price will-receive">
+                                <end-timer @mistake="dosomething" @time-end="dosomething"
+                                           :endTime='endTime'></end-timer>
+                            </span> 内商家未处理，系统会自动确认收货，并经平台审核后将金额返还至您的账户
+                        </p>
 
                     </div>
                     <div class="buyer-main border-none ">
@@ -270,7 +274,7 @@
                         </p>
                         <p>
                             <span class="msg-title">物流单号</span>
-                            <span class="msg-main">23565465416326564</span>
+                            <span class="msg-main msg-num">23565465416326564</span>
                         </p>
                     </div>
                 </div>
