@@ -22,7 +22,7 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 4,
+                status: 6,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
@@ -74,8 +74,8 @@
             </div>
 
             <div v-if="status === 6" class="col-sm-3">
-                <div class="bar bar-left" :class="{activeBar :  status === 6 }">2</div>
-                <div class="progress" :class="{activeProgress : status === 6 }">商家拒绝</div>
+                <div class="bar bar-no" :class="{activeBar :  status === 6 }">2</div>
+                <div class="progress refuse" :class="{activeProgress : status === 6 }">商家拒绝</div>
             </div>
         </div>
         <div class="container bottom">
@@ -317,7 +317,7 @@
                         </p>
                         <p>
                             <span class="msg-title">物流单号</span>
-                            <span class="msg-main">23565465416326564</span>
+                            <span class="msg-main msg-num">23565465416326564</span>
                         </p>
                     </div>
                 </div>
@@ -349,7 +349,7 @@
                             <span class="caveat">!</span>
                             <span class="caveat-msg">商家不同意退货申请</span>
                         </p>
-                        <p class="msg-main">商家拒绝了您的退货申请，拒绝理由：
+                        <p class="msg-main refuse-main">商家拒绝了您的退货申请，拒绝理由：
                             恶意退货。如您对此处理有意见，可以联系平台服务人员进行处理。祝您购物愉快。
                         </p>
                     </div>

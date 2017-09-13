@@ -28,6 +28,17 @@
             text-align: center;
             width: 32px;
         }
+        .bar-no {
+            &::after {
+                background: #d0d0d0;
+                content: '';
+                height: 2px;
+                left: -147px;
+                position: absolute;
+                top: 15px;
+                width: 130px;
+            }
+        }
         .bar-main {
             &:before {
                 background: #d0d0d0;
@@ -91,6 +102,9 @@
         }
         .order {
             margin-left: 68px;
+        }
+        .refuse {
+            margin-left: 105px;
         }
         .activeProgress {
             color: #444;
@@ -188,7 +202,7 @@
                             font-size: 12px;
                         }
                         .msg-num {
-                            margin-bottom: 126px;
+                            margin-bottom: 128px;
                         }
                     }
                     p:nth-child(4) {
@@ -302,6 +316,9 @@
                         .price {
                             font-size: 12px;
                         }
+                    }
+                    .refuse-main {
+                        margin-bottom: 273px;
                     }
                     .msg-main:nth-child(4) {
                         padding-bottom: 150px;
