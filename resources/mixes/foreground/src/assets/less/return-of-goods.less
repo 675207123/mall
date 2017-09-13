@@ -8,7 +8,7 @@
     margin: 40px auto 60px;
     .top {
         border: 1px solid #e5e5e5;
-        color: #e5e5e5;
+        color: #fff;
         height: 178px;
         margin-bottom: 20px;
         width: 100%;
@@ -160,7 +160,7 @@
             }
             .buyer-box {
                 font-size: 12px;
-                padding: 0 32px;
+                margin-left: 20px;
                 .complate {
                     border-bottom: 1px solid #e5e5e5;
                     margin-bottom: 20px;
@@ -173,10 +173,11 @@
                 .buyer-main {
                     border-bottom: 1px solid #e5e5e5;
                     color: #444;
+                    padding-left: 12px;
                     & > p {
                         clear: both;
                         height: 13px;
-                        margin-bottom: 20px;
+                        margin-bottom: 18px;
                         .msg-title {
                             float: left;
                             margin-right: 20px;
@@ -186,7 +187,11 @@
                             float: left;
                             font-size: 12px;
                         }
+
                     }
+                    p:nth-child(4) {
+                         margin-bottom: 20px;
+                     }
                     .group-input {
                         clear: both;
                         &:after {
@@ -256,6 +261,7 @@
                     }
                 }
                 .trader-deal {
+                    padding-left: 12px;
                     .title-caveat {
                         height: 30px;
                         margin-top: 30px;
@@ -285,11 +291,14 @@
                     }
                     .msg-main {
                         height: 13px;
-                        margin-bottom: 40px;
+                        margin-bottom: 10px;
                         padding-left: 70px;
                         .price {
                             font-size: 12px;
                         }
+                    }
+                    .msg-main:nth-child(4) {
+                        padding-bottom: 150px;
                     }
                 }
             }
