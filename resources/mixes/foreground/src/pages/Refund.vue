@@ -14,7 +14,7 @@
                 imgsrc: img,
                 goods: {
                     freight: 10,
-                    price: 99,
+                    price: 99.00,
                     ordernum: '25648946541656',
                     seller: 'xxx旗舰店',
                     msg: '女装 夏季自然腰宽松九分裤休闲长裤麻混纺',
@@ -23,7 +23,7 @@
                 message: '已超时',
                 refund: {
                     reason: '物品有瑕疵',
-                    price: 99,
+                    price: 99.00,
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
@@ -49,13 +49,13 @@
             </div>
             <div class="col-sm-4">
                 <div class="bar bar-main" :class="{activeBar :  status ===2 || status === 3 }">2</div>
-                <div class="progress" :class="{activeProgress :  status === 2 ||status ===3 }">
+                <div class="progress deal" :class="{activeProgress :  status === 2 ||status ===3 }">
                     商家处理退款申请
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="bar bar-left" :class="{activeBar : status ===3 }">3</div>
-                <div class="progress" :class="{activeProgress : status ===3 }">平台审核，退款完成</div>
+                <div class="progress over" :class="{activeProgress : status ===3 }">平台审核，退款完成</div>
             </div>
         </div>
         <div class="container bottom">
@@ -98,7 +98,7 @@
                         </div>
                         <div class="group-input">
                             <div class="lable">退款金额</div>
-                            <div class="input-main"><input type="text">最多￥99.00（含运费0.00）</div>
+                            <div class="input-main"><input type="text">最多￥99.00 ( 含运费0.00 )</div>
                         </div>
                         <div class="group-input">
                             <div class="lable">退款说明</div>
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div v-else-if="status === 2" class="applay-buyer">
-                <div class="title">买家退款申请</div>
+                <div class="title title-buy">买家退款申请</div>
                 <div class="buyer-box">
                     <div class="buyer-main">
                         <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
@@ -153,7 +153,7 @@
                 </div>
             </div>
             <div v-else="status === 3" class="applay-buyer">
-                <div class="title">买家退款申请</div>
+                <div class="title title-buy">买家退款申请</div>
                 <div class="buyer-box">
                     <div class="buyer-main">
                         <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
