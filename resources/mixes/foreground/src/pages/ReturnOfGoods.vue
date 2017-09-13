@@ -46,7 +46,7 @@
                      :class="{activeBar : status === 1 | status === 2 ||status ===3 || status ===4 || status ===5 || status === 6}">
                     1
                 </div>
-                <div class="progress"
+                <div class="progress order"
                      :class="{activeProgress : status === 1 || status === 2 ||status ===3 || status ===4 || status === 5 || status === 6}">
                     买家申请退货
                 </div>
@@ -70,7 +70,7 @@
             </div>
             <div v-if="status != 6" class="col-sm-3">
                 <div class="bar bar-left" :class="{activeBar :  status === 5  }">4</div>
-                <div class="progress" :class="{activeProgress : status === 5  }">确认，平台审核</div>
+                <div class="progress" :class="{activeProgress : status === 5  }">确认收货，平台审核</div>
             </div>
 
             <div v-if="status === 6" class="col-sm-3">

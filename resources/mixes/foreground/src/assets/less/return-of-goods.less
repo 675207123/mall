@@ -33,41 +33,43 @@
                 background: #d0d0d0;
                 content: '';
                 height: 2px;
-                left: 40px;
+                left: 42px;
                 position: absolute;
                 top: 15px;
-                width: 134px;
+                width: 130px;
             }
             &::after {
                 background: #d0d0d0;
                 content: '';
                 height: 2px;
-                left: -142px;
+                left: -147px;
                 position: absolute;
                 top: 15px;
-                width: 134px;
+                width: 130px;
             }
         }
         .bar-left {
+            margin: 58px 96px 15px 130px;
             &::after {
                 background: #d0d0d0;
                 content: '';
                 height: 2px;
-                left: -136px;
+                left: -140px;
                 position: absolute;
                 top: 15px;
-                width: 128px;
+                width: 130px;
             }
         }
         .bar-right {
+            margin: 58px 0px 15px 96px;
             &:before {
                 background: #de2634;
                 content: '';
                 height: 2px;
-                left: 40px;
+                left: 42px;
                 position: absolute;
                 top: 15px;
-                width: 128px;
+                width: 130px;
             }
         }
         .activeBar {
@@ -80,11 +82,20 @@
             }
         }
         .progress {
-            color: #d0d0d0;
-            text-align: center;
+            box-shadow: none;
+            background-color: #ffffff;
+            color: #999;
+            font-size: 14px;
+            margin-left: 80px;
+            text-align: left;
+        }
+        .order {
+            margin-left: 68px;
         }
         .activeProgress {
-            color: #000;
+            color: #444;
+            font-size: 14px;
+            font-weight: bold;
         }
     }
 
