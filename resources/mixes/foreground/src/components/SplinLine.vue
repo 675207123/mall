@@ -37,7 +37,7 @@
 </script>
 <style lang="less" scoped>
     .spinner--spin-line {
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.5);
     }
     .spinner {
         display: flex;
@@ -45,9 +45,8 @@
         align-items: center;
         position: fixed;
         height: 100%;
-        z-index: 500;
+        z-index: 600;
         top: 0;
-        opacity: 0.5;
         * {
             line-height: 0;
             box-sizing: border-box;
