@@ -22,13 +22,17 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 2,
+                returnGoods: {
+                    reason: '',
+                },
+                status: 1,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
                 onOff: true,
                 result: ['请选择退款原因', '七天无理由退换', '拍错了'],
                 company: ['中通', '圆通', '顺丰'],
+                reasonList: ['请选择退货原因', '质量不好', '尺码不对', '卖家发错货了'],
             };
         },
         methods: {
@@ -111,11 +115,8 @@
                                 <div class="lable">退款原因</div>
                                 <div class="input-main">
                                     <select class="form-control">
-                                        <option>请选择退款原因</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        <option v-for="item in reasonList">{{ item }}</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -137,7 +138,7 @@
                             <div class="group-input">
                                 <div class="lable">上传凭证</div>
                                 <div class="input-main">
-                                    <div class="img">
+                                    <div class="img"><i class="icon iconfont icon-tupian picture-icon"></i>
                                     </div>
                                     <div class="tishixinxi">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
                                 </div>
