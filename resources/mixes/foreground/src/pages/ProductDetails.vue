@@ -419,7 +419,9 @@
                 <h3>{{ product_intro.name }}</h3>
                 <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
                 <div class="price-box">
-                    <p><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    <p class="priceit"><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    </p>
+                    <p class="favourable"><span>优惠券</span><button class="paper">满100减10</button><button class="paper">满400减50</button>
                     </p>
                 </div>
                 <ul class="sell-info">
