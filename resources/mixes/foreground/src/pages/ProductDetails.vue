@@ -1,5 +1,6 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import SplinLine from '../components/SplinLine.vue';
     import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
@@ -19,6 +20,7 @@
     import img7 from '../assets/images/head.png';
     import logo from '../assets/images/img_lofo.png';
     import talk from '../assets/images/service.png';
+    import Modal from '../components/Modal.vue';
 
     export default {
         data() {
@@ -197,6 +199,7 @@
                         ],
                     },
                 ],
+                loading: true,
                 product_intro: {
                     eval_num: 6298,
                     integral: 138,
@@ -271,6 +274,7 @@
                         sales: 187,
                     },
                 ],
+                modalTitle: '',
                 selectRecommends: [],
                 show: 0,
                 showEvaluation: 'all',
@@ -314,8 +318,10 @@
             Magnifier,
             NeedBrowse,
             RightSide,
+            SplinLine,
             swiper,
             swiperSlide,
+            Modal,
         },
         computed: {
             total_price() {
@@ -334,10 +340,9 @@
             },
         },
         methods: {
-            checkNum() {
-                if (this.productNum === '' || this.productNum === undefined) {
-                    this.productNum = 1;
-                }
+            getSuccess() {
+                this.$refs.modal.open();
+                this.modalTitle = '提醒';
             },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
@@ -368,6 +373,12 @@
             },
         },
         mounted() {
+            const self = this;
+            self.$nextTick(() => {
+                setTimeout(() => {
+                    self.loading = false;
+                }, 1000);
+            });
             setTimeout(() => {
                 this.imgSrc = this.banner.bigs[0];
                 this.getOffect();
@@ -380,7 +391,8 @@
 </script>
 <template>
     <div class="product-details">
-        <div class="basic-intro container clearfix">
+        <splin-line v-if="loading"></splin-line>
+        <div v-if="!loading" class="basic-intro container clearfix">
             <div class="miaobaoxie">
                 <router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link>
             </div>
@@ -409,12 +421,18 @@
                     <div class="swiper-button-prev icon iconfont icon-gengduo gengduo-left" slot="button-prev"></div>
                     <div class="swiper-button-next icon iconfont icon-gengduo" slot="button-next"></div>
                 </div>
+
+
             </div>
             <div class="product-intro">
                 <h3>{{ product_intro.name }}</h3>
                 <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
                 <div class="price-box">
-                    <p><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    <p class="priceit"><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    </p>
+                    <p class="favourable"><span>优惠券</span>
+                        <button class="paper" @click="getSuccess">满100减10</button>
+                        <button class="paper" @click="getSuccess">满400减50</button>
                     </p>
                 </div>
                 <ul class="sell-info">
@@ -468,7 +486,7 @@
                     <dd>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
-                            <input type="number" class="form-control" v-model="productNum" @blur="checkNum">
+                            <input type="number" class="form-control" readonly v-model="productNum">
                             <span class="input-group-addon" @click="productNum++">+</span>
                         </div>
                     </dd>
@@ -480,7 +498,7 @@
             </div>
         </div>
         <!--推荐购买-->
-        <ul class="combination-buy container">
+        <ul v-if="!loading" class="combination-buy container">
             <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
                 <a href="javascript:void (0)">
                     <img :src="product.img"/>
@@ -502,7 +520,7 @@
             </li>
         </ul>
         <!--产品相关-->
-        <div class="product-about container clearfix">
+        <div v-if="!loading" class="product-about container clearfix">
             <!--看了又看-->
             <div class="left-box">
                 <div class="see-again-box follow">
@@ -673,5 +691,15 @@
         </div>
         <need-browse></need-browse>
         <right-side></right-side>
+        <modal ref="modal">
+            <div slot="title">
+                <h4 class="modal-title" v-text="modalTitle"></h4>
+            </div>
+            <div slot="body">
+                <h6>恭喜！您已成功领取满300减50优惠券</h6>
+                <h6>使用时间：2016.12.20-2017-06.01</h6>
+                <h6><span class="look">查看我的优惠券</span></h6>
+            </div>
+        </modal>
     </div>
 </template>

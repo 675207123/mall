@@ -77,11 +77,11 @@
             .price-box {
                 background-color: #f7f7f7;
                 border-top: 1px solid #444444;
-                height: 82px;
-                p {
+                height: 136px;
+                .priceit {
                     height: 82px;
                     line-height: 1;
-                    padding: 34px 0 21px 20px;
+                    padding: 34px 0 24px 20px;
                     .price {
                         color: #de2634;
                         font-size: 36px;
@@ -90,6 +90,26 @@
                     .original-price {
                         color: #999999;
                         margin-left: 40px;
+                    }
+                }
+                .favourable {
+                    padding: 15px 0 30px 20px;
+                    .paper {
+                        border: dashed 1px #999;
+                        background-color: #FFF;
+                        color: #999;
+                        margin-left: 30px;
+                        padding: 6px 12px 5px 11px;
+                        &:hover {
+                            border: dashed 1px #de2634;
+                            background-color: #ffd2d5;
+                            color: #de2634;
+                        }
+                        &:active {
+                            border: dashed 1px #de2634;
+                            background-color: #ffd2d5;
+                            color: #de2634;
+                        }
                     }
                 }
             }
@@ -739,5 +759,39 @@
                 }
             }
         }
+    }
+    .modal-dialog {
+        background-color: #ffffff;
+        height: 320px;
+        left: 50%;
+        margin-left: -394px;
+        margin-top: -170px;
+        padding-right: 0 !important;
+        position: fixed;
+        top: 50%;
+        width: 584px;
+        z-index: 100009 !important;
+        .address-content {
+            .modal-title {
+                border-bottom: solid 1px #e5e5e5;
+                font-size: 18px;
+                height: 80px;
+                line-height: 80px;
+                padding-left: 40px;
+            }
+        }
+        .address-body {
+            padding-top: 34px;
+        }
+        h6 {
+            font-size: 14px;
+            margin: 20px 140px 20px 200px;
+            .look {
+                color: #55b7ea;
+            }
+        }
+    }
+    .background-darken {
+        background: rgba(0, 0, 0, 0.3);
     }
 }
