@@ -1,6 +1,6 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import SplinLine from '../components/SplinLine.vue';
+    import store from '../store';
     import image1 from '../assets/images/img_04.png';
     import image3 from '../assets/images/img_06-1.png';
     import image4 from '../assets/images/kitty.png';
@@ -15,7 +15,6 @@
         components: {
             NeedBrowse,
             RightSide,
-            SplinLine,
             swiper,
             swiperSlide,
         },
@@ -40,7 +39,6 @@
             return {
                 activeTab: 0,
                 deviationTime: null,
-                loading: true,
                 newProduct: [
                     {
                         img: image3,
@@ -608,12 +606,7 @@
             },
         },
         mounted() {
-            const self = this;
-            self.$nextTick(() => {
-                setTimeout(() => {
-                    self.loading = false;
-                }, 1000);
-            });
+            store.commit('request', true);
             this.cutDown();
             const countdown = setInterval(() => {
                 if (this.deviationTime > 0) {
@@ -641,8 +634,7 @@
 <template>
     <div class="home padding-attribute">
         <!---->
-        <splin-line v-if="loading"></splin-line>
-        <div v-if="!loading">
+        <div>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <swiper :options="swiperOption" ref="mySwiperA">
                     <swiper-slide v-for="(item, index) in slideList" :key="item.Id">

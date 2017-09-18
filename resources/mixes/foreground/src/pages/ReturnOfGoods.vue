@@ -47,35 +47,31 @@
         <div class="return-of-goods container">
             <div class="container top row">
                 <div class="col-sm-3">
-                    <div class="bar bar-right"
-                         :class="{activeBar : status === 1 | status === 2 ||status ===3 || status ===4 || status ===5 || status === 6}">
-                        1
-                    </div>
-                    <div class="progress order"
-                         :class="{activeProgress : status === 1 || status === 2 ||status ===3 || status ===4 || status === 5 || status === 6}">
+                    <div class="bar bar-right" :class="{activeBar : status <= 6 && status >=1 }">1</div>
+                    <div class="progress order" :class="{ activeProgress : status <= 6 && status >=1 }">
                         买家申请退货
                     </div>
                 </div>
 
                 <div v-if="status != 6" class="col-sm-3">
                     <div class="bar bar-main-left"
-                         :class="{activeBar :  status ===2 || status === 3 || status === 4 || status === 5}">2
+                         :class="{activeBar :  status >=2 && status <=5 }">2
                     </div>
                     <div class="progress"
-                         :class="{activeProgress :  status === 2 ||status ===3 || status === 4 || status === 5}">
+                         :class="{activeProgress :  status >=2 && status <=5 }">
                         商家处理退货申请
                     </div>
                 </div>
                 <div v-if="status != 6" class="col-sm-3">
-                    <div class="bar bar-main-right" :class="{activeBar : status ===3 || status === 4 || status === 5  }">3
+                    <div class="bar bar-main-right" :class="{activeBar : status >=3 && status <=5  }">3
                     </div>
                     <div class="progress"
-                         :class="{activeProgress : status ===3 || status === 4 || status === 5 }">买家退货给商家
+                         :class="{activeProgress : status >=3 && status <=5 }">买家退货给商家
                     </div>
                 </div>
                 <div v-if="status != 6" class="col-sm-3">
-                    <div class="bar bar-left" :class="{activeBar :  status === 5  }">4</div>
-                    <div class="progress" :class="{activeProgress : status === 5  }">确认收货，平台审核</div>
+                    <div class="bar bar-left" :class="{ activeBar :  status === 5 }">4</div>
+                    <div class="progress" :class="{ activeProgress : status === 5 }">确认收货，平台审核</div>
                 </div>
 
                 <div v-if="status === 6" class="col-sm-3">
