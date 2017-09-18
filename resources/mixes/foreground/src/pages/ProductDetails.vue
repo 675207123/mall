@@ -20,6 +20,7 @@
     import img7 from '../assets/images/head.png';
     import logo from '../assets/images/img_lofo.png';
     import talk from '../assets/images/service.png';
+    import Modal from '../components/Modal.vue';
 
     export default {
         data() {
@@ -273,6 +274,7 @@
                         sales: 187,
                     },
                 ],
+                modalTitle: '',
                 selectRecommends: [],
                 show: 0,
                 showEvaluation: 'all',
@@ -319,6 +321,7 @@
             SplinLine,
             swiper,
             swiperSlide,
+            Modal,
         },
         computed: {
             total_price() {
@@ -337,6 +340,10 @@
             },
         },
         methods: {
+            getSuccess() {
+                this.$refs.modal.open();
+                this.modalTitle = '提醒';
+            },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
@@ -414,6 +421,8 @@
                     <div class="swiper-button-prev icon iconfont icon-gengduo gengduo-left" slot="button-prev"></div>
                     <div class="swiper-button-next icon iconfont icon-gengduo" slot="button-next"></div>
                 </div>
+
+
             </div>
             <div class="product-intro">
                 <h3>{{ product_intro.name }}</h3>
@@ -421,7 +430,9 @@
                 <div class="price-box">
                     <p class="priceit"><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
                     </p>
-                    <p class="favourable"><span>优惠券</span><button class="paper">满100减10</button><button class="paper">满400减50</button>
+                    <p class="favourable"><span>优惠券</span>
+                        <button class="paper" @click="getSuccess">满100减10</button>
+                        <button class="paper" @click="getSuccess">满400减50</button>
                     </p>
                 </div>
                 <ul class="sell-info">
@@ -680,5 +691,15 @@
         </div>
         <need-browse></need-browse>
         <right-side></right-side>
+        <modal ref="modal">
+            <div slot="title">
+                <h4 class="modal-title" v-text="modalTitle"></h4>
+            </div>
+            <div slot="body">
+                <h6>恭喜！您已成功领取满300减50优惠券</h6>
+                <h6>使用时间：2016.12.20-2017-06.01</h6>
+                <h6><span class="look">查看我的优惠券</span></h6>
+            </div>
+        </modal>
     </div>
 </template>
