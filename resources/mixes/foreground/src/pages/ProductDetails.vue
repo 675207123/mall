@@ -1,6 +1,5 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import SplinLine from '../components/SplinLine.vue';
     import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
@@ -198,7 +197,6 @@
                         ],
                     },
                 ],
-                loading: true,
                 product_intro: {
                     eval_num: 6298,
                     integral: 138,
@@ -316,7 +314,6 @@
             Magnifier,
             NeedBrowse,
             RightSide,
-            SplinLine,
             swiper,
             swiperSlide,
         },
@@ -337,6 +334,11 @@
             },
         },
         methods: {
+            checkNum() {
+                if (this.productNum === '' || this.productNum === undefined) {
+                    this.productNum = 1;
+                }
+            },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
@@ -366,12 +368,6 @@
             },
         },
         mounted() {
-            const self = this;
-            self.$nextTick(() => {
-                setTimeout(() => {
-                    self.loading = false;
-                }, 1000);
-            });
             setTimeout(() => {
                 this.imgSrc = this.banner.bigs[0];
                 this.getOffect();
@@ -384,8 +380,7 @@
 </script>
 <template>
     <div class="product-details">
-        <splin-line v-if="loading"></splin-line>
-        <div v-if="!loading" class="basic-intro container clearfix">
+        <div class="basic-intro container clearfix">
             <div class="miaobaoxie">
                 <router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link>
             </div>
@@ -473,7 +468,7 @@
                     <dd>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
-                            <input type="number" class="form-control" readonly v-model="productNum">
+                            <input type="number" class="form-control" v-model="productNum" @blur="checkNum">
                             <span class="input-group-addon" @click="productNum++">+</span>
                         </div>
                     </dd>
@@ -485,7 +480,7 @@
             </div>
         </div>
         <!--推荐购买-->
-        <ul v-if="!loading" class="combination-buy container">
+        <ul class="combination-buy container">
             <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
                 <a href="javascript:void (0)">
                     <img :src="product.img"/>
@@ -507,7 +502,7 @@
             </li>
         </ul>
         <!--产品相关-->
-        <div v-if="!loading" class="product-about container clearfix">
+        <div class="product-about container clearfix">
             <!--看了又看-->
             <div class="left-box">
                 <div class="see-again-box follow">

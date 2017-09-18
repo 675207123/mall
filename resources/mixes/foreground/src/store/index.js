@@ -7,7 +7,7 @@ import * as mutations from './mutations';
 Vue.use(Vuex);
 
 const state = {
-    loading: true,
+    loading: false,
 };
 
 const store = new Vuex.Store({
