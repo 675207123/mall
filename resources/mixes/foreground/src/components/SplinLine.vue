@@ -38,12 +38,16 @@
 <style lang="less" scoped>
     .spinner--spin-line {
         background: #ffffff;
-        min-height: 680px;
     }
     .spinner {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: fixed;
+        height: 100%;
+        z-index: 500;
+        top: 0;
+        opacity: 0.5;
         * {
             line-height: 0;
             box-sizing: border-box;

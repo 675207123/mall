@@ -106,7 +106,7 @@
 
     #magnifier, #mark, #floatBox, #smallImg, #smallBox, #bigBox, #bigImg {
         position: absolute;
-        z-index: 10000;
+        z-index: 100;
     }
 
     #smallBox, #mark {
@@ -114,7 +114,7 @@
         height: 100%;
         left: 0;
         top: 0;
-        z-index: 10005;
+        z-index: 100;
     }
 
     #floatBox {
@@ -126,7 +126,7 @@
     #smallImg {
         left: 0;
         top: 0;
-        z-index: 10001;
+        z-index: 100;
     }
 
     #bigBox {
