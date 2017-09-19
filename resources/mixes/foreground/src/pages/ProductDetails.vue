@@ -592,9 +592,11 @@
             <!--看了又看-->
             <div class="left-box">
                 <div class="see-again-box follow">
-                     <div class="img">
-                         <img :src="img" alt="">
-                     </div>
+                    <router-link to="../store/shop-home">
+                        <div class="img">
+                            <img :src="img" alt="">
+                        </div>
+                    </router-link>
                     <p class="name">xxx旗舰店</p>
                     <a class="shop">关注店铺</a>
                 </div>

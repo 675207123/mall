@@ -1,4 +1,5 @@
 <script>
+    import Paginate from '../components/Paginate.vue';
     import shop from '../assets/images/shopBanner.png';
     import service from '../assets/images/service.png';
     import product from '../assets/images/thephone.png';
@@ -10,6 +11,7 @@
         components: {
             NeedBrowse,
             RightSide,
+            Paginate,
         },
         data() {
             return {
@@ -266,11 +268,16 @@
                     score: 9.2,
                     workingHours: '9:00',
                 },
+                current_page: 1,
+                pages: 10,
             };
         },
         methods: {
             showSubcategories(item) {
                 item.show = !item.show;
+            },
+            switchPage(page) {
+                this.current_page = page;
             },
         },
     };
@@ -388,6 +395,18 @@
                         <p class="sales">本月销量<span>{{ product.saleNum }}</span>件</p>
                     </router-link>
                 </div>
+            </div>
+            <div class="text-center" v-show="pages > 1">
+                <paginate
+                    :pageCount="pages"
+                    :pageRange="3"
+                    :marginPages="2"
+                    :clickHandler="switchPage"
+                    prevText="上一页"
+                    nextText="下一页"
+                    containerClass="pagination no-margin"
+                    pageClass="page-item">
+                </paginate>
             </div>
         </div>
         <need-browse></need-browse>
