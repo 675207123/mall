@@ -546,7 +546,11 @@
                         </div>
                     </dd>
                 </dl>
-                <ul class="product-buy clearfix">
+                <ul  v-if=" product_intro.status === 1" class="product-buy clearfix">
+                    <li class="buy"><a class="text-center">立刻购买</a></li>
+                    <li class="basket"><a class="text-center">加入购物车</a></li>
+                </ul>
+                <ul  v-else=" product_intro.status === 2" class="product-buygrey clearfix">
                     <li class="buy"><a class="text-center">立刻购买</a></li>
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
