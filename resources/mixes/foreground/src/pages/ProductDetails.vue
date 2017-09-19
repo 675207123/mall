@@ -25,6 +25,16 @@
 
     export default {
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorTel = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
             const self = this;
             return {
                 activeTab: 1,
@@ -54,7 +64,7 @@
                         {
                             required: true,
                             trigger: 'blur',
-                            message: '手机号码不能为空',
+                            validator: validatorTel,
                         },
                     ],
                     email: [
@@ -375,6 +385,9 @@
             closemodal1() {
                 this.$refs.modal1.close();
             },
+            closemodal2() {
+                this.$refs.modal2.close();
+            },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
@@ -406,7 +419,9 @@
                 const self = this;
                 self.$refs.arrivalForm.validate(valid => {
                     if (valid) {
-                        Message.success('提交成功!');
+                        this.$refs.modal1.close();
+                        this.$refs.modal2.open();
+                        this.modalTitle = '到货通知';
                     } else {
                         Message.error('表单验证失败!');
                     }
@@ -782,6 +797,26 @@
                     </form-item>
                 </i-form>
                 <button type="button" class="order-btn" slot="save_address" @click="submit">提交</button>
+            </div>
+        </modal>
+        <modal ref="modal2">
+            <div slot="title">
+                <div class="modal-title">
+                    <div class="pull-left talk">
+                        <h4 v-text="modalTitle"></h4>
+                    </div>
+                    <div class="pull-right">
+                        <span class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal2"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div slot="body">
+                <div class="remind">
+                    <span>
+                        商品在30日内到货，您将收到邮件或短信通知！
+                    </span>
+                </div>
+
             </div>
         </modal>
     </div>
