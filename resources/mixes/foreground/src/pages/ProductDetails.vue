@@ -1,10 +1,12 @@
 <script>
     import Message from 'iview/src/components/message';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import Paginate from '../components/Paginate.vue';
     import SplinLine from '../components/SplinLine.vue';
     import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
+    import Modal from '../components/Modal.vue';
     import small1 from '../assets/images/s1.jpg';
     import small2 from '../assets/images/s2.jpg';
     import small3 from '../assets/images/s3.jpg';
@@ -21,7 +23,6 @@
     import img7 from '../assets/images/head.png';
     import logo from '../assets/images/img_lofo.png';
     import talk from '../assets/images/service.png';
-    import Modal from '../components/Modal.vue';
 
     export default {
         data() {
@@ -343,6 +344,8 @@
                 talked: talk,
                 wrapX: 0,
                 wrapY: 0,
+                current_page: 1,
+                pages: 3,
             };
         },
         components: {
@@ -353,6 +356,7 @@
             swiper,
             swiperSlide,
             Modal,
+            Paginate,
         },
         computed: {
             total_price() {
@@ -387,6 +391,9 @@
             },
             closemodal2() {
                 this.$refs.modal2.close();
+            },
+            switchPage(page) {
+                this.current_page = page;
             },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
@@ -746,6 +753,18 @@
                                 </div>
                             </li>
                         </ul>
+                        <div class="text-right" v-show="pages > 1">
+                            <paginate
+                                :pageCount="pages"
+                                :pageRange="3"
+                                :marginPages="2"
+                                :clickHandler="switchPage"
+                                prevText="上一页"
+                                nextText="下一页"
+                                containerClass="pagination no-margin"
+                                pageClass="page-item">
+                            </paginate>
+                        </div>
                     </div>
                 </div>
             </div>

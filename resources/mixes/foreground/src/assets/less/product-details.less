@@ -160,6 +160,7 @@
                     input {
                         padding: 1px 5px;
                         width: 180px;
+                        height: 24px;
                     }
                 }
                 .stock {
@@ -902,5 +903,30 @@
     }
     .background-darken {
         background: rgba(0, 0, 0, 0.3);
+    }
+    .text-right {
+        border-top: solid 1px #d0d0d0;
+    }
+    .pagination {
+        margin: 10px 20px 5px ;
+    }
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus {
+        background: #de2634;
+        border-color: #de2634;
+    }
+    .pagination > li:last-child > a,
+    .pagination > li:last-child > span,
+    .pagination > li:first-child > a,
+    .pagination > li:first-child > span {
+        border-radius: 0;
+    }
+    .pagination > li > a,
+    .pagination > li > span {
+        color: #666666;
     }
 }
