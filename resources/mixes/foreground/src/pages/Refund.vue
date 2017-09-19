@@ -36,6 +36,9 @@
             dosomething(n) {
                 this.onOff = n;
             },
+            submit() {
+                this.status = 2;
+            },
         },
     };
 </script>
@@ -116,7 +119,7 @@
                             <div class="group-input">
                                 <div class="lable"></div>
                                 <div class="input-main">
-                                    <div class="submit-btn">提交退款申请</div>
+                                    <button class="submit-btn" @click="submit">提交退款申请</button>
                                 </div>
                             </div>
                         </div>

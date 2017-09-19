@@ -96,7 +96,10 @@
                     <div>1</div>
                     <div>待审核</div>
                     <div>无</div>
-                    <div class="caozuo"> <span>查看</span> </div>
+                    <div><router-link class="caozuo" to="/mall/refund">
+                        <span>查看</span>
+                    </router-link></div>
+
                 </div>
             </div>
         </div>
