@@ -1,4 +1,5 @@
 <script>
+    import Message from 'iview/src/components/message';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import SplinLine from '../components/SplinLine.vue';
     import RightSide from '../layouts/RightSide.vue';
@@ -42,6 +43,26 @@
                         big3,
                         big4,
                         big5,
+                    ],
+                },
+                arrivalData: {
+                    tel: '',
+                    email: '',
+                },
+                arrivalRules: {
+                    tel: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            message: '手机号码不能为空',
+                        },
+                    ],
+                    email: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            message: '邮箱地址不能为空',
+                        },
                     ],
                 },
                 bigOption: {
@@ -380,6 +401,16 @@
             },
             tabSWitch(index) {
                 this.activeTab = index;
+            },
+            submit() {
+                const self = this;
+                self.$refs.arrivalForm.validate(valid => {
+                    if (valid) {
+                        Message.success('提交成功!');
+                    } else {
+                        Message.error('表单验证失败!');
+                    }
+                });
             },
         },
         mounted() {
@@ -726,7 +757,7 @@
             <div slot="body">
             </div>
         </modal>
-        <modal ref="modal1" :model="arrivalData" :rules="arrivalRule">
+        <modal ref="modal1">
             <div slot="title">
                 <div class="modal-title">
                     <div class="pull-left talk">
@@ -738,7 +769,7 @@
                 </div>
             </div>
             <div slot="body">
-                <i-form class="tablebox">
+                <i-form class="tablebox" ref="arrivalForm" :model="arrivalData" :rules="arrivalRules">
                     <form-item class="clearfix" label="手机号码" prop="tel">
                         <i-input class="putinit"
                                  v-model="arrivalData.tel"
