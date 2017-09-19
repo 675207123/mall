@@ -211,7 +211,7 @@
                     size: ['S', 'M', 'L', 'XL', 'XXL'],
                     type: ['套餐一', '套餐二', '套餐三'],
                     sales_num: 7764,
-                    status: '有货，今天下单预计1月22送到',
+                    status: 2,
                 },
                 productNum: 1,
                 productInfo: {
@@ -456,7 +456,6 @@
                     <p>配送<span class="origin-adress">西安</span>至
                         <cascader class="destination" :data="data" v-model="distribution_address"></cascader>
                         运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
-                    <!--<p class="stock">{{ product_intro.status }}</p>-->
                 </div>
                 <dl class="product-type-select clearfix">
                     <dt>尺码</dt>
@@ -487,7 +486,7 @@
                 <dl class="product-num clearfix">
                     <dt>数量</dt>
                     <dd>
-                        <div class="input-group input-group-sm">
+                        <div class="input-group input-group-sm pull-left">
                             <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
                             <input type="number" class="form-control" readonly v-model="productNum">
                             <span class="input-group-addon" @click="productNum++">+</span>
@@ -498,6 +497,8 @@
                     <li class="buy"><a class="text-center">立刻购买</a></li>
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
+                <div v-if=" product_intro.status === 1" class="stock pull-left">有货，今天下单预计1月22送到</div>
+                <div v-else="product_intro.status === 2" class="nostock pull-left">您选择的商品<span>库存不足</span>，请选择其他商品或申请<button>到货通知</button>提示</div>
             </div>
         </div>
         <!--推荐购买-->
