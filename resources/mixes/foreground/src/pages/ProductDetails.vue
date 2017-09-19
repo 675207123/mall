@@ -344,8 +344,15 @@
                 this.$refs.modal.open();
                 this.modalTitle = '提醒';
             },
+            arrivalGoods() {
+                this.$refs.modal1.open();
+                this.modalTitle = '到货通知';
+            },
             closemodal() {
                 this.$refs.modal.close();
+            },
+            closemodal1() {
+                this.$refs.modal1.close();
             },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
@@ -498,7 +505,7 @@
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
                 <div v-if=" product_intro.status === 1" class="stock pull-left">有货，今天下单预计1月22送到</div>
-                <div v-else="product_intro.status === 2" class="nostock pull-left">您选择的商品<span>库存不足</span>，请选择其他商品或申请<button>到货通知</button>提示</div>
+                <div v-else="product_intro.status === 2" class="nostock pull-left">您选择的商品<span>库存不足</span>，请选择其他商品或申请<button @click="arrivalGoods">到货通知</button>提示</div>
             </div>
         </div>
         <!--推荐购买-->
@@ -717,6 +724,33 @@
                 </div>
             </div>
             <div slot="body">
+            </div>
+        </modal>
+        <modal ref="modal1" :model="arrivalData" :rules="arrivalRule">
+            <div slot="title">
+                <div class="modal-title">
+                    <div class="pull-left talk">
+                        <h4 v-text="modalTitle"></h4>
+                    </div>
+                    <div class="pull-right">
+                        <span class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal1"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div slot="body">
+                <i-form class="tablebox">
+                    <form-item class="clearfix" label="手机号码" prop="tel">
+                        <i-input class="putinit"
+                                 v-model="arrivalData.tel"
+                        ></i-input>
+                    </form-item>
+                    <form-item class="clearfix" label="邮箱地址" prop="email">
+                        <i-input class="putinit"
+                                 v-model="arrivalData.email"
+                        ></i-input>
+                    </form-item>
+                </i-form>
+                <button type="button" class="order-btn" slot="save_address" @click="submit">提交</button>
             </div>
         </modal>
     </div>
