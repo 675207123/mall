@@ -696,9 +696,14 @@
                 <h4 class="modal-title" v-text="modalTitle"></h4>
             </div>
             <div slot="body">
-                <h5 class="tubiao"><i class="icon iconfont icon-icon-test"></i>恭喜！您已成功领取满300减50优惠券</h5>
-                <h6>使用时间：2016.12.20-2017-06.01</h6>
-                <h6><span class="look">查看我的优惠券</span></h6>
+                <div class="pull-right">
+                    <h5 class="tubiao"><span>恭喜！您已成功领取满300减50优惠券</span></h5>
+                    <h6>使用时间：2016.12.20-2017-06.01</h6>
+                    <h6><span class="look">查看我的优惠券</span></h6>
+                </div>
+                <div class="pull-left pict">
+                    <i class="icon iconfont icon-icon-test"></i>
+                </div>
             </div>
             <div slot="body">
             </div>
