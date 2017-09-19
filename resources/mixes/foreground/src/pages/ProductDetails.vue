@@ -344,6 +344,9 @@
                 this.$refs.modal.open();
                 this.modalTitle = '提醒';
             },
+            closemodal() {
+                this.$refs.modal.close();
+            },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
@@ -693,7 +696,14 @@
         <right-side></right-side>
         <modal ref="modal">
             <div slot="title">
-                <h4 class="modal-title" v-text="modalTitle"></h4>
+                <div class="modal-title">
+                    <div class="pull-left talk">
+                        <h4 v-text="modalTitle"></h4>
+                    </div>
+                    <div class="pull-right">
+                        <span class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal"></i></span>
+                    </div>
+                </div>
             </div>
             <div slot="body">
                 <div class="pull-right">
