@@ -56,7 +56,7 @@
                     ],
                     number: '2017020615400000710016792',
                 },
-                status: 1,
+                status: 5,
                 steps: [
                     {
                         icon: 'icon-icon',
@@ -140,7 +140,9 @@
                     <h4>当前状态：等待买家付款</h4>
                     <p>请于<span class="time"> 0小时30分07秒 </span>内进行付款，若未及时付款，系统将自动取消订单</p>
                     <p class="remind-btn">
-                        <button class="order-btn">立即付款</button>
+                        <router-link to="/mall/scan-pay">
+                            <button class="order-btn">立即付款</button>
+                        </router-link>
                         <a href="">取消订单</a>
                     </p>
                 </div>
@@ -148,7 +150,9 @@
                     <h4>当前状态：待发货</h4>
                     <p>订单已提交，商家进行备货发货准备。若您想取消购买，可与商家沟通后申请退款。</p>
                     <p class="remind-btn">
-                        <button class="order-btn">申请退款</button>
+                        <router-link to="/mall/refund">
+                            <button class="order-btn">申请退款</button>
+                        </router-link>
                     </p>
                 </div>
                 <div class="bottom-line step-status wait-receipt"  v-if="status===3">
@@ -171,7 +175,9 @@
                 <div class="wait-receipt bottom-line transaction step-status" v-if="status===4">
                     <h4>当前状态：买家确认收货</h4>
                     <p>如订单有问题，可联系商家协商解决。若商家协商失败，您可申请投诉商家。</p>
-                    <button class="remind-btn order-btn">评价</button>
+                    <router-link to="/mall/user/evaluation">
+                        <button class="remind-btn order-btn">评价</button>
+                    </router-link>
                     <p>物流公司： {{ logisticsInfo.company }}</p>
                     <p>运单号码： {{ logisticsInfo.number }}</p>
                     <div class="logistics-information clearfix">
@@ -184,13 +190,27 @@
                         </ul>
                     </div>
                 </div>
-
+                <div class="wait-receipt bottom-line transaction step-status">
+                    <h4>当前状态：交易成功</h4>
+                    <p>如订单有问题，可联系商家协商解决。若商家协商失败，您可申请投诉商家。</p>
+                    <p>物流公司： {{ logisticsInfo.company }}</p>
+                    <p>运单号码： {{ logisticsInfo.number }}</p>
+                    <div class="logistics-information clearfix">
+                        <span>物流信息： </span>
+                        <ul class="right-content">
+                            <li class="address" v-for="logic in logisticsInfo.list" :class="{active:logic.current}">
+                                <span class="point" :class="{active:logic.current}"></span>
+                                <span>{{ logic.time }}&nbsp;&nbsp;&nbsp;{{ logic.address }}  {{ logic.status }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="receipt-address bottom-line">
-                    <p>收货地址：</p>
-                    <p>王茂&nbsp;&nbsp;176****000&nbsp;&nbsp;陕西省西安市雁塔区高新二路36号xx大厦</p>
+                    <p>收货地址:<span>&nbsp王茂&nbsp;&nbsp;176****000&nbsp;&nbsp;陕西省西安市雁塔区高新二路36号xx大厦</span></p>
+                    <p>支付方式：在线支付</p>
+                    <p> 发票：普通发票 &nbsp;&nbsp;陕西本初网络有限公司</p>
+                    <p> 买家留言：请尽快发货，务必包装完好</p>
                     <p>订单号：2017020615400000710016792</p>
-                    <p>支付金额：¥75.00（支付宝支付）</p>
-                    <p> 下单时间：2017-02-06 15:40:32</p>
                 </div>
                 <div class="ensure-information">
                     <ul class="product-head clearfix">
