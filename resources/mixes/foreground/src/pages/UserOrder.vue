@@ -272,10 +272,24 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody v-for="order in allOrder">
                     <tr class="space">
-                        <td colspan="8"></td>
+                        <td colspan="8">
+                            <ul class="clearfix shop-info">
+                                <li>
+                                    <label class="checkProduct">
+                                        <input type="checkbox" name="product">
+                                        <span></span>
+                                    </label>
+                                </li>
+                                <li>全选</li>
+                                <li class="alot">批量永久删除</li>
+                                <li class="alot">批量还原</li>
+                                <li>
+                                </li>
+                            </ul>
+                        </td>
                     </tr>
+                    <tbody v-for="order in allOrder">
                     <tr>
                         <td colspan="8">
                             <ul class="clearfix shop-info">
@@ -357,6 +371,9 @@
                             <p v-if="order.operating.indexOf(8)!=-1"><a href="#">退款退货中</a></p>
                             <p v-if="order.operating.indexOf(9)!=-1"><a class="receive-goods operating">确认收货</a></p>
                         </td>
+                    </tr>
+                    <tr class="space">
+                        <td colspan="8"></td>
                     </tr>
                     </tbody>
                 </table>
