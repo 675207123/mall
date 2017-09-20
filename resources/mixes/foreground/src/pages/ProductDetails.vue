@@ -243,7 +243,7 @@
                     size: ['S', 'M', 'L', 'XL', 'XXL'],
                     type: ['套餐一', '套餐二', '套餐三'],
                     sales_num: 7764,
-                    status: 2,
+                    status: 1,
                 },
                 productNum: 1,
                 productInfo: {
@@ -554,7 +554,10 @@
                     </dd>
                 </dl>
                 <ul  v-if=" product_intro.status === 1" class="product-buy clearfix">
-                    <li class="buy"><a class="text-center">立刻购买</a></li>
+                    <router-link to="/mall/search/product-details/submit-order">
+                        <li class="buy"><a class="text-center">立刻购买</a></li>
+                    </router-link>
+
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
                 <ul  v-else=" product_intro.status === 2" class="product-buygrey clearfix">

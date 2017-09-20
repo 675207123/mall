@@ -352,6 +352,10 @@
                     }
                 });
             },
+            delateAddress(item) {
+                const index = this.addressSelect.indexOf(item);
+                this.addressSelect.splice(index, 1);
+            },
             switchUseOffer(index) {
                 this.activeTab = index;
             },
@@ -380,8 +384,8 @@
                                     <i v-if="item.isdefault">默认地址</i>
                                     <span class="pull-right" v-if="item.isdefault === false">
                                         <span @click="editDefault(item)">设为默认地址</span>
-                                        <span>编辑</span>
-                                        <span>删除</span>
+                                        <span @click="addAddress">编辑</span>
+                                        <span @click="delateAddress(item)">删除</span>
                                     </span>
                                 </p>
                             </div>

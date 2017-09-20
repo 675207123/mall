@@ -274,7 +274,7 @@
                     </thead>
                     <tr class="space">
                         <td colspan="8">
-                            <ul class="clearfix shop-info">
+                            <ul class="clearfix shop-info" >
                                 <li>
                                     <label class="checkProduct">
                                         <input type="checkbox" name="product">
