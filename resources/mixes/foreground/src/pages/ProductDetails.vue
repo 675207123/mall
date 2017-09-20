@@ -7,6 +7,7 @@
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
     import Modal from '../components/Modal.vue';
+    import EndTimer from '../components/Timer.vue';
     import small1 from '../assets/images/s1.jpg';
     import small2 from '../assets/images/s2.jpg';
     import small3 from '../assets/images/s3.jpg';
@@ -346,6 +347,7 @@
                 wrapY: 0,
                 current_page: 1,
                 pages: 3,
+                endTime: '2017-10-08 10:06:00',
             };
         },
         components: {
@@ -357,6 +359,7 @@
             swiperSlide,
             Modal,
             Paginate,
+            EndTimer,
         },
         computed: {
             total_price() {
@@ -378,6 +381,9 @@
             getSuccess() {
                 this.$refs.modal.open();
                 this.modalTitle = '提醒';
+            },
+            dosomething(n) {
+                this.onOff = n;
             },
             arrivalGoods() {
                 this.$refs.modal1.open();
@@ -490,6 +496,14 @@
             <div class="product-intro">
                 <h3>{{ product_intro.name }}</h3>
                 <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
+                <div class="stork clearfix">
+                    <p><i class="icon iconfont icon-miaosha"></i>双11品牌秒杀 <span class="pull-right">距离结束还有
+                         <span class="price">
+                                    <end-timer @mistake="dosomething" @time-end="dosomething" :endTime='endTime'>
+                                    </end-timer>
+                         </span>
+                    </span></p>
+                </div>
                 <div class="price-box">
                     <p class="priceit"><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
                     </p>
