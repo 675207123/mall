@@ -40,6 +40,7 @@
             return {
                 activeTab: 1,
                 activeImg: img1,
+                activeCoupon: {},
                 banner: {
                     smalls: [
                         small1,
@@ -129,6 +130,14 @@
                         img: img7,
                         name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                         price: 48.88,
+                    },
+                ],
+                coupons: [
+                    {
+                        name: '满１０0减２',
+                    },
+                    {
+                        name: '满５００减１００',
                     },
                 ],
                 data: [
@@ -407,7 +416,8 @@
             },
         },
         methods: {
-            getSuccess() {
+            getSuccess(item) {
+                this.activeCoupon = item;
                 this.$refs.modal.open();
                 this.modalTitle = '提醒';
             },
@@ -530,8 +540,12 @@
                     <p class="priceit"><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
                     </p>
                     <p class="favourable"><span>优惠券</span>
-                        <button class="paper" @click="getSuccess">满100减10</button>
-                        <button class="paper" @click="getSuccess">满400减50</button>
+                        <button class="paper"
+                                @click="getSuccess(coupon)"
+                                v-for="(coupon, index) in coupons"
+                                :key="index">
+                            {{ coupon.name }}
+                        </button>
                     </p>
                 </div>
                 <ul class="sell-info">
@@ -824,12 +838,9 @@
             </div>
             <div slot="body">
                 <div class="pull-right">
-                    <h5 class="tubiao"><span>恭喜！您已成功领取满300减50优惠券</span></h5>
+                    <h5 class="tubiao"><i class="icon iconfont icon-icon-test"></i><span>恭喜！您已成功领取{{ activeCoupon.name }}优惠券</span></h5>
                     <h6>使用时间：2016.12.20-2017-06.01</h6>
-                    <h6><span class="look">查看我的优惠券</span></h6>
-                </div>
-                <div class="pull-left pict">
-                    <i class="icon iconfont icon-icon-test"></i>
+                    <h6><router-link to="/mall/user/coupon" class="look">查看我的优惠券</router-link></h6>
                 </div>
             </div>
             <div slot="body">
