@@ -23,7 +23,6 @@
         },
         data() {
             return {
-                loading: true,
                 logisticsInfo: {
                     company: '顺丰速运',
                     list: [
@@ -98,12 +97,6 @@
             };
         },
         mounted() {
-            const self = this;
-            self.$nextTick(() => {
-                setTimeout(() => {
-                    self.loading = false;
-                }, 1000);
-            });
         },
     };
 </script>
@@ -117,8 +110,7 @@
                 </router-link>
             </div>
         </div>
-        <splin-line v-if="loading"></splin-line>
-        <div v-if="!loading" class="container">
+        <div class="container">
             <div class="pay-success-model">
                 <div class="top-status bottom-line">
                     <ul class="clearfix">

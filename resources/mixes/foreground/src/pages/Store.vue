@@ -1,4 +1,5 @@
 <script>
+    import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import Paginate from '../components/Paginate.vue';
     import shop from '../assets/images/shopBanner.png';
     import service from '../assets/images/service.png';
@@ -11,6 +12,8 @@
         components: {
             NeedBrowse,
             Paginate,
+            swiper,
+            swiperSlide,
         },
         data() {
             return {
@@ -301,6 +304,13 @@
                         price: 48.88,
                     },
                 ],
+                swiperOption: {
+                    autoplay: 3000,
+                    loop: true,
+                    notNextTick: true,
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                },
             };
         },
         methods: {
@@ -316,19 +326,14 @@
 <template>
     <div class="shop-home">
         <div class="container home-shop clearfix">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" :data-slide-to="index-1" :class="{active:index=1}"
-                        v-for="index in shop.banner.length"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item" :class="{active:index === 1}" v-for="(item,index) in shop.banner">
+            <swiper :options="swiperOption" ref="mySwiperA">
+                <swiper-slide  v-for="(item,index) in shop.banner" :key="item.Id">
+                    <router-link to="">
                         <img :src="item.img">
-                    </div>
-                </div>
-            </div>
+                    </router-link>
+                </swiper-slide>
+                <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
         </div>
         <div class="container clearfix">
             <div class="shop-wrap pull-left">
