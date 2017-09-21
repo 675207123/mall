@@ -232,7 +232,6 @@
                         ],
                     },
                 ],
-                loading: true,
                 product_intro: {
                     eval_num: 6298,
                     integral: 138,
@@ -442,12 +441,6 @@
             },
         },
         mounted() {
-            const self = this;
-            self.$nextTick(() => {
-                setTimeout(() => {
-                    self.loading = false;
-                }, 1000);
-            });
             setTimeout(() => {
                 this.imgSrc = this.banner.bigs[0];
                 this.getOffect();
@@ -460,8 +453,7 @@
 </script>
 <template>
     <div class="product-details">
-        <splin-line v-if="loading"></splin-line>
-        <div v-if="!loading" class="basic-intro container clearfix">
+        <div class="basic-intro container clearfix">
             <div class="miaobaoxie">
                 <router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link>
             </div>
@@ -583,7 +575,7 @@
             </div>
         </div>
         <!--推荐购买-->
-        <ul v-if="!loading" class="combination-buy container">
+        <ul class="combination-buy container">
             <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
                 <a href="javascript:void (0)">
                     <img :src="product.img"/>
@@ -605,7 +597,7 @@
             </li>
         </ul>
         <!--产品相关-->
-        <div v-if="!loading" class="product-about container clearfix">
+        <div class="product-about container clearfix">
             <!--看了又看-->
             <div class="left-box">
                 <div class="see-again-box follow">

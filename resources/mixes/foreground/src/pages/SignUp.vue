@@ -93,9 +93,6 @@
                 },
             };
         },
-        mounted() {
-            this.showModel();
-        },
         methods: {
             agree() {
                 this.signUpData.agree = true;
