@@ -38,6 +38,38 @@
         data() {
             return {
                 activeTab: 0,
+                commendList: [
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
                 deviationTime: null,
                 newProduct: [
                     {
@@ -1189,7 +1221,7 @@
                     </div>
                 </div>
                 <!--需要 浏览推荐-->
-                <need-browse></need-browse>
+                <need-browse :commendList="commendList"></need-browse>
                 <!--楼层导航-->
             </div>
             <nav class="bs-js-navbar-scrollspy" v-if="show">

@@ -6,6 +6,7 @@
     import shopImg from '../assets/images/img_lofo.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import RightSide from '../layouts/RightSide.vue';
+    import image1 from '../assets/images/head.png';
 
     export default {
         components: {
@@ -270,6 +271,38 @@
                 },
                 current_page: 1,
                 pages: 10,
+                commendList: [
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
             };
         },
         methods: {
@@ -409,7 +442,7 @@
                 </paginate>
             </div>
         </div>
-        <need-browse></need-browse>
+        <need-browse :commendList="commendList"></need-browse>
         <right-side></right-side>
     </div>
 </template>

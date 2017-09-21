@@ -1,46 +1,18 @@
 <script>
-    import image1 from '../assets/images/head.png';
 
     export default {
         data() {
             return {
                 browse: {
-                    commendList: [
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                    ],
                     intro: '根据你的浏览推荐',
                     title: '也许你需要它们',
                 },
             };
+        },
+        props: {
+            commendList: {
+                type: Array,
+            },
         },
     };
 </script>
@@ -53,7 +25,7 @@
             </div>
             <div class="browse-content">
                 <router-link to="/mall/search/product-details">
-                    <dl class="col col-line" v-for="item in browse.commendList">
+                    <dl class="col col-line" v-for="item in commendList">
                         <dt><img :src="item.img"></dt>
                         <dd>
                             <p class="name">{{ item.name }}</p>

@@ -2,6 +2,7 @@
     import product from '../assets/images/thephone.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import RightSide from '../layouts/RightSide.vue';
+    import image1 from '../assets/images/head.png';
 
     export default {
         components: {
@@ -13,6 +14,38 @@
                 data: {
                     brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
                     classifications: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
+                    commendList: [
+                        {
+                            amount: 188,
+                            img: image1,
+                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                            price: 48.88,
+                        },
+                        {
+                            amount: 188,
+                            img: image1,
+                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                            price: 48.88,
+                        },
+                        {
+                            amount: 188,
+                            img: image1,
+                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                            price: 48.88,
+                        },
+                        {
+                            amount: 188,
+                            img: image1,
+                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                            price: 48.88,
+                        },
+                        {
+                            amount: 188,
+                            img: image1,
+                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                            price: 48.88,
+                        },
+                    ],
                     made_address: ['中国', '日本', '美国', '英国'],
                     productList: [
                         {
@@ -193,7 +226,7 @@
                 </router-link>
             </div>
         </div>
-        <need-browse></need-browse>
+        <need-browse :commendList="commendList"></need-browse>
         <right-side></right-side>
     </div>
 </template>

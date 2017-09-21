@@ -100,6 +100,38 @@
                 },
                 boxWidth: 384,
                 boxHeight: 384,
+                commendList: [
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
                 data: [
                     {
                         children: [
@@ -780,7 +812,7 @@
                 </div>
             </div>
         </div>
-        <need-browse></need-browse>
+        <need-browse :commendList="commendList"></need-browse>
         <right-side></right-side>
         <modal ref="modal">
             <div slot="title">
