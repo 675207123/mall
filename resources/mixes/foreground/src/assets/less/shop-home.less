@@ -2,21 +2,20 @@
     background-color: #f7f7f7;
     color: #444444;
     padding-bottom: 60px;
-    .carousel-indicators li {
-        text-indent: 0;
-    }
-    .carousel-indicators {
+    .swiper-pagination {
         background: rgba(0, 0, 0, 0.5);
         border: 0;
         border-radius: 8px;
         bottom: 10px;
         height: 16px;
+        left: 50%;
         line-height: 16px;
         margin-bottom: 0;
         margin-left: -41px;
         width: 82px;
-        li {
+        .swiper-pagination-bullet {
             background: #ffffff;
+            border-radius: 50%;
             display: inline-block;
             height: 8px;
             margin-right: 10px;
@@ -24,7 +23,7 @@
             &:last-child {
                 margin-right: 0;
             }
-            &.active {
+            &.swiper-pagination-bullet-active {
                 background: #ff2342;
             }
         }
