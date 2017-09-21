@@ -2,13 +2,11 @@
     import Message from 'iview/src/components/message';
     import Modal from '../components/Modal.vue';
     import order from '../assets/images/details/order.png';
-    import RightSide from '../layouts/RightSide.vue';
 
     export default {
         components: {
             Modal,
             Message,
-            RightSide,
         },
         computed: {
             total_price() {
@@ -659,6 +657,5 @@
                 </div>
             </div>
         </div>
-        <right-side></right-side>
     </div>
 </template>

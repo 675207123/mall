@@ -3,7 +3,6 @@
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import Paginate from '../components/Paginate.vue';
     import SplinLine from '../components/SplinLine.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
     import Modal from '../components/Modal.vue';
@@ -384,7 +383,6 @@
         components: {
             Magnifier,
             NeedBrowse,
-            RightSide,
             SplinLine,
             swiper,
             swiperSlide,
@@ -813,7 +811,6 @@
             </div>
         </div>
         <need-browse :commendList="commendList"></need-browse>
-        <right-side></right-side>
         <modal ref="modal">
             <div slot="title">
                 <div class="modal-title">

@@ -1,6 +1,5 @@
 <script>
     import SplinLine from '../components/SplinLine.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import HeaderBar from '../layouts/HeaderBar.vue';
     import FooterBar from '../layouts/FooterBar.vue';
     import FooterContent from '../layouts/FooterContent.vue';
@@ -10,7 +9,6 @@
             FooterBar,
             FooterContent,
             HeaderBar,
-            RightSide,
             SplinLine,
         },
         data() {
@@ -79,7 +77,6 @@
                 <router-link to="/mall/scan-pay" class="order-btn">立即支付</router-link>
             </div>
         </div>
-        <right-side></right-side>
         <footer-content></footer-content>
         <footer-bar></footer-bar>
     </div>

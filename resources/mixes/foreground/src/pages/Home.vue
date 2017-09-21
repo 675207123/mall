@@ -8,13 +8,11 @@
     import picture1 from '../assets/images/img_02-1.png';
     import picture2 from '../assets/images/img_02-2.png';
     import picture3 from '../assets/images/offer_img_01.png';
-    import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
 
     export default {
         components: {
             NeedBrowse,
-            RightSide,
             swiper,
             swiperSlide,
         },
@@ -1244,7 +1242,6 @@
                     </li>
                 </ul>
             </nav>
-            <right-side></right-side>
         </div>
     </div>
 </template>

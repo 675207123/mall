@@ -3,7 +3,6 @@
     import FooterBar from '../layouts/FooterBar.vue';
     import FooterContent from '../layouts/FooterContent.vue';
     import HeaderBar from '../layouts/HeaderBar.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import order from '../assets/images/details/order.png';
 
     export default {
@@ -11,7 +10,6 @@
             FooterBar,
             FooterContent,
             HeaderBar,
-            RightSide,
             SplinLine,
         },
         computed: {
@@ -252,7 +250,6 @@
                 </div>
             </div>
         </div>
-        <right-side></right-side>
         <footer-content></footer-content>
         <footer-bar></footer-bar>
     </div>

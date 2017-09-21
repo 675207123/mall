@@ -4,7 +4,6 @@
     import HeaderBar from '../layouts/HeaderBar.vue';
     import LogoModal from '../layouts/LogoModal.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import SplinLine from '../components/SplinLine.vue';
     import image1 from '../assets/images/head.png';
 
@@ -16,7 +15,6 @@
             HeaderBar,
             LogoModal,
             NeedBrowse,
-            RightSide,
             SplinLine,
         },
         date() {
@@ -108,7 +106,6 @@
                 <need-browse :commendList="commendList"></need-browse>
             </div>
         </div>
-        <right-side></right-side>
         <footer-content></footer-content>
         <footer-bar></footer-bar>
     </div>

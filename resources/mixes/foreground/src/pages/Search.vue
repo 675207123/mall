@@ -1,13 +1,11 @@
 <script>
     import product from '../assets/images/thephone.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import image1 from '../assets/images/head.png';
 
     export default {
         components: {
             NeedBrowse,
-            RightSide,
         },
         data() {
             return {
@@ -227,6 +225,5 @@
             </div>
         </div>
         <need-browse :commendList="commendList"></need-browse>
-        <right-side></right-side>
     </div>
 </template>

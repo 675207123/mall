@@ -5,13 +5,11 @@
     import product from '../assets/images/thephone.png';
     import shopImg from '../assets/images/img_lofo.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import image1 from '../assets/images/head.png';
 
     export default {
         components: {
             NeedBrowse,
-            RightSide,
             Paginate,
         },
         data() {
@@ -443,6 +441,5 @@
             </div>
         </div>
         <need-browse :commendList="commendList"></need-browse>
-        <right-side></right-side>
     </div>
 </template>

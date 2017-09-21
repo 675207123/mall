@@ -5,6 +5,7 @@
     import LogoModal from './LogoModal.vue';
     import ContentNav from './ContentNav.vue';
     import FooterContent from './FooterContent.vue';
+    import RightSide from './RightSide.vue';
 
     export default {
         components: {
@@ -14,6 +15,7 @@
             HeaderBar,
             LogoModal,
             SplinLine,
+            RightSide,
         },
         computed: {
             loading() {
@@ -33,6 +35,7 @@
                 <router-view></router-view>
             </transition>
         </div>
+        <right-side></right-side>
         <footer-content></footer-content>
         <footer-bar></footer-bar>
     </div>
