@@ -257,7 +257,6 @@
                         item: ['按销量', '按时间', '按地点', '按价格'],
                     },
                 ],
-                img: logo,
                 imgSrc: null,
                 isActive: false,
                 kefu: [
@@ -382,6 +381,10 @@
                     slidesPerView: 3.8,
                     watchSlidesProgress: false,
                     watchSlidesVisibility: false,
+                },
+                store: {
+                    img: logo,
+                    name: 'xxx旗舰店',
                 },
                 talked: talk,
                 wrapX: 0,
@@ -598,7 +601,7 @@
                     <dd>
                         <div class="input-group input-group-sm pull-left">
                             <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
-                            <input type="number" class="form-control" readonly v-model="productNum">
+                            <input type="number" class="form-control" v-model="productNum">
                             <span class="input-group-addon" @click="productNum++">+</span>
                         </div>
                     </dd>
@@ -621,7 +624,7 @@
         <!--推荐购买-->
         <ul class="combination-buy container">
             <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
-                <a href="javascript:void (0)">
+                <a>
                     <img :src="product.img"/>
                 </a>
                 <p class="intro">{{ product.name }}</p>
@@ -637,7 +640,7 @@
             <li>
                 <p class="original-price">原价：<s>￥{{ total_oldPrice }}</s></p>
                 <p class="package-price">套餐价格：<span>￥{{　total_price　}}</span></p>
-                <a class="text-center" href="javascript:void (0)">立即购买</a>
+                <a class="text-center">立即购买</a>
             </li>
         </ul>
         <!--产品相关-->
@@ -647,10 +650,10 @@
                 <div class="see-again-box follow">
                     <router-link to="../store/shop-home">
                         <div class="img">
-                            <img :src="img" alt="">
+                            <img :src="store.img" alt="">
                         </div>
                     </router-link>
-                    <p class="name">xxx旗舰店</p>
+                    <p class="name">{{ store.name }}</p>
                     <a class="shop">关注店铺</a>
                 </div>
                 <div class="see-again-box talked">
@@ -683,7 +686,7 @@
                     <h4>看了又看</h4>
                     <ul>
                         <router-link tag="li" to="/product-details" v-for="(item, index) in seeAgain_products" :key="index">
-                            <a href="javascript:void (0)">
+                            <a>
                                 <img :src="item.img"/>
                             </a>
                             <p>{{ item.name }}

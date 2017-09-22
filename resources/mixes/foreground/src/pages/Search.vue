@@ -154,25 +154,25 @@
             <div class="row">
                 <div class="filter-item pull-left">品牌:</div>
                 <ul class="filter-content clearfix pull-left">
-                    <li v-for="brand in data.brands"><a href="javascript:void (0)">{{ brand }}</a></li>
+                    <li v-for="brand in data.brands"><a>{{ brand }}</a></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="filter-item pull-left">详细分类:</div>
                 <ul class="filter-content pull-left">
-                    <li v-for="classification in data.classifications"><a href="javascript:void (0)">纸尿裤</a></li>
+                    <li v-for="classification in data.classifications"><a>纸尿裤</a></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="filter-item pull-left">尺寸规格:</div>
                 <ul class="filter-content pull-left">
-                    <li v-for="size in data.sizes"><a href="javascript:void (0)">{{ size }}</a></li>
+                    <li v-for="size in data.sizes"><a>{{ size }}</a></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="filter-item pull-left">产地:</div>
                 <ul class="filter-content pull-left">
-                    <li v-for="address in data.made_address"><a href="javascript:void (0)">{{ address }}</a></li>
+                    <li v-for="address in data.made_address"><a>{{ address }}</a></li>
                 </ul>
             </div>
         </div>
