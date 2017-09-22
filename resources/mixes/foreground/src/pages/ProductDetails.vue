@@ -135,9 +135,11 @@
                 coupons: [
                     {
                         name: '满１０0减２',
+                        useTime: '2016.08.01 - 2017.10.10',
                     },
                     {
                         name: '满５００减１００',
+                        useTime: '2016.08.01 - 2017.10.10',
                     },
                 ],
                 data: [
@@ -522,8 +524,6 @@
                     <div class="swiper-button-prev icon iconfont icon-gengduo gengduo-left" slot="button-prev"></div>
                     <div class="swiper-button-next icon iconfont icon-gengduo" slot="button-next"></div>
                 </div>
-
-
             </div>
             <div class="product-intro">
                 <h3>{{ product_intro.name }}</h3>
@@ -825,22 +825,22 @@
             </div>
         </div>
         <need-browse :commendList="commendList"></need-browse>
-        <modal ref="modal">
+        <modal ref="modal" class="couponModal">
             <div slot="title">
                 <div class="modal-title">
                     <div class="pull-left talk">
                         <h4 v-text="modalTitle"></h4>
                     </div>
                     <div class="pull-right">
-                        <span class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal"></i></span>
+                        <a class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal"></i></a>
                     </div>
                 </div>
             </div>
             <div slot="body">
-                <div class="pull-right">
-                    <h5 class="tubiao"><i class="icon iconfont icon-icon-test"></i><span>恭喜！您已成功领取{{ activeCoupon.name }}优惠券</span></h5>
-                    <h6>使用时间：2016.12.20-2017-06.01</h6>
-                    <h6><router-link to="/mall/user/coupon" class="look">查看我的优惠券</router-link></h6>
+                <div class="couponBox">
+                    <p class="tubiao"><i class="icon iconfont icon-icon-test"></i><span>恭喜！您已成功领取{{ activeCoupon.name }}优惠券</span></p>
+                    <p>使用时间：{{ activeCoupon.useTime }}</p>
+                    <p><router-link to="/mall/user/coupon" class="look">查看我的优惠券</router-link></p>
                 </div>
             </div>
             <div slot="body">
@@ -890,7 +890,6 @@
                         商品在30日内到货，您将收到邮件或短信通知！
                     </span>
                 </div>
-
             </div>
         </modal>
     </div>

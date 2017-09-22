@@ -95,7 +95,6 @@
             }
             .price-box {
                 background-color: #f7f7f7;
-                border-top: 1px solid #444444;
                 padding: 34px 0 24px 20px;
                 .priceit {
                     line-height: 1;
@@ -888,9 +887,6 @@
             .address-footer {
                 display: none;
             }
-            .tubiao {
-                margin-top: 20px;
-            }
             .icon {
                 color: #60d982;
                 font-size: 40px;
@@ -903,19 +899,33 @@
                 margin-left: 152px;
                 width: 124px;
             }
-            h6 {
-                font-size: 14px;
-                margin: 0px 140px 20px 0px;
-                .look {
-                    color: #55b7ea;
+        }
+    }
+    .couponModal {
+        .couponBox {
+            padding-left: 200px;
+            p {
+                &:first-child {
+                    position: relative;
+                    span {
+                        line-height: 58px;
+                        height: 46px;
+                        display: block;
+                    }
+                    .icon {
+                        position: absolute;
+                        top: 0;
+                        left: -50px;
+                    }
                 }
-            }
-            h5 {
-                font-size: 14px;
-                line-height: 27px;
-                margin: 0px 150px 8px 0px;
-                span {
-                    line-height: 40px;
+                &:nth-child(2) {
+                    margin-top: 8px;
+                }
+                &:last-child {
+                    margin-top: 18px;
+                    a {
+                        color: #62bdff;
+                    }
                 }
             }
         }
