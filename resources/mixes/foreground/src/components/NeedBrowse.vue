@@ -20,12 +20,15 @@
     <div class="browse-model">
         <div class="container">
             <div class="browse-commeneds text-left">
-                <div class="recommend-name"><i class="icon iconfont icon-xin"></i>{{ browse.title
-                    }} <span>{{ browse.intro }}</span></div>
+                <div class="recommend-name">
+                    <i class="icon iconfont icon-xin"></i>
+                    {{ browse.title }}
+                    <span>{{ browse.intro }}</span>
+                </div>
             </div>
-            <div class="browse-content">
-                <router-link to="/mall/search/product-details">
-                    <dl class="col col-line" v-for="item in commendList">
+            <div class="browse-content clearfix">
+                <router-link to="/mall/search/product-details" v-for="(item, index) in commendList" :key="index">
+                    <dl class="col col-line">
                         <dt><img :src="item.img"></dt>
                         <dd>
                             <p class="name">{{ item.name }}</p>

@@ -18,16 +18,22 @@
         }
     }
     .browse-content {
-        background-color: #fff;
-        height: 302px;
+        a {
+            background: #ffffff;
+            float: left;
+            display: block;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            width: 222px;
+            &:nth-child(5n) {
+                margin-right: 0;
+            }
+        }
         dl {
             margin-bottom: 0;
         }
         .col {
-            border-right: 1px solid #e5e5e5;
-            float: left;
             padding: 20px;
-            width: 237px;
             &:last-child {
                 border-right: 0;
             }

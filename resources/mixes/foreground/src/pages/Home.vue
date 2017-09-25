@@ -67,6 +67,18 @@
                         name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                         price: 48.88,
                     },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
                 ],
                 deviationTime: null,
                 newProduct: [
@@ -746,19 +758,20 @@
                     <div class="container">
                         <div class="wowen-clothing-model">
                             <div class="recommend-name">
-                                <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList1.module
-                                    }}
+                                <div class="model-name">
+                                    <i class="icon iconfont icon-nvzhuang"></i>
+                                    {{ typeList.typeList1.module }}
                                 </div>
                                 <div class="model-content">
                                     <ul class="product-kinds">
                                         <li v-for="(item, index) in typeList.typeList1.module_item">
-                                            <a href="">{{ item }}<span>|</span></a>
+                                            <a>{{ item }}<span>|</span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList1.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -811,7 +824,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList2.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -864,7 +877,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList3.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -917,7 +930,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList4.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -970,7 +983,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList5.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -1023,7 +1036,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList6.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -1076,7 +1089,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList7.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -1129,7 +1142,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="mall/home">
                                     <img :src="typeList.typeList8.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
@@ -1182,7 +1195,7 @@
                                 </div>
                             </div>
                             <div class="clothing-content">
-                                <router-link class="content-left-img" to="/home">
+                                <router-link class="content-left-img" to="/mall/home">
                                     <img :src="typeList.typeList9.module_img" alt="">
                                 </router-link>
                                 <div class="content-right-model">
