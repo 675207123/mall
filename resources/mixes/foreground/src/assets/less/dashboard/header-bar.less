@@ -5,8 +5,15 @@
     .header-welcome {
         float: left;
         font-size: 12px;
-        a{
-            color: #666;
+        color: #666666;
+        > span {
+            margin-left: 20px;
+            a {
+                padding: 0;
+                &.signOut {
+                    margin-left: 10px;
+                }
+            }
         }
     }
     .header-bar-user {
@@ -15,7 +22,7 @@
             height: 40px;
             > li {
                 float: left;
-                a{
+                a {
                     color: #666;
                     font-size: 12px;
                     font-weight: 300;

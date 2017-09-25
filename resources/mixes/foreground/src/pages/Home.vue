@@ -214,7 +214,7 @@
                     },
                 ],
                 spikeInfo: {
-                    endTime: '2017-07-15 10:06:00',
+                    endTime: '2017-10-01 10:06:00',
                     spikeList: [
                         {
                             img: image4,
@@ -427,206 +427,6 @@
                             },
                         ],
                     },
-                    {
-                        module: '内衣服饰',
-                        modulColor: '#ffb763',
-                        module_img: picture1,
-                        module_item: ['大衣', '卫衣', '针织', '打底', '大衣1'],
-                        newProduct: [
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                        ],
-                        offerList: [
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                        ],
-                    },
-                    {
-                        module: '婴儿食品',
-                        modulColor: '#ffb763',
-                        module_img: picture1,
-                        module_item: ['大衣', '卫衣', '针织', '打底', '大衣1'],
-                        newProduct: [
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                        ],
-                        offerList: [
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                        ],
-                    },
-                    {
-                        module: '婴儿纸品',
-                        modulColor: '#ffb763',
-                        module_img: picture1,
-                        module_item: ['大衣', '卫衣', '针织', '打底', '大衣1'],
-                        newProduct: [
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                        ],
-                        offerList: [
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                        ],
-                    },
-                    {
-                        module: '幼儿玩具',
-                        modulColor: '#ffb763',
-                        module_img: picture1,
-                        module_item: ['大衣', '卫衣', '针织', '打底', '大衣1'],
-                        newProduct: [
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                        ],
-                        offerList: [
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                        ],
-                    },
-                    {
-                        module: '育婴心得',
-                        modulColor: '#ffb763',
-                        module_img: picture1,
-                        module_item: ['大衣', '卫衣', '针织', '打底', '大衣1'],
-                        newProduct: [
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                            {
-                                img: picture2,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
-                            },
-                        ],
-                        offerList: [
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                            {
-                                img: picture3,
-                                intro: '舒适耐实用儿童睡椅',
-                                title: '满减优惠',
-                            },
-                        ],
-                    },
                 ],
             };
         },
@@ -657,7 +457,7 @@
             },
         },
         mounted() {
-            store.commit('request', true);
+            store.commit('loading', true);
             this.cutDown();
             const countdown = setInterval(() => {
                 if (this.deviationTime > 0) {
@@ -719,9 +519,9 @@
                     <div class="title clearfix">
                         <h3>
                             <i class="icon iconfont icon-miaosha"></i>
-                            <a @mouserover="switchTab(0)" :class="{active:activeTab === 0}">限时秒杀</a>
-                            <a @mouserover="switchTab(1)" :class="{active:activeTab === 1}">新品预售</a>
-                            <a @mouserover="switchTab(2)" :class="{active:activeTab === 2}">满减活动</a>
+                            <a @mouseover="switchTab(0)" :class="{active:activeTab === 0}">限时秒杀</a>
+                            <a @mouseover="switchTab(1)" :class="{active:activeTab === 1}">新品预售</a>
+                            <a @mouseover="switchTab(2)" :class="{active:activeTab === 2}">满减活动</a>
                         </h3>
                         <p class="cutDown">还有&nbsp;<span>{{ hours }}</span><i>:</i><span>{{ minutes }}</span><i>:</i><span>{{ seconds }}</span>&nbsp;结束</p>
                     </div>

@@ -1,4 +1,6 @@
-const loading = (state, payload) => {
+export const loading = (state, payload) => {
     state.loading = payload;
 };
-export default loading;
+export const login = (state, payload) => {
+    state.login = payload;
+};

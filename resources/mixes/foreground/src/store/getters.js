@@ -1,2 +1,2 @@
-const loading = state => state.loading;
-export default loading;
+export const loading = state => state.loading;
+export const login = state => state.login;

@@ -8,6 +8,10 @@ Vue.use(Vuex);
 
 const state = {
     loading: false,
+    login: true,
+    user: {
+        name: 'ibenchu',
+    },
 };
 
 const store = new Vuex.Store({
