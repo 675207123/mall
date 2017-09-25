@@ -402,16 +402,22 @@
             margin-left: 10px;
             position: relative;
             width: 1180px;
-            &:before {
-                background-color: #b5021b;
-                content: '';
+            .before-block {
                 display: block;
                 height: 42px;
                 left: -10px;
                 position: absolute;
                 top: 8px;
-                width: 100%;
                 z-index: -1;
+                width: 12px;
+                > div {
+                    background: rgba(0, 0, 0, 0.15);
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    position: absolute;
+                    width: 100%;
+                }
             }
             i {
                 font-size: 20px;
@@ -554,53 +560,6 @@
                             border: 0 none;
                         }
                     }
-                }
-            }
-        }
-    }
-}
-
-//改变颜色
-.home {
-    .baby-place {
-        .name {
-            color: #f2ae99 !important;
-        }
-        .wowen-clothing-model .recommend-name {
-            background-color: #f2ae99;
-            &:before {
-                background-color: #d58167;
-            }
-            .product {
-                .name {
-                    color: #f2ae99;
-                }
-            }
-    }
-    }
-    .cotton-material {s
-        .name {
-            color: #5ec0a1 !important;
-        }
-        .wowen-clothing-model .recommend-name {
-            background-color: #5ec0a1;
-            &:before {
-                background-color: #30a983;
-            }
-        }
-    }
-    .care-makeups{
-        .name {
-            color: #ffb763 !important;
-        }
-        .wowen-clothing-model .recommend-name {
-            background-color: #ffb763;
-            &:before {
-                background-color: #de841b;
-            }
-            .product {
-                .name {
-                    color: #ffb763;
                 }
             }
         }
