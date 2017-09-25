@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 const state = {
     loading: false,
-    login: true,
+    login: false,
     user: {
         name: 'ibenchu',
     },

@@ -457,7 +457,7 @@
             },
         },
         mounted() {
-            store.commit('loading', true);
+            store.commit('loading', false);
             this.cutDown();
             const countdown = setInterval(() => {
                 if (this.deviationTime > 0) {
@@ -523,7 +523,7 @@
                             <a @mouseover="switchTab(1)" :class="{active:activeTab === 1}">新品预售</a>
                             <a @mouseover="switchTab(2)" :class="{active:activeTab === 2}">满减活动</a>
                         </h3>
-                        <p class="cutDown">还有&nbsp;<span>{{ hours }}</span><i>:</i><span>{{ minutes }}</span><i>:</i><span>{{ seconds }}</span>&nbsp;结束</p>
+                        <p class="cutDown" v-if="activeTab === 0">还有&nbsp;<span>{{ hours }}</span><i>:</i><span>{{ minutes }}</span><i>:</i><span>{{ seconds }}</span>&nbsp;结束</p>
                     </div>
                     <div class="spike-content row">
                         <router-link :to="{ name: 'product-details' }" v-for="(item, index) in spikeInfo.spikeList" :key="index">

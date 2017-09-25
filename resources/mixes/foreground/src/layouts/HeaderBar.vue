@@ -12,10 +12,13 @@
             return {
             };
         },
-        mounted() {
-            setTimeout(() => {
-                window.console.log(this.login);
-            }, 300);
+        methods: {
+            signout() {
+                this.$store.commit('login', false);
+                this.$store.commit('user', {});
+                localStorage.removeItem('user');
+                this.$router.push('/login');
+            },
         },
     };
 </script>
@@ -31,7 +34,7 @@
                 </span>
                 <span v-if="login">
                     {{ user.name }}
-                    <a class="signOut">[退出]</a>
+                    <a class="signOut" @clcik="signout">[退出]</a>
                 </span>
             </div>
             <div class="header-bar-user ">
