@@ -130,10 +130,25 @@
 </script>
 <style>
     .pagination > li > a {
-        background: transparent;
+        background: #ffffff;
         border-color: transparent;
         cursor: pointer;
         margin: 0 5px;
+    }
+    .pagination > li:first-child > a,
+    .pagination > li:last-child > a {
+        border-color: #cccccc;
+        color: #cccccc;
+        border-radius: 0;
+    }
+
+    .pagination > .disabled > span,
+    .pagination > .disabled > span:hover,
+    .pagination > .disabled > span:focus,
+    .pagination > .disabled > a,
+    .pagination > .disabled > a:hover,
+    .pagination > .disabled > a:focus {
+        border: none;
     }
 
     .pagination > li:first-child > a,

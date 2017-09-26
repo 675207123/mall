@@ -1,11 +1,13 @@
 <script>
     import product from '../assets/images/thephone.png';
+    import Paginate from '../components/Paginate.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import image1 from '../assets/images/head.png';
 
     export default {
         components: {
             NeedBrowse,
+            Paginate,
         },
         data() {
             return {
@@ -165,6 +167,9 @@
                 this.priceSort = !this.priceSort;
                 window.console.log(this.priceSort);
             },
+            switchPage(page) {
+                this.current_page = page;
+            },
         },
     };
 </script>
@@ -286,6 +291,18 @@
                     <p class="sales">本月销量<span> {{ product.saleNum }} </span>件</p>
                 </router-link>
             </div>
+        </div>
+        <div class="text-center" v-show="total_page > 1">
+            <paginate
+                :pageCount="total_page"
+                :pageRange="3"
+                :marginPages="2"
+                :clickHandler="switchPage"
+                prevText="上一页"
+                nextText="下一页"
+                containerClass="pagination no-margin"
+                pageClass="page-item">
+            </paginate>
         </div>
         <need-browse :commendList="data.commendList"></need-browse>
     </div>
