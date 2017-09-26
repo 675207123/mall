@@ -9,6 +9,7 @@
         },
         data() {
             return {
+                currect_page: 1,
                 data: {
                     brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇',
                         'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
@@ -142,7 +143,26 @@
                     ],
                     sizes: ['M', 'L', 'XL', 'XXL'],
                 },
+                priceSort: true,
+                sortBy: 1,
+                total_page: 10,
             };
+        },
+        methods: {
+            nextPage() {
+                if (this.currect_page < this.total_page) {
+                    this.currect_page += 1;
+                }
+            },
+            prevPage() {
+                if (this.currect_page > 1) {
+                    this.currect_page -= 1;
+                }
+            },
+            sortPrice() {
+                this.priceSort = !this.priceSort;
+                window.console.log(this.priceSort);
+            },
         },
     };
 </script>
@@ -182,10 +202,30 @@
         <div class="container">
             <div class="arrangement-method clearfix">
                 <ul class="clearfix pull-left">
-                    <li class="active text-center pull-left">人气<i class="icon iconfont icon-paixu"> </i></li>
-                    <li class="text-center pull-left">销量<i class="icon iconfont icon-paixu"> </i></li>
-                    <li class="text-center pull-left">价格<i class="icon iconfont icon-paixu"> </i></li>
-                    <li class="text-center pull-left">新品<i class="icon iconfont icon-paixu"> </i></li>
+                    <li class="active text-center pull-left">
+                        <label>
+                            <input type="radio" name="sortBy" value="1" v-model="sortBy">
+                            <span>人气<i class="icon iconfont icon-paixu"></i></span>
+                        </label>
+                    </li>
+                    <li class="active text-center pull-left">
+                        <label>
+                            <input type="radio" name="sortBy" value="2" v-model="sortBy">
+                            <span>销量<i class="icon iconfont icon-paixu"></i></span>
+                        </label>
+                    </li>
+                    <li class="active text-center pull-left">
+                        <label>
+                            <input type="radio" name="sortBy" value="3" v-model="sortBy">
+                            <span @click.stop="sortPrice">价格<i class="icon iconfont icon-paixu" :class="{rotate: priceSort}"></i></span>
+                        </label>
+                    </li>
+                    <li class="text-center pull-left">
+                        <label>
+                            <input type="radio" name="sortBy" value="4" v-model="sortBy">
+                            <span>新品<i class="icon iconfont icon-paixu"></i></span>
+                        </label>
+                    </li>
                 </ul>
                 <div class="price">
                     <input type="number" min="0" placeholder="￥">
@@ -219,9 +259,9 @@
                     </label>
                 </div>
                 <span class="page pull-right">
-                    1/10
-                    <i class="icon iconfont icon-gengduo page-pre active"> </i>
-                    <i class="icon iconfont icon-gengduo page-pre"> </i>
+                    {{ currect_page }}/{{ total_page }}
+                    <i @click="prevPage" class="icon iconfont icon-gengduo page-pre" :class="{active: currect_page === 1}"> </i>
+                    <i @click="nextPage" class="icon iconfont icon-gengduo page-pre" :class="{active: currect_page === total_page}"> </i>
                 </span>
             </div>
         </div>
