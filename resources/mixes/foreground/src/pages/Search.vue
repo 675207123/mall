@@ -10,8 +10,11 @@
         data() {
             return {
                 data: {
-                    brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
+                    brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇',
+                        'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
                     classifications: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
+                    contractPostage: false,
+                    isDiscount: true,
                     commendList: [
                         {
                             amount: 188,
@@ -190,12 +193,30 @@
                     <input type="number" min="0" placeholder="￥">
                 </div>
                 <div class="check-box select">
-                    <span><input type="checkbox" class="input_check" id="check3"><label for="check3"> </label></span>
-                    包邮
+                    <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="data.contractPostage"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                        <span>包邮</span>
+                    </label>
                 </div>
                 <div class="check-box select">
-                    <span><input type="checkbox" class="input_check" id="check4"><label for="check4"> </label></span>
-                    折扣
+                    <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="data.isDiscount"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                        <span>折扣</span>
+                    </label>
                 </div>
                 <span class="page pull-right">
                     1/10
@@ -224,6 +245,6 @@
                 </router-link>
             </div>
         </div>
-        <need-browse :commendList="commendList"></need-browse>
+        <need-browse :commendList="data.commendList"></need-browse>
     </div>
 </template>
