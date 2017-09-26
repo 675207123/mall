@@ -11,6 +11,8 @@
         },
         data() {
             return {
+                brand: '',
+                classification: '',
                 currect_page: 1,
                 data: {
                     brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇',
@@ -146,8 +148,10 @@
                     sizes: ['M', 'L', 'XL', 'XXL'],
                 },
                 minPrice: 0,
+                madeAddress: '',
                 maxPrice: '',
                 priceSort: true,
+                size: '',
                 sortBy: 1,
                 total_page: 10,
             };
@@ -184,25 +188,45 @@
             <div class="row">
                 <div class="filter-item pull-left">品牌:</div>
                 <ul class="filter-content clearfix pull-left">
-                    <li v-for="brand in data.brands"><a>{{ brand }}</a></li>
+                    <li v-for="item in data.brands">
+                        <label>
+                            <input type="radio" :value="item" name="brand" v-model="brand">
+                            <a>{{ item }}</a>
+                        </label>
+                    </li>
                 </ul>
             </div>
             <div class="row">
                 <div class="filter-item pull-left">详细分类:</div>
                 <ul class="filter-content pull-left">
-                    <li v-for="classification in data.classifications"><a>纸尿裤</a></li>
+                    <li v-for="item in data.classifications">
+                        <label>
+                            <input type="radio" :value="item" name="classification" v-model="classification">
+                            <a>{{ item }}</a>
+                        </label>
+                    </li>
                 </ul>
             </div>
             <div class="row">
                 <div class="filter-item pull-left">尺寸规格:</div>
                 <ul class="filter-content pull-left">
-                    <li v-for="size in data.sizes"><a>{{ size }}</a></li>
+                    <li v-for="item in data.sizes">
+                        <label>
+                            <input type="radio" :value="item" name="size" v-model="size">
+                            <a>{{ item }}</a>
+                        </label>
+                    </li>
                 </ul>
             </div>
             <div class="row">
                 <div class="filter-item pull-left">产地:</div>
                 <ul class="filter-content pull-left">
-                    <li v-for="address in data.made_address"><a>{{ address }}</a></li>
+                    <li v-for="item in data.made_address">
+                        <label>
+                            <input type="radio" :value="item" name="address" v-model="madeAddress">
+                            <a>{{ item }}</a>
+                        </label>
+                    </li>
                 </ul>
             </div>
         </div>

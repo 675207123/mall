@@ -28,6 +28,19 @@
             li {
                 float: left;
                 line-height: 2;
+                label {
+                    input {
+                        display: none;
+                        &:checked + a {
+                            color: #de2634;
+                        }
+                    }
+                    &:hover {
+                        a {
+                            color: #de2634;
+                        }
+                    }
+                }
                 a {
                     margin-right: 39px;
                 }
