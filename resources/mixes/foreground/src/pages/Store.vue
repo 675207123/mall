@@ -270,8 +270,7 @@
                     score: 9.2,
                     workingHours: '9:00',
                 },
-                current_page: 1,
-                pages: 10,
+                currect_page: 1,
                 commendList: [
                     {
                         amount: 188,
@@ -304,6 +303,10 @@
                         price: 48.88,
                     },
                 ],
+                contractPostage: false,
+                isDiscount: false,
+                minPrice: 0,
+                maxPrice: '',
                 swiperOption: {
                     autoplay: 3000,
                     loop: true,
@@ -311,9 +314,26 @@
                     pagination: '.swiper-pagination',
                     paginationClickable: true,
                 },
+                priceSort: true,
+                sortBy: 1,
+                total_page: 10,
             };
         },
         methods: {
+            nextPage() {
+                if (this.currect_page < this.total_page) {
+                    this.currect_page += 1;
+                }
+            },
+            prevPage() {
+                if (this.currect_page > 1) {
+                    this.currect_page -= 1;
+                }
+            },
+            sortPrice() {
+                this.priceSort = !this.priceSort;
+                window.console.log(this.priceSort);
+            },
             showSubcategories(item) {
                 item.show = !item.show;
             },
@@ -388,28 +408,66 @@
             <div class="product-list pull-right clearfix">
                 <div class="arrangement-method clearfix">
                     <ul class="clearfix pull-left">
-                        <li class="active text-center pull-left">人气<i class="icon iconfont icon-paixu"> </i></li>
-                        <li class="text-center pull-left">销量<i class="icon iconfont icon-paixu"> </i></li>
-                        <li class="text-center pull-left">价格<i class="icon iconfont icon-paixu"> </i></li>
-                        <li class="text-center pull-left">新品<i class="icon iconfont icon-paixu"> </i></li>
+                        <li class="active text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="1" v-model="sortBy">
+                                <span>人气<i class="icon iconfont icon-paixu"></i></span>
+                            </label>
+                        </li>
+                        <li class="active text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="2" v-model="sortBy">
+                                <span>销量<i class="icon iconfont icon-paixu"></i></span>
+                            </label>
+                        </li>
+                        <li class="active text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="3" v-model="sortBy">
+                                <span @click.stop="sortPrice">价格<i class="icon iconfont icon-paixu" :class="{rotate: priceSort}"></i></span>
+                            </label>
+                        </li>
+                        <li class="text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="4" v-model="sortBy">
+                                <span>新品<i class="icon iconfont icon-paixu"></i></span>
+                            </label>
+                        </li>
                     </ul>
                     <div class="price">
-                        <input type="number" min="0" placeholder="￥">
+                        <input type="number" min="0" placeholder="￥" v-model="minPrice">
                         -
-                        <input type="number" min="0" placeholder="￥">
+                        <input type="number" :min="minPrice" placeholder="￥" v-model="maxPrice">
                     </div>
                     <div class="check-box select">
-                        <span><input type="checkbox" class="input_check" id="check3"><label for="check3"> </label></span>
-                        包邮
+                        <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="contractPostage"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                            <span>包邮</span>
+                        </label>
                     </div>
                     <div class="check-box select">
-                        <span><input type="checkbox" class="input_check" id="check4"><label for="check4"> </label></span>
-                        折扣
+                        <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="isDiscount"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                            <span>折扣</span>
+                        </label>
                     </div>
                     <span class="page pull-right">
-                    1/10
-                    <i class="icon iconfont icon-gengduo page-pre active"> </i>
-                    <i class="icon iconfont icon-gengduo page-pre"> </i>
+                    {{ currect_page }}/{{ total_page }}
+                    <i @click="prevPage" class="icon iconfont icon-gengduo page-pre" :class="{active: currect_page === 1}"> </i>
+                    <i @click="nextPage" class="icon iconfont icon-gengduo page-pre" :class="{active: currect_page === total_page}"> </i>
                 </span>
                 </div>
                 <div class="product clearfix">
@@ -432,9 +490,9 @@
                     </router-link>
                 </div>
             </div>
-            <div class="text-center" v-show="pages > 1">
+            <div class="text-center" v-show="total_page > 1">
                 <paginate
-                    :pageCount="pages"
+                    :pageCount="total_page"
                     :pageRange="3"
                     :marginPages="2"
                     :clickHandler="switchPage"

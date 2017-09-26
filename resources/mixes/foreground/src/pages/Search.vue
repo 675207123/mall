@@ -143,6 +143,8 @@
                     ],
                     sizes: ['M', 'L', 'XL', 'XXL'],
                 },
+                minPrice: 0,
+                maxPrice: '',
                 priceSort: true,
                 sortBy: 1,
                 total_page: 10,
@@ -228,9 +230,9 @@
                     </li>
                 </ul>
                 <div class="price">
-                    <input type="number" min="0" placeholder="￥">
+                    <input type="number" min="0" placeholder="￥" v-model="minPrice">
                     -
-                    <input type="number" min="0" placeholder="￥">
+                    <input type="number" :min="minPrice" placeholder="￥" v-model="maxPrice">
                 </div>
                 <div class="check-box select">
                     <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
