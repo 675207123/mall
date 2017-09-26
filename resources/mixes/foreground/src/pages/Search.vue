@@ -215,7 +215,10 @@
                             </label>
                         </li>
                     </ul>
-                    <span class="pull-right expand-btn" @click="expand(filterIndex)">展开</span>
+                    <span class="pull-right expand-btn" @click="expand(filterIndex)">
+                        <b v-if="!filterItem.expand">展开</b>
+                        <b v-if="filterItem.expand">收起</b>
+                    </span>
                 </div>
             </div>
         </div>
