@@ -14,139 +14,155 @@
                 brand: '',
                 classification: '',
                 currect_page: 1,
-                data: {
-                    brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇',
-                        'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
-                    classifications: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
-                    contractPostage: false,
-                    isDiscount: true,
-                    commendList: [
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                    ],
-                    made_address: ['中国', '日本', '美国', '英国'],
-                    productList: [
-                        {
-                            id: '',
-                            img: product,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            hot: true,
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                        {
-                            id: '',
-                            img: product,
-                            hot: false,
-                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                            old_price: 46.88,
-                            price: 3299.00,
-                            pre_price: 1.21,
-                            saleNum: 3324,
-                        },
-                    ],
-                    sizes: ['M', 'L', 'XL', 'XXL'],
-                },
+                filters: [
+                    {
+                        expand: false,
+                        name: '品牌',
+                        list: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇',
+                            'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
+                    },
+                    {
+                        expand: false,
+                        name: '详细分类',
+                        list: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
+                    },
+                    {
+                        expand: false,
+                        name: '尺寸规格',
+                        list: ['M', 'L', 'XL', 'XXL'],
+                    },
+                    {
+                        expand: false,
+                        name: '产地',
+                        list: ['中国', '日本', '美国', '英国'],
+                    },
+                ],
+                contractPostage: false,
+                isDiscount: true,
+                commendList: [
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
+                productList: [
+                    {
+                        id: '',
+                        img: product,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        hot: true,
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                    {
+                        id: '',
+                        img: product,
+                        hot: false,
+                        intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        old_price: 46.88,
+                        price: 3299.00,
+                        pre_price: 1.21,
+                        saleNum: 3324,
+                    },
+                ],
                 minPrice: 0,
                 madeAddress: '',
                 maxPrice: '',
@@ -157,6 +173,9 @@
             };
         },
         methods: {
+            expand(index) {
+                this.filters[index].expand = !this.filters[index].expand;
+            },
             nextPage() {
                 if (this.currect_page < this.total_page) {
                     this.currect_page += 1;
@@ -185,49 +204,19 @@
             <span class="result-num">522</span>个
         </p>
         <div class="filter-box">
-            <div class="row">
-                <div class="filter-item pull-left">品牌:</div>
-                <ul class="filter-content clearfix pull-left">
-                    <li v-for="item in data.brands">
-                        <label>
-                            <input type="radio" :value="item" name="brand" v-model="brand">
-                            <a>{{ item }}</a>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="filter-item pull-left">详细分类:</div>
-                <ul class="filter-content pull-left">
-                    <li v-for="item in data.classifications">
-                        <label>
-                            <input type="radio" :value="item" name="classification" v-model="classification">
-                            <a>{{ item }}</a>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="filter-item pull-left">尺寸规格:</div>
-                <ul class="filter-content pull-left">
-                    <li v-for="item in data.sizes">
-                        <label>
-                            <input type="radio" :value="item" name="size" v-model="size">
-                            <a>{{ item }}</a>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="filter-item pull-left">产地:</div>
-                <ul class="filter-content pull-left">
-                    <li v-for="item in data.made_address">
-                        <label>
-                            <input type="radio" :value="item" name="address" v-model="madeAddress">
-                            <a>{{ item }}</a>
-                        </label>
-                    </li>
-                </ul>
+            <div class="row" v-for="(filterItem, filterIndex) in filters" :key="filterIndex">
+                <div class="filter-item pull-left">{{ filterItem.name }}:</div>
+                <div class="filter-content clearfix pull-left">
+                    <ul class="pull-left" :class="{ expand: filterItem.expand }">
+                        <li v-for="(item, index) in filterItem.list" :key="index">
+                            <label>
+                                <input type="radio" :value="item" name="brand" v-model="brand">
+                                <a>{{ item }}</a>
+                            </label>
+                        </li>
+                    </ul>
+                    <span class="pull-right expand-btn" @click="expand(filterIndex)">展开</span>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -269,7 +258,7 @@
                             <input
                                 type="checkbox"
                                 class="ivu-checkbox-input"
-                                v-model="data.contractPostage"
+                                v-model="contractPostage"
                                 value="remember">
                             <span class="ivu-checkbox-inner"></span>
                         </span>
@@ -282,7 +271,7 @@
                             <input
                                 type="checkbox"
                                 class="ivu-checkbox-input"
-                                v-model="data.isDiscount"
+                                v-model="isDiscount"
                                 value="remember">
                             <span class="ivu-checkbox-inner"></span>
                         </span>
@@ -297,7 +286,7 @@
             </div>
         </div>
         <div class="search-list container">
-            <div class="product" v-for="product in data.productList">
+            <div class="product" v-for="product in productList">
                 <router-link to="/mall/search/product-details">
                     <img :src="product.img"/>
                     <p>
@@ -328,6 +317,6 @@
                 pageClass="page-item">
             </paginate>
         </div>
-        <need-browse :commendList="data.commendList"></need-browse>
+        <need-browse :commendList="commendList"></need-browse>
     </div>
 </template>

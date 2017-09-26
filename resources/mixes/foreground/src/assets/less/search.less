@@ -25,25 +25,42 @@
             background-color: #ffffff;
             padding: 20px;
             width: 1028px;
-            li {
-                float: left;
-                line-height: 2;
-                label {
-                    input {
-                        display: none;
-                        &:checked + a {
-                            color: #de2634;
+            ul {
+                height: 24px;
+                overflow: hidden;
+                width: 90%;
+                li {
+                    float: left;
+                    line-height: 2;
+                    label {
+                        input {
+                            display: none;
+                            &:checked + a {
+                                color: #de2634;
+                            }
+                        }
+                        &:hover {
+                            a {
+                                color: #de2634;
+                            }
                         }
                     }
-                    &:hover {
-                        a {
-                            color: #de2634;
-                        }
+                    a {
+                        margin-right: 39px;
                     }
                 }
-                a {
-                    margin-right: 39px;
+                &.expand {
+                    overflow: visible;
+                    height: auto;
                 }
+            }
+            .expand-btn {
+                border: 1px solid #de2634;
+                color: #de2634;
+                text-align: center;
+                height: 20px;
+                line-height: 20px;
+                width: 40px;
             }
             p {
                 line-height: 28px;
