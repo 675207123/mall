@@ -14,6 +14,7 @@
                 brand: '',
                 classification: '',
                 currect_page: 1,
+                filterItems: [],
                 filters: [
                     {
                         expand: false,
@@ -194,6 +195,14 @@
                 this.current_page = page;
             },
         },
+        watch: {
+            filterItems: {
+                dedp: true,
+                handle() {
+                    window.console.log(this.filterItems);
+                },
+            },
+        },
     };
 </script>
 <template>
@@ -210,7 +219,7 @@
                     <ul class="pull-left" :class="{ expand: filterItem.expand }">
                         <li v-for="(item, index) in filterItem.list" :key="index">
                             <label>
-                                <input type="radio" :value="item" name="brand" v-model="brand">
+                                <input type="checkbox" :value="item" v-model="filterItems">
                                 <a>{{ item }}</a>
                             </label>
                         </li>
