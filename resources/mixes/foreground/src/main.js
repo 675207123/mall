@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Scrollspy from 'vue2-scrollspy';
 import App from './App.vue';
 import router from './router';
+import store from './store';
 
 import injection from './helpers/injection';
 import RouterLink from './directives/router-link';
@@ -16,6 +17,7 @@ Vue.directive('router-link', RouterLink);
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<App/>',
     components: { App },
 });

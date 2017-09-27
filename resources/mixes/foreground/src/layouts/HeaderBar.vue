@@ -1,11 +1,41 @@
+<script>
+    export default {
+        computed: {
+            login() {
+                return this.$store.state.login;
+            },
+            user() {
+                return this.$store.state.user;
+            },
+        },
+        data() {
+            return {
+            };
+        },
+        methods: {
+            signout() {
+                this.$store.commit('login', false);
+                this.$store.commit('user', {});
+                localStorage.removeItem('user');
+                this.$router.push('/login');
+            },
+        },
+    };
+</script>
 <template>
     <div class="header-bar">
         <div class="container">
-            <div class="header-welcome ">
+            <div class="header-welcome">
                 西部母婴欢迎您!
-                <router-link to="/signin" class="login">登录</router-link>
-                <span>|</span>
-                <router-link to="/signup" class="register">注册</router-link>
+                <span v-if="!login">
+                    <router-link to="/signin" class="login">登录</router-link>
+                    <span>|</span>
+                    <router-link to="/signup" class="register">注册</router-link>
+                </span>
+                <span v-if="login">
+                    {{ user.name }}
+                    <a class="signOut" @clcik="signout">[退出]</a>
+                </span>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
@@ -44,12 +74,3 @@
         </div>
     </div>
 </template>
-
-<script>
-    export default {
-        data() {
-            return {
-            };
-        },
-    };
-</script>

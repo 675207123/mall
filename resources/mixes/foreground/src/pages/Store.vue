@@ -1,15 +1,19 @@
 <script>
+    import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import Paginate from '../components/Paginate.vue';
     import shop from '../assets/images/shopBanner.png';
     import service from '../assets/images/service.png';
     import product from '../assets/images/thephone.png';
     import shopImg from '../assets/images/img_lofo.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
-    import RightSide from '../layouts/RightSide.vue';
+    import image1 from '../assets/images/head.png';
 
     export default {
         components: {
             NeedBrowse,
-            RightSide,
+            Paginate,
+            swiper,
+            swiperSlide,
         },
         data() {
             return {
@@ -266,11 +270,75 @@
                     score: 9.2,
                     workingHours: '9:00',
                 },
+                currect_page: 1,
+                commendList: [
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
+                contractPostage: false,
+                isDiscount: false,
+                minPrice: 0,
+                maxPrice: '',
+                swiperOption: {
+                    autoplay: 3000,
+                    loop: true,
+                    notNextTick: true,
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                },
+                priceSort: true,
+                sortBy: 1,
+                total_page: 10,
             };
         },
         methods: {
+            nextPage() {
+                if (this.currect_page < this.total_page) {
+                    this.currect_page += 1;
+                }
+            },
+            prevPage() {
+                if (this.currect_page > 1) {
+                    this.currect_page -= 1;
+                }
+            },
+            sortPrice() {
+                this.priceSort = !this.priceSort;
+                window.console.log(this.priceSort);
+            },
             showSubcategories(item) {
                 item.show = !item.show;
+            },
+            switchPage(page) {
+                this.current_page = page;
             },
         },
     };
@@ -278,19 +346,14 @@
 <template>
     <div class="shop-home">
         <div class="container home-shop clearfix">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" :data-slide-to="index-1" :class="{active:index=1}"
-                        v-for="index in shop.banner.length"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item" :class="{active:index === 1}" v-for="(item,index) in shop.banner">
+            <swiper :options="swiperOption" ref="mySwiperA">
+                <swiper-slide  v-for="(item,index) in shop.banner" :key="item.Id">
+                    <router-link to="">
                         <img :src="item.img">
-                    </div>
-                </div>
-            </div>
+                    </router-link>
+                </swiper-slide>
+                <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
         </div>
         <div class="container clearfix">
             <div class="shop-wrap pull-left">
@@ -345,28 +408,66 @@
             <div class="product-list pull-right clearfix">
                 <div class="arrangement-method clearfix">
                     <ul class="clearfix pull-left">
-                        <li class="active text-center pull-left">人气<i class="icon iconfont icon-paixu"> </i></li>
-                        <li class="text-center pull-left">销量<i class="icon iconfont icon-paixu"> </i></li>
-                        <li class="text-center pull-left">价格<i class="icon iconfont icon-paixu"> </i></li>
-                        <li class="text-center pull-left">新品<i class="icon iconfont icon-paixu"> </i></li>
+                        <li class="active text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="1" v-model="sortBy">
+                                <span>人气<i class="icon iconfont icon-paixu"></i></span>
+                            </label>
+                        </li>
+                        <li class="active text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="2" v-model="sortBy">
+                                <span>销量<i class="icon iconfont icon-paixu"></i></span>
+                            </label>
+                        </li>
+                        <li class="active text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="3" v-model="sortBy">
+                                <span @click.stop="sortPrice">价格<i class="icon iconfont icon-paixu" :class="{rotate: priceSort}"></i></span>
+                            </label>
+                        </li>
+                        <li class="text-center pull-left">
+                            <label>
+                                <input type="radio" name="sortBy" value="4" v-model="sortBy">
+                                <span>新品<i class="icon iconfont icon-paixu"></i></span>
+                            </label>
+                        </li>
                     </ul>
                     <div class="price">
-                        <input type="number" min="0" placeholder="￥">
+                        <input type="number" min="0" placeholder="￥" v-model="minPrice">
                         -
-                        <input type="number" min="0" placeholder="￥">
+                        <input type="number" :min="minPrice" placeholder="￥" v-model="maxPrice">
                     </div>
                     <div class="check-box select">
-                        <span><input type="checkbox" class="input_check" id="check3"><label for="check3"> </label></span>
-                        包邮
+                        <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="contractPostage"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                            <span>包邮</span>
+                        </label>
                     </div>
                     <div class="check-box select">
-                        <span><input type="checkbox" class="input_check" id="check4"><label for="check4"> </label></span>
-                        折扣
+                        <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="isDiscount"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                            <span>折扣</span>
+                        </label>
                     </div>
                     <span class="page pull-right">
-                    1/10
-                    <i class="icon iconfont icon-gengduo page-pre active"> </i>
-                    <i class="icon iconfont icon-gengduo page-pre"> </i>
+                    {{ currect_page }}/{{ total_page }}
+                    <i @click="prevPage" class="icon iconfont icon-gengduo page-pre" :class="{active: currect_page === 1}"> </i>
+                    <i @click="nextPage" class="icon iconfont icon-gengduo page-pre" :class="{active: currect_page === total_page}"> </i>
                 </span>
                 </div>
                 <div class="product clearfix">
@@ -389,8 +490,19 @@
                     </router-link>
                 </div>
             </div>
+            <div class="text-center" v-show="total_page > 1">
+                <paginate
+                    :pageCount="total_page"
+                    :pageRange="3"
+                    :marginPages="2"
+                    :clickHandler="switchPage"
+                    prevText="上一页"
+                    nextText="下一页"
+                    containerClass="pagination no-margin"
+                    pageClass="page-item">
+                </paginate>
+            </div>
         </div>
-        <need-browse></need-browse>
-        <right-side></right-side>
+        <need-browse :commendList="commendList"></need-browse>
     </div>
 </template>

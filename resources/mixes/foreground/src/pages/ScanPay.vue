@@ -30,7 +30,9 @@
             </div>
         </div>
         <div class="chose-pay clearfix">
-            <span><&nbsp;选择其他支付方式</span>
+            <router-link to="/mall/order-success">
+                <span><&nbsp;选择其他支付方式</span>
+            </router-link>
         </div>
     </div>
 </template>

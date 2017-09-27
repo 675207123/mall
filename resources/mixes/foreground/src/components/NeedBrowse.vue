@@ -1,46 +1,18 @@
 <script>
-    import image1 from '../assets/images/head.png';
 
     export default {
         data() {
             return {
                 browse: {
-                    commendList: [
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                        {
-                            amount: 188,
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                        },
-                    ],
                     intro: '根据你的浏览推荐',
                     title: '也许你需要它们',
                 },
             };
+        },
+        props: {
+            commendList: {
+                type: Array,
+            },
         },
     };
 </script>
@@ -48,12 +20,15 @@
     <div class="browse-model">
         <div class="container">
             <div class="browse-commeneds text-left">
-                <div class="recommend-name"><i class="icon iconfont icon-xin"></i>{{ browse.title
-                    }} <span>{{ browse.intro }}</span></div>
+                <div class="recommend-name">
+                    <i class="icon iconfont icon-xin"></i>
+                    {{ browse.title }}
+                    <span>{{ browse.intro }}</span>
+                </div>
             </div>
-            <div class="browse-content">
-                <router-link to="/mall/search/product-details">
-                    <dl class="col col-line" v-for="item in browse.commendList">
+            <div class="browse-content clearfix">
+                <router-link to="/mall/search/product-details" v-for="(item, index) in commendList" :key="index">
+                    <dl class="col col-line">
                         <dt><img :src="item.img"></dt>
                         <dd>
                             <p class="name">{{ item.name }}</p>

@@ -1,9 +1,12 @@
 <script>
+    import Message from 'iview/src/components/message';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import Paginate from '../components/Paginate.vue';
     import SplinLine from '../components/SplinLine.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
+    import Modal from '../components/Modal.vue';
+    import EndTimer from '../components/Timer.vue';
     import small1 from '../assets/images/s1.jpg';
     import small2 from '../assets/images/s2.jpg';
     import small3 from '../assets/images/s3.jpg';
@@ -23,10 +26,21 @@
 
     export default {
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorTel = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
             const self = this;
             return {
                 activeTab: 1,
                 activeImg: img1,
+                activeCoupon: {},
                 banner: {
                     smalls: [
                         small1,
@@ -41,6 +55,26 @@
                         big3,
                         big4,
                         big5,
+                    ],
+                },
+                arrivalData: {
+                    tel: '',
+                    email: '',
+                },
+                arrivalRules: {
+                    tel: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            validator: validatorTel,
+                        },
+                    ],
+                    email: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            message: '邮箱地址不能为空',
+                        },
                     ],
                 },
                 bigOption: {
@@ -66,6 +100,48 @@
                 },
                 boxWidth: 384,
                 boxHeight: 384,
+                commendList: [
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: img7,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
+                coupons: [
+                    {
+                        name: '满１０0减２',
+                        useTime: '2016.08.01 - 2017.10.10',
+                    },
+                    {
+                        name: '满５００减１００',
+                        useTime: '2016.08.01 - 2017.10.10',
+                    },
+                ],
                 data: [
                     {
                         children: [
@@ -181,7 +257,6 @@
                         item: ['按销量', '按时间', '按地点', '按价格'],
                     },
                 ],
-                img: logo,
                 imgSrc: null,
                 isActive: false,
                 kefu: [
@@ -198,7 +273,6 @@
                         ],
                     },
                 ],
-                loading: true,
                 product_intro: {
                     eval_num: 6298,
                     integral: 138,
@@ -210,7 +284,7 @@
                     size: ['S', 'M', 'L', 'XL', 'XXL'],
                     type: ['套餐一', '套餐二', '套餐三'],
                     sales_num: 7764,
-                    status: '有货，今天下单预计1月22送到',
+                    status: 1,
                 },
                 productNum: 1,
                 productInfo: {
@@ -273,6 +347,7 @@
                         sales: 187,
                     },
                 ],
+                modalTitle: '',
                 selectRecommends: [],
                 show: 0,
                 showEvaluation: 'all',
@@ -307,18 +382,27 @@
                     watchSlidesProgress: false,
                     watchSlidesVisibility: false,
                 },
+                store: {
+                    img: logo,
+                    name: 'xxx旗舰店',
+                },
                 talked: talk,
                 wrapX: 0,
                 wrapY: 0,
+                current_page: 1,
+                pages: 3,
+                endTime: '2017-10-08 10:06:00',
             };
         },
         components: {
             Magnifier,
             NeedBrowse,
-            RightSide,
             SplinLine,
             swiper,
             swiperSlide,
+            Modal,
+            Paginate,
+            EndTimer,
         },
         computed: {
             total_price() {
@@ -337,6 +421,30 @@
             },
         },
         methods: {
+            getSuccess(item) {
+                this.activeCoupon = item;
+                this.$refs.modal.open();
+                this.modalTitle = '提醒';
+            },
+            dosomething(n) {
+                this.onOff = n;
+            },
+            arrivalGoods() {
+                this.$refs.modal1.open();
+                this.modalTitle = '到货通知';
+            },
+            closemodal() {
+                this.$refs.modal.close();
+            },
+            closemodal1() {
+                this.$refs.modal1.close();
+            },
+            closemodal2() {
+                this.$refs.modal2.close();
+            },
+            switchPage(page) {
+                this.current_page = page;
+            },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
@@ -364,14 +472,20 @@
             tabSWitch(index) {
                 this.activeTab = index;
             },
+            submit() {
+                const self = this;
+                self.$refs.arrivalForm.validate(valid => {
+                    if (valid) {
+                        this.$refs.modal1.close();
+                        this.$refs.modal2.open();
+                        this.modalTitle = '到货通知';
+                    } else {
+                        Message.error('表单验证失败!');
+                    }
+                });
+            },
         },
         mounted() {
-            const self = this;
-            self.$nextTick(() => {
-                setTimeout(() => {
-                    self.loading = false;
-                }, 1000);
-            });
             setTimeout(() => {
                 this.imgSrc = this.banner.bigs[0];
                 this.getOffect();
@@ -384,8 +498,7 @@
 </script>
 <template>
     <div class="product-details">
-        <splin-line v-if="loading"></splin-line>
-        <div v-if="!loading" class="basic-intro container clearfix">
+        <div class="basic-intro container clearfix">
             <div class="miaobaoxie">
                 <router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link>
             </div>
@@ -418,8 +531,24 @@
             <div class="product-intro">
                 <h3>{{ product_intro.name }}</h3>
                 <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
+                <div class="stork clearfix">
+                    <p><i class="icon iconfont icon-miaosha"></i>双11品牌秒杀 <span class="pull-right">距离结束还有
+                         <span class="price">
+                                    <end-timer @mistake="dosomething" @time-end="dosomething" :endTime='endTime'>
+                                    </end-timer>
+                         </span>
+                    </span></p>
+                </div>
                 <div class="price-box">
-                    <p><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    <p class="priceit"><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    </p>
+                    <p class="favourable"><span>优惠券</span>
+                        <button class="paper"
+                                @click="getSuccess(coupon)"
+                                v-for="(coupon, index) in coupons"
+                                :key="index">
+                            {{ coupon.name }}
+                        </button>
                     </p>
                 </div>
                 <ul class="sell-info">
@@ -440,7 +569,6 @@
                     <p>配送<span class="origin-adress">西安</span>至
                         <cascader class="destination" :data="data" v-model="distribution_address"></cascader>
                         运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
-                    <!--<p class="stock">{{ product_intro.status }}</p>-->
                 </div>
                 <dl class="product-type-select clearfix">
                     <dt>尺码</dt>
@@ -471,23 +599,32 @@
                 <dl class="product-num clearfix">
                     <dt>数量</dt>
                     <dd>
-                        <div class="input-group input-group-sm">
+                        <div class="input-group input-group-sm pull-left">
                             <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
-                            <input type="number" class="form-control" readonly v-model="productNum">
+                            <input type="number" class="form-control" v-model="productNum">
                             <span class="input-group-addon" @click="productNum++">+</span>
                         </div>
                     </dd>
                 </dl>
-                <ul class="product-buy clearfix">
+                <ul  v-if=" product_intro.status === 1" class="product-buy clearfix">
+                    <router-link to="/mall/search/product-details/submit-order">
+                        <li class="buy"><a class="text-center">立刻购买</a></li>
+                    </router-link>
+
+                    <li class="basket"><a class="text-center">加入购物车</a></li>
+                </ul>
+                <ul  v-else=" product_intro.status === 2" class="product-buygrey clearfix">
                     <li class="buy"><a class="text-center">立刻购买</a></li>
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
+                <div v-if=" product_intro.status === 1" class="stock pull-left">有货，今天下单预计1月22送到</div>
+                <div v-else="product_intro.status === 2" class="nostock pull-left">您选择的商品<span>库存不足</span>，请选择其他商品或申请<button @click="arrivalGoods">到货通知</button>提示</div>
             </div>
         </div>
         <!--推荐购买-->
-        <ul v-if="!loading" class="combination-buy container">
+        <ul class="combination-buy container">
             <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
-                <a href="javascript:void (0)">
+                <a>
                     <img :src="product.img"/>
                 </a>
                 <p class="intro">{{ product.name }}</p>
@@ -503,18 +640,20 @@
             <li>
                 <p class="original-price">原价：<s>￥{{ total_oldPrice }}</s></p>
                 <p class="package-price">套餐价格：<span>￥{{　total_price　}}</span></p>
-                <a class="text-center" href="javascript:void (0)">立即购买</a>
+                <a class="text-center">立即购买</a>
             </li>
         </ul>
         <!--产品相关-->
-        <div v-if="!loading" class="product-about container clearfix">
+        <div class="product-about container clearfix">
             <!--看了又看-->
             <div class="left-box">
                 <div class="see-again-box follow">
-                     <div class="img">
-                         <img :src="img" alt="">
-                     </div>
-                    <p class="name">xxx旗舰店</p>
+                    <router-link to="../store/shop-home">
+                        <div class="img">
+                            <img :src="store.img" alt="">
+                        </div>
+                    </router-link>
+                    <p class="name">{{ store.name }}</p>
                     <a class="shop">关注店铺</a>
                 </div>
                 <div class="see-again-box talked">
@@ -547,7 +686,7 @@
                     <h4>看了又看</h4>
                     <ul>
                         <router-link tag="li" to="/product-details" v-for="(item, index) in seeAgain_products" :key="index">
-                            <a href="javascript:void (0)">
+                            <a>
                                 <img :src="item.img"/>
                             </a>
                             <p>{{ item.name }}
@@ -672,11 +811,89 @@
                                 </div>
                             </li>
                         </ul>
+                        <div class="text-right" v-show="pages > 1">
+                            <paginate
+                                :pageCount="pages"
+                                :pageRange="3"
+                                :marginPages="2"
+                                :clickHandler="switchPage"
+                                prevText="上一页"
+                                nextText="下一页"
+                                containerClass="pagination no-margin"
+                                pageClass="page-item">
+                            </paginate>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <need-browse></need-browse>
-        <right-side></right-side>
+        <need-browse :commendList="commendList"></need-browse>
+        <modal ref="modal" class="couponModal">
+            <div slot="title">
+                <div class="modal-title">
+                    <div class="pull-left talk">
+                        <h4 v-text="modalTitle"></h4>
+                    </div>
+                    <div class="pull-right">
+                        <a class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div slot="body">
+                <div class="couponBox">
+                    <p class="tubiao"><i class="icon iconfont icon-icon-test"></i><span>恭喜！您已成功领取{{ activeCoupon.name }}优惠券</span></p>
+                    <p>使用时间：{{ activeCoupon.useTime }}</p>
+                    <p><router-link to="/mall/user/coupon" class="look">查看我的优惠券</router-link></p>
+                </div>
+            </div>
+            <div slot="body">
+            </div>
+        </modal>
+        <modal ref="modal1">
+            <div slot="title">
+                <div class="modal-title">
+                    <div class="pull-left talk">
+                        <h4 v-text="modalTitle"></h4>
+                    </div>
+                    <div class="pull-right">
+                        <span class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal1"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div slot="body">
+                <i-form class="tablebox" ref="arrivalForm" :model="arrivalData" :rules="arrivalRules">
+                    <form-item class="clearfix" label="手机号码" prop="tel">
+                        <i-input class="putinit"
+                                 v-model="arrivalData.tel"
+                        ></i-input>
+                    </form-item>
+                    <form-item class="clearfix" label="邮箱地址" prop="email">
+                        <i-input class="putinit"
+                                 v-model="arrivalData.email"
+                        ></i-input>
+                    </form-item>
+                </i-form>
+                <button type="button" class="order-btn" slot="save_address" @click="submit">提交</button>
+            </div>
+        </modal>
+        <modal ref="modal2">
+            <div slot="title">
+                <div class="modal-title">
+                    <div class="pull-left talk">
+                        <h4 v-text="modalTitle"></h4>
+                    </div>
+                    <div class="pull-right">
+                        <span class="closeit"><i class="icon iconfont icon-close closepict" @click="closemodal2"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div slot="body">
+                <div class="remind">
+                    <span>
+                        商品在30日内到货，您将收到邮件或短信通知！
+                    </span>
+                </div>
+            </div>
+        </modal>
     </div>
 </template>

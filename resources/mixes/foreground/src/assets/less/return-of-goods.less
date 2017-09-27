@@ -1,297 +1,377 @@
-.return-of-goods {
-    background: #fff;
-    //公共类
-    .price {
-        color: #de2634;
-        font-size: 12px;
-    }
-    margin: 40px auto 60px;
-    .top {
-        border: 1px solid #e5e5e5;
-        color: #e5e5e5;
-        height: 178px;
-        margin-bottom: 20px;
-        width: 100%;
-        .progress {
-            color: #000000;
+.return {
+    background-color: #fff;
+    .return-of-goods {
+        background: #fff;
+        //公共类
+        .price {
+            color: #de2634;
+            font-size: 12px;
         }
-        .bar {
-            background: #d0d0d0;
-            border-radius: 32px;
-            font-size: 18px;
-            font-weight: bold;
-            height: 32px;
-            line-height: 32px;
-            margin: 58px auto 0;
-            margin-bottom: 15px;
-            position: relative;
-            text-align: center;
-            width: 32px;
-        }
-        .bar-main {
-            &:before {
-                background: #d0d0d0;
-                content: '';
-                height: 2px;
-                left: 40px;
-                position: absolute;
-                top: 15px;
-                width: 134px;
-            }
-            &::after {
-                background: #d0d0d0;
-                content: '';
-                height: 2px;
-                left: -142px;
-                position: absolute;
-                top: 15px;
-                width: 134px;
-            }
-        }
-        .bar-left {
-            &::after {
-                background: #d0d0d0;
-                content: '';
-                height: 2px;
-                left: -136px;
-                position: absolute;
-                top: 15px;
-                width: 128px;
-            }
-        }
-        .bar-right {
-            &:before {
-                background: #de2634;
-                content: '';
-                height: 2px;
-                left: 40px;
-                position: absolute;
-                top: 15px;
-                width: 128px;
-            }
-        }
-        .activeBar {
-            background: #de2634;
-            &:before {
-                background: #de2634 !important;
-            }
-            &:after {
-                background: #de2634 !important;
-            }
-        }
-        .progress {
-            color: #d0d0d0;
-            text-align: center;
-        }
-        .activeProgress {
-            color: #000;
-        }
-    }
-
-    .bottom {
-        .applay-goods {
+        .top {
             border: 1px solid #e5e5e5;
-            float: left;
-            height: 249px;
-            width: 240px;
-            .goods-box {
-                padding: 0 20px;
-                .goods-main {
-                    border-bottom: 1px solid #e5e5e5;
+            color: #fff;
+            height: 178px;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            width: 100%;
+            .progress {
+                color: #000000;
+            }
+            .bar {
+                background: #d0d0d0;
+                border-radius: 32px;
+                font-size: 18px;
+                font-weight: bold;
+                height: 32px;
+                line-height: 32px;
+                position: relative;
+                text-align: center;
+                width: 32px;
+            }
+            .bar-no {
+                &::after {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: -147px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+            }
+            .bar-main-left {
+                margin: 58px 102px 15px 100px;
+                &:before {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: 42px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+                &::after {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: -145px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+            }
+            .bar-main-right {
+                margin: 58px 102px 15px 115px;
+                &:before {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: 42px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+                &::after {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: -140px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+            }
+            .bar-left {
+                margin: 58px 96px 15px 130px;
+                &::after {
+                    background: #d0d0d0;
+                    content: '';
+                    height: 2px;
+                    left: -140px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+            }
+            .bar-right {
+                margin: 58px 0px 15px 96px;
+                &:before {
+                    background: #de2634;
+                    content: '';
+                    height: 2px;
+                    left: 42px;
+                    position: absolute;
+                    top: 15px;
+                    width: 130px;
+                }
+            }
+            .activeBar {
+                background: #de2634;
+                &:before {
+                    background: #de2634 !important;
+                }
+                &:after {
+                    background: #de2634 !important;
+                }
+            }
+            .progress {
+                box-shadow: none;
+                background-color: #ffffff;
+                color: #999;
+                font-size: 14px;
+                margin-left: 80px;
+                text-align: left;
+            }
+            .order {
+                margin-left: 68px;
+            }
+            .refuse {
+                margin-left: 105px;
+            }
+            .activeProgress {
+                color: #444;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+
+        .bottom {
+            .applay-goods {
+                border: 1px solid #e5e5e5;
+                float: left;
+                height: 252px;
+                width: 240px;
+                .goods-box {
+                    padding: 0 20px;
+                    .goods-main {
+                        border-bottom: 1px solid #e5e5e5;
+                        color: #444;
+                        font-size: 12px;
+                        height: 72px;
+                        line-height: 1.5;
+                        text-align: left;
+                        .goods-img {
+                            border: 1px solid #e5e5e5;
+                            float: left;
+                            height: 48px;
+                            width: 48px;
+                            img {
+                                max-width: 100%;
+                            }
+                        }
+                        .goods-msg {
+                            float: left;
+                            height: 31px;
+                            margin-left: 11px;
+                            width: 136px;
+                            .goods-type {
+                                color: #999;
+                            }
+                        }
+                    }
+                }
+                .refund-main {
                     color: #444;
                     font-size: 12px;
-                    height: 72px;
                     line-height: 1.5;
-                    text-align: left;
-                    .goods-img {
-                        border: 1px solid #e5e5e5;
-                        float: left;
-                        height: 48px;
-                        width: 48px;
-                        img {
-                            max-width: 100%;
-                        }
-                    }
-                    .goods-msg {
-                        float: left;
-                        height: 31px;
-                        margin-left: 11px;
-                        width: 136px;
-                        .goods-type {
-                            color: #999;
-                        }
-                    }
-                }
-            }
-            .refund-main {
-                color: #444;
-                font-size: 12px;
-                line-height: 1.5;
-                padding: 20px;
-                & > p {
-                    height: 13px;
-                    margin-bottom: 10px;
-                }
-                p:nth-last-child(1) {
-                    margin-bottom: 20px;
-                }
-            }
-        }
-        .border-none {
-            border: none !important;
-        }
-        .applay-buyer {
-            border: 1px solid #e5e5e5;
-            float: right;
-            width: 930px;
-            .title {
-                padding-left: 32px;
-            }
-            .buyer-box {
-                font-size: 12px;
-                padding: 0 32px;
-                .complate {
-                    border-bottom: 1px solid #e5e5e5;
-                    margin-bottom: 20px;
-                    padding-bottom: 20px;
-                    .msg-address {
-                        margin-top: -10px;
-                        padding-left: 154px;
-                    }
-                }
-                .buyer-main {
-                    border-bottom: 1px solid #e5e5e5;
-                    color: #444;
+                    padding: 19px;
                     & > p {
-                        clear: both;
                         height: 13px;
-                        margin-bottom: 20px;
-                        .msg-title {
-                            float: left;
-                            margin-right: 20px;
-                            width: 48px;
+                        margin-bottom: 10px;
+                    }
+                    p:nth-last-child(1) {
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+            .border-none {
+                border: none !important;
+            }
+            .applay-buyer {
+                border: 1px solid #e5e5e5;
+                float: right;
+                margin-bottom: 60px;
+                width: 930px;
+                .title {
+                    padding-left: 20px;
+                }
+                .buyer-box {
+                    font-size: 12px;
+                    margin-left: 20px;
+                    .complate {
+                        border-bottom: 1px solid #e5e5e5;
+                        margin-bottom: 30px;
+                        padding-bottom: 51px;
+                        .msg-address {
+                            margin-top: -10px;
+                            padding-left: 154px;
+                        }
+                    }
+                    .buyer-main {
+                        border-bottom: 1px solid #e5e5e5;
+                        color: #444;
+                        padding-left: 12px;
+                        & > p {
+                            clear: both;
+                            height: 13px;
+                            margin-bottom: 18px;
+                            .msg-title {
+                                float: left;
+                                margin-right: 20px;
+                                width: 48px;
+                            }
+                            .msg-main {
+                                float: left;
+                                font-size: 12px;
+                            }
+                            .msg-num {
+                                margin-bottom: 128px;
+                            }
+                        }
+                        p:nth-child(4) {
+                            margin-bottom: 20px;
+                        }
+                        .group-input {
+                            clear: both;
+                            &:after {
+                                content: '';
+                                clear: both;
+                                overflow: hidden;
+                            }
+                            .lable {
+                                float: left;
+                                height: 10px;
+                                width: 50px;
+                            }
+                            .input-main {
+                                float: left;
+                                margin-left: 20px;
+                                .form-control {
+                                    border-color: #e5e5e5;
+                                    border-radius: 0;
+                                    font-size: 12px;
+                                    height: 24px;
+                                    padding: 0;
+                                    padding-left: 12px;
+                                    margin-bottom: 20px;
+                                    width: 180px;
+                                }
+                                input {
+                                    border: 1px solid #e5e5e5;
+                                    display: inline;
+                                    font-size: 12px;
+                                    margin-bottom: 20px;
+                                    margin-right: 10px;
+                                    padding-left: 12px;
+
+                                }
+                                .longtext {
+                                    width: 180px;
+                                }
+                                textarea {
+                                    border: 1px solid #e5e5e5;
+                                    display: block;
+                                    font-size: 12px;
+                                    height: 84px;
+                                    resize: none;
+                                    width: 512px;
+                                }
+                                .img {
+                                    border: 1px solid #e5e5e5;
+                                    height: 80px;
+                                    width: 80px;
+                                }
+                                .submit-btn {
+                                    background: #de2634;
+                                    color: #fff;
+                                    font-size: 16px;
+                                    font-weight: 300;
+                                    height: 42px;
+                                    line-height: 42px;
+                                    margin-top: 0;
+                                    margin-bottom: 40px;
+                                    text-align: center;
+                                    width: 140px;
+                                }
+                                .tishixinxi {
+                                    color: #d0d0d0;
+                                    font-size: 12px;
+                                    margin-bottom: 20px;
+                                    margin-top: 5px;
+                                    text-align: left;
+                                }
+                            }
+                        }
+                    }
+                    .trader-deal {
+                        padding-left: 12px;
+                        .title-caveat {
+                            height: 30px;
+                            margin-top: 30px;
+                            margin-bottom: 14px;
+                            .caveat {
+                                border-radius: 30px;
+                                border: 2px solid #de2634;
+                                color: #de2634;
+                                float: left;
+                                font-size: 20px;
+                                font-weight: bold;
+                                height: 30px;
+                                line-height: 25px;
+                                margin-left: 18px;
+                                text-align: center;
+                                width: 30px;
+                            }
+                            .caveat-msg {
+                                color: #444;
+                                font-size: 18px;
+                                float: left;
+                                font-weight: bold;
+                                height: 30px;
+                                line-height: 30px;
+                                margin-left: 20px;
+                            }
                         }
                         .msg-main {
-                            float: left;
-                            font-size: 12px;
-                        }
-                    }
-                    .group-input {
-                        clear: both;
-                        &:after {
-                            content: '';
-                            clear: both;
-                            overflow: hidden;
-                        }
-                        .lable {
-                            float: left;
-                            height: 10px;
-                            width: 50px;
-                        }
-                        .input-main {
-                            float: left;
-                            margin-left: 20px;
-                            .form-control {
-                                border-color: #e5e5e5;
-                                border-radius: 0;
+                            height: 13px;
+                            margin-bottom: 15px;
+                            padding-left: 70px;
+                            .price {
                                 font-size: 12px;
-                                height: 24px;
-                                padding: 0;
-                                padding-left: 12px;
-                                margin-bottom: 20px;
-                                width: 180px;
-                            }
-                            input {
-                                border: 1px solid #e5e5e5;
-                                display: inline;
-                                font-size: 12px;
-                                margin-bottom: 20px;
-                                padding-left: 12px;
-                            }
-                            textarea {
-                                border: 1px solid #e5e5e5;
-                                display: block;
-                                font-size: 12px;
-                                height: 84px;
-                                resize: none;
-                                width: 512px;
-                            }
-                            .img {
-                                border: 1px solid #e5e5e5;
-                                height: 80px;
-                                width: 80px;
-                            }
-                            .submit-btn {
-                                background: #de2634;
-                                color: #fff;
-                                font-size: 16px;
-                                font-weight: 300;
-                                height: 42px;
-                                line-height: 42px;
-                                margin-top: 0;
-                                margin-bottom: 20px;
-                                text-align: center;
-                                width: 140px;
-                            }
-                            .tishixinxi {
-                                color: #d0d0d0;
-                                font-size: 12px;
-                                margin-bottom: 20px;
-                                margin-top: 5px;
-                                text-align: left;
                             }
                         }
-                    }
-                }
-                .trader-deal {
-                    .title-caveat {
-                        height: 30px;
-                        margin-top: 30px;
-                        margin-bottom: 14px;
-                        .caveat {
-                            border-radius: 30px;
-                            border: 2px solid #de2634;
-                            color: #de2634;
-                            float: left;
-                            font-size: 20px;
-                            font-weight: bold;
-                            height: 30px;
-                            line-height: 25px;
-                            margin-left: 18px;
-                            text-align: center;
-                            width: 30px;
-                        }
-                        .caveat-msg {
-                            color: #444;
-                            font-size: 18px;
-                            float: left;
-                            font-weight: bold;
-                            height: 30px;
-                            line-height: 30px;
-                            margin-left: 20px;
-                        }
-                    }
-                    .msg-main {
-                        height: 13px;
-                        margin-bottom: 40px;
-                        padding-left: 70px;
-                        .price {
-                            font-size: 12px;
+                        .msg-main:nth-child(4) {
+                            padding-bottom: 150px;
                         }
                     }
                 }
             }
+            .title {
+                color: #444;
+                border-bottom: 1px solid #e5e5e5;
+                font-size: 14px;
+                font-weight: bold;
+                height: 40px;
+                line-height: 40px;
+                margin-bottom: 19px;
+                padding-left: 21px;
+                text-align: left;
+                width: 100%;
+            }
         }
-        .title {
-            border-bottom: 1px solid #e5e5e5;
-            font-size: 14px;
-            font-weight: bold;
-            height: 40px;
-            line-height: 40px;
-            margin-bottom: 19px;
-            padding-left: 21px;
-            text-align: left;
-            width: 100%;
-        }
+    }
+    .icon-tupian:before {
+        align-items: center;
+        -webkit-align-items: center;
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+        color: #b0b0b0;
+        display: flex;
+        display: -webkit-flex;
+        font-size: 40px;
+        height: 100%;
+        justify-content: center;
+        -webkit-justify-content: center;
+        width: 100%;
     }
 }

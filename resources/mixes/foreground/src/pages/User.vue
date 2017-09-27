@@ -137,7 +137,7 @@
                 <div class="content-block">
                     <div class="block-head clearfix">
                         <h5 class="pull-left">交易提醒</h5>
-                        <router-link class="pull-right" to="">
+                        <router-link class="pull-right" to="/mall/user/order">
                             查看更多>
                         </router-link>
                     </div>
@@ -149,7 +149,7 @@
                                 <p>{{ transaction.created_at }}</p>
                             </div>
                             <div class="price pull-left">￥{{ transaction.price }}</div>
-                            <router-link class="pull-left" to="">查看</router-link>
+                            <router-link class="pull-left" to="/mall/search/product-details">查看</router-link>
                         </li>
                     </ul>
                 </div>

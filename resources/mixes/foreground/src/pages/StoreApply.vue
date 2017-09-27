@@ -21,7 +21,7 @@
             return {
                 agree: false,
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
-                temp: 2,
+                temp: 1,
                 categories: [],
                 data: cities,
                 form: {

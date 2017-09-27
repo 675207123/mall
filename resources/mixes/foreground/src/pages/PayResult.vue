@@ -4,8 +4,9 @@
     import HeaderBar from '../layouts/HeaderBar.vue';
     import LogoModal from '../layouts/LogoModal.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
-    import RightSide from '../layouts/RightSide.vue';
     import SplinLine from '../components/SplinLine.vue';
+    import image1 from '../assets/images/head.png';
+
 
     export default {
         components: {
@@ -14,11 +15,42 @@
             HeaderBar,
             LogoModal,
             NeedBrowse,
-            RightSide,
             SplinLine,
         },
         date() {
             return {
+                commendList: [
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                    {
+                        amount: 188,
+                        img: image1,
+                        name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                        price: 48.88,
+                    },
+                ],
                 product: {
                     num: 1,
                     oldPrice: 128.33,
@@ -71,10 +103,9 @@
                     <!--<button class="order-btn submit-btn">查看订单</button>-->
                     <router-link to="/mall/payment-success" class="order-btn submit-btn">查看订单</router-link>
                 </div>
-                <need-browse></need-browse>
+                <need-browse :commendList="commendList"></need-browse>
             </div>
         </div>
-        <right-side></right-side>
         <footer-content></footer-content>
         <footer-bar></footer-bar>
     </div>

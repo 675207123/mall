@@ -4,9 +4,17 @@
     line-height: 40px;
     .header-welcome {
         float: left;
-        font-size: 14px;
-        a{
-            color: #666;
+        font-size: 12px;
+        color: #666666;
+        > span {
+            color: #666666;
+            margin-left: 20px;
+            a {
+                padding: 0;
+                &.signOut {
+                    margin-left: 10px;
+                }
+            }
         }
     }
     .header-bar-user {
@@ -15,9 +23,10 @@
             height: 40px;
             > li {
                 float: left;
-                a{
+                a {
                     color: #666;
-                    font-size: 14px;
+                    font-size: 12px;
+                    font-weight: 300;
                 }
                 &:last-child span {
                     display: none;
