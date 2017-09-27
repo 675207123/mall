@@ -9,6 +9,16 @@
             SplinLine,
         },
         data() {
+            const reg1 = /^\d+(\.\d+)?$/;
+            const validatorMoney = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('退款金额不能为空'));
+                } else if (!reg1.test(value)) {
+                    callback(new Error('请输入正确的信息'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
@@ -23,7 +33,7 @@
                 message: '已超时',
                 refund: {
                     reason: '物品有瑕疵',
-                    price: 99.00,
+                    price: '99.00',
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
@@ -32,8 +42,17 @@
                     money: '',
                     description: '',
                     image: [],
-                    price: 99.00,
-                    freight: 0.00,
+                    price: '99.00',
+                    freight: '0.00',
+                },
+                refundRules: {
+                    money: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            validator: validatorMoney,
+                        },
+                    ],
                 },
                 reasonList: [
                     {
@@ -54,13 +73,22 @@
                     },
                 ],
                 status: 1,
+                textLength: 200,
                 onOff: true,
             };
         },
         methods: {
+            changeDescription() {
+                const self = this;
+                self.textLength = 200 - self.refundForm.description.length;
+                if (self.refundForm.description.length === 200) {
+                    self.textLength = 0;
+                }
+            },
             dosomething(n) {
                 this.onOff = n;
             },
+            handleSuccess() {},
             submit() {
                 this.status = 2;
             },
@@ -125,13 +153,16 @@
                                         </i-option>
                                     </i-select>
                                 </form-item>
-                                <form-item label="退款金额" class="form-item-input">
+                                <form-item label="退款金额" class="form-item-input" prop="money">
                                     <i-input v-model="refundForm.money"></i-input>
                                     <span>最多￥{{ refundForm.price }}元 ( 含运费{{ refundForm.freight }} )</span>
                                 </form-item>
                                 <form-item label="退款说明" class="form-item-textarea">
-                                    <i-input v-model="refundForm.description" type="textarea"></i-input>
-                                    <p class="input-tip">还可以输入200字</p>
+                                    <i-input v-model="refundForm.description"
+                                             @on-change="changeDescription"
+                                             :maxlength="200"
+                                             type="textarea"></i-input>
+                                    <p class="input-tip">还可以输入{{ textLength }}字</p>
                                 </form-item>
                                 <form-item class="form-group clearfix col-flex" prop="image" label="上传凭证">
                                     <ul class="real-imgs clearfix">
@@ -153,14 +184,11 @@
                                             </upload>
                                         </li>
                                     </ul>
-                                    <p class="p_prompt">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</p>
+                                    <p class="input-tip">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</p>
                                 </form-item>
-                                <div class="group-input">
-                                    <div class="lable"></div>
-                                    <div class="input-main">
-                                        <button class="submit-btn" @click="submit">提交退款申请</button>
-                                    </div>
-                                </div>
+                                <form-item>
+                                    <button class="btn-submit" @click="submit">提交退款申请</button>
+                                </form-item>
                             </div>
                         </div>
                     </div>
