@@ -187,7 +187,7 @@
                         },
                     );
                 }
-                window.console.log(this.filterItems);
+//                window.console.log(this.filterItems);
             },
             nextPage() {
                 if (this.currect_page < this.total_page) {
@@ -208,17 +208,15 @@
         },
         watch: {
             filterItems() {
-//                const query = {};
-//                this.filterItems.forEach(item => {
-//
-//                });
-//                window.console.log(JSON.stringify(this.filterItems));
-//                this.$router.push({
-//                    path: '/mall/search',
-//                    query: {
-//                    },
-//                });
+                let searchStr = '';
+                this.filterItems.forEach(item => {
+                    searchStr = `${searchStr}&${item.name}=${item.sub}`;
+                });
+                this.$router.push(`${location.pathname}?${searchStr.substr(1)}`);
             },
+        },
+        beforeRouteUpdate() {
+            window.console.log(location.search);
         },
     };
 </script>
