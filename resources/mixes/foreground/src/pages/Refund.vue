@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="bar bar-left" :class="{activeBar : status ===3 }">3</div>
+                    <div class="bar bar-left" :class="{activeBar: status ===3 }">3</div>
                     <div class="progress over" :class="{activeProgress : status ===3 }">平台审核，退款完成</div>
                 </div>
             </div>
