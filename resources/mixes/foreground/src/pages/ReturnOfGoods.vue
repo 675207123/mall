@@ -104,11 +104,11 @@
                 </div>
                 <!--卖家退货申请-->
                 <div v-if="status === 1" class="applay-buyer">
-                    <div class="title">买家退款申请</div>
+                    <div class="title">买家退货申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main border-none">
                             <div class="group-input">
-                                <div class="lable">退款原因</div>
+                                <div class="lable">退货原因</div>
                                 <div class="input-main">
                                     <select class="form-control">
                                         <option v-for="item in reasonList">{{ item }}</option>
@@ -125,7 +125,7 @@
                                 <div class="input-main"><input type="text"></div>
                             </div>
                             <div class="group-input">
-                                <div class="lable">退款说明</div>
+                                <div class="lable">退货说明</div>
                                 <div class="input-main">
                                     <textarea rows="3"></textarea>
                                     <div class="tishixinxi">还可以输入200字</div>
@@ -142,7 +142,7 @@
                             <div class="group-input">
                                 <div class="lable"></div>
                                 <div class="input-main">
-                                    <div class="submit-btn">提交退款申请</div>
+                                    <div class="submit-btn">提交退货申请</div>
                                 </div>
                             </div>
                         </div>
@@ -150,11 +150,11 @@
                 </div>
                 <!--商家处理退货信息-->
                 <div v-else-if="status === 2" class="applay-buyer">
-                    <div class="title">买家退款申请</div>
+                    <div class="title">买家退货申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main">
                             <p>
-                                <span class="msg-title">退款原因</span>
+                                <span class="msg-title">退货原因</span>
                                 <span class="msg-main">{{ refund.reason }}</span>
                             </p>
                             <p>
@@ -162,18 +162,18 @@
                                 <span class="msg-main price">￥{{ refund.price }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款编号</span>
+                                <span class="msg-title">退货编号</span>
                                 <span class="msg-main">{{ refund.number }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款说明</span>
+                                <span class="msg-title">退货说明</span>
                                 <span class="msg-main">{{ refund.illustrate }}</span>
                             </p>
                         </div>
                         <div class="trader-deal">
                             <p class="title-caveat">
                                 <span class="caveat">!</span>
-                                <span class="caveat-msg">等待商家处理退款申请</span>
+                                <span class="caveat-msg">等待商家处理退货申请</span>
                             </p>
                             <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
                             <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
@@ -189,14 +189,14 @@
                 </div>
                 <!--  买家退货给商家 填写物流单号-->
                 <div v-else-if="status === 3" class="applay-buyer">
-                    <div class="title">买家退款申请</div>
+                    <div class="title">买家退货申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main">
-                            <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
+                            <p><span class="msg-title">退货原因</span><span class="msg-main">{{ refund.reason }}</span></p>
                             <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
                             </p>
-                            <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
-                            <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
+                            <p><span class="msg-title">退货编号</span><span class="msg-main">{{ refund.number }}</span></p>
+                            <p><span class="msg-title">退货说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
                         </div>
                         <div class="trader-deal complate">
                             <p class="title-caveat">
@@ -236,7 +236,7 @@
                     <div class="buyer-box">
                         <div class="buyer-main">
                             <p>
-                                <span class="msg-title">退款原因</span>
+                                <span class="msg-title">退货原因</span>
                                 <span class="msg-main">{{ refund.reason }}</span>
                             </p>
                             <p>
@@ -244,11 +244,11 @@
                                 <span class="msg-main price">￥{{ refund.price }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款编号</span>
+                                <span class="msg-title">退货编号</span>
                                 <span class="msg-main">{{ refund.number }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款说明</span>
+                                <span class="msg-title">退货说明</span>
                                 <span class="msg-main">{{ refund.illustrate }}</span>
                             </p>
                         </div>
@@ -263,7 +263,6 @@
                                            :endTime='endTime'></end-timer>
                             </span> 内商家未处理，系统会自动确认收货，并经平台审核后将金额返还至您的账户
                             </p>
-
                         </div>
                         <div class="buyer-main border-none ">
                             <p>
@@ -280,11 +279,11 @@
 
                 <!--第四步  退货处理完成-->
                 <div v-else-if="status ===5 " class="applay-buyer">
-                    <div class="title">买家退款申请</div>
+                    <div class="title">买家退货申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main">
                             <p>
-                                <span class="msg-title">退款原因</span>
+                                <span class="msg-title">退货原因</span>
                                 <span class="msg-main">{{ refund.reason }}</span>
                             </p>
                             <p>
@@ -292,11 +291,11 @@
                                 <span class="msg-main price">￥{{ refund.price }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款编号</span>
+                                <span class="msg-title">退货编号</span>
                                 <span class="msg-main">{{ refund.number }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款说明</span>
+                                <span class="msg-title">退货说明</span>
                                 <span class="msg-main">{{ refund.illustrate }}</span>
                             </p>
                         </div>
@@ -322,11 +321,11 @@
                 </div>
                 <!--商家不同意退货申请-->
                 <div v-else-if="status ===6 " class="applay-buyer">
-                    <div class="title">买家退款申请</div>
+                    <div class="title">买家退货申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main">
                             <p>
-                                <span class="msg-title">退款原因</span>
+                                <span class="msg-title">退货原因</span>
                                 <span class="msg-main">{{ refund.reason }}</span>
                             </p>
                             <p>
@@ -334,11 +333,11 @@
                                 <span class="msg-main price">￥{{ refund.price }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款编号</span>
+                                <span class="msg-title">退货编号</span>
                                 <span class="msg-main">{{ refund.number }}</span>
                             </p>
                             <p>
-                                <span class="msg-title">退款说明</span>
+                                <span class="msg-title">退货说明</span>
                                 <span class="msg-main">{{ refund.illustrate }}</span>
                             </p>
                         </div>

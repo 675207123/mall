@@ -90,7 +90,14 @@
             },
             handleSuccess() {},
             submit() {
-                this.status = 2;
+                const self = this;
+                self.$refs.refundForm.validate(valid => {
+                    if (valid) {
+                        self.status = 2;
+                    } else {
+                        window.console.log('提交申请失败！');
+                    }
+                });
             },
         },
     };
@@ -187,7 +194,7 @@
                                     <p class="input-tip">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</p>
                                 </form-item>
                                 <form-item>
-                                    <button class="btn-submit" @click="submit">提交退款申请</button>
+                                    <button class="btn-submit" @click.prevent="submit">提交退款申请</button>
                                 </form-item>
                             </div>
                         </div>
@@ -196,11 +203,22 @@
                         <div class="title title-buy">买家退款申请</div>
                         <div class="buyer-box">
                             <div class="buyer-main">
-                                <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
-                                <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
+                                <p>
+                                    <span class="msg-title">退款原因</span>
+                                    <span class="msg-main">{{ refund.reason }}</span>
                                 </p>
-                                <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
-                                <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
+                                <p>
+                                    <span class="msg-title">退款金额</span>
+                                    <span class="msg-main price">￥{{ refund.price }}</span>
+                                </p>
+                                <p>
+                                    <span class="msg-title">退款编号</span>
+                                    <span class="msg-main">{{ refund.number }}</span>
+                                </p>
+                                <p>
+                                    <span class="msg-title">退款说明</span>
+                                    <span class="msg-main">{{ refund.illustrate }}</span>
+                                </p>
                             </div>
                             <div class="trader-deal">
                                 <p class="title-caveat">
