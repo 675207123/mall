@@ -39,6 +39,8 @@
                     image: [],
                     price: '99.00',
                     freight: '0.00',
+                    logistics_companny: '',
+                    logistics_num: '',
                 },
                 refundRules: {
                     money: [
@@ -49,9 +51,23 @@
                         },
                     ],
                 },
+                company: [
+                    {
+                        label: '中通',
+                        value: '1',
+                    },
+                    {
+                        label: '圆通',
+                        value: '2',
+                    },
+                    {
+                        label: '顺丰',
+                        value: '3',
+                    },
+                ],
                 reasonList: [
                     {
-                        label: '请选择退款原因',
+                        label: '请选择退货原因',
                         value: '1',
                     },
                     {
@@ -77,7 +93,6 @@
                 imgsrc: img,
                 onOff: true,
                 result: ['请选择退款原因', '七天无理由退换', '拍错了'],
-                company: ['中通', '圆通', '顺丰'],
             };
         },
         methods: {
@@ -283,20 +298,19 @@
                                 <p class="msg-address">陕西省西安市雁塔区科技四路中段国土资源大厦公寓楼2304</p>
 
                             </div>
-                            <div class="buyer-main border-none ">
-                                <div class="group-input">
-                                    <div class="lable">物流公司</div>
-                                    <div class="input-main">
-                                        <select class="form-control">
-                                            <option v-for="item in company">{{ item }}</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable">物流单号</div>
-                                    <div class="input-main"><input type="text" class="longtext"></div>
-                                </div>
+                            <div class="buyer-main border-none logistics-company-module">
+                                <form-item label="物流公司">
+                                    <i-select style="width: 180px" v-model="refundForm.logistics_companny">
+                                        <i-option v-for="(item, index) in company"
+                                                  :value="item.value"
+                                                  :key="index">
+                                            {{ item.label }}
+                                        </i-option>
+                                    </i-select>
+                                </form-item>
+                                <form-item label="物流单号" class="form-item-input">
+                                    <i-input v-model="refundForm.logistics_num"></i-input>
+                                </form-item>
                                 <div class="group-input ">
                                     <div class="lable"></div>
                                     <div class="input-main">
