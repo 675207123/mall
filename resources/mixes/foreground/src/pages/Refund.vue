@@ -27,9 +27,15 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
+                refundForm: {
+                    reason: '1',
+                    money: '',
+                    description: '',
+                    image: '',
+                },
                 reasonList: [
                     {
-                        label: '请选择退货原因',
+                        label: '请选择退款原因',
                         value: '1',
                     },
                     {
@@ -102,79 +108,78 @@
                         <p>商家：{{ goods.seller}}</p>
                     </div>
                 </div>
-                <div v-if="status === 1" class="applay-buyer">
-                    <div class="title">买家退款申请</div>
-                    <div class="buyer-box">
-                        <div class="buyer-main border-none">
-                            <div class="group-input">
-                                <div class="lable">退款原因</div>
-                                <div class="input-main">
-                                    <i-select style="width:200px" >
+                <i-form ref="refundForm" :model="refundForm" :rules="refundRules" :label-width="100">
+                    <div v-if="status === 1" class="applay-buyer">
+                        <div class="title">买家退款申请</div>
+                        <div class="buyer-box">
+                            <div class="buyer-main border-none">
+                                <form-item label="退款原因" prop="reason">
+                                    <i-select style="width:200px" v-model="refundForm.reason">
                                         <i-option v-for="(item, index) in reasonList"
-                                                :value="item.value"
-                                                :key="index">
+                                                  :value="item.value"
+                                                  :disabled="item.value === '1'"
+                                                  :key="index">
                                             {{ item.label }}
                                         </i-option>
                                     </i-select>
+                                </form-item>
+                                <div class="group-input">
+                                    <div class="lable">退款金额</div>
+                                    <div class="input-main"><input type="text">最多￥{{goods.price }}元 ( 含运费0.00 )</div>
                                 </div>
-                            </div>
-                            <div class="group-input">
-                                <div class="lable">退款金额</div>
-                                <div class="input-main"><input type="text">最多￥{{goods.price }}元 ( 含运费0.00 )</div>
-                            </div>
-                            <div class="group-input">
-                                <div class="lable">退款说明</div>
-                                <div class="input-main">
-                                    <textarea rows="3"></textarea>
-                                    <div class="prompt-msg">还可以输入200字</div>
+                                <div class="group-input">
+                                    <div class="lable">退款说明</div>
+                                    <div class="input-main">
+                                        <textarea rows="3"></textarea>
+                                        <div class="prompt-msg">还可以输入200字</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="group-input">
-                                <div class="lable">上传凭证</div>
-                                <div class="input-main">
-                                    <div class="img"><i class="icon iconfont icon-tupian picture-icon"></i></div>
-                                    <div class="prompt-msg">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
+                                <div class="group-input">
+                                    <div class="lable">上传凭证</div>
+                                    <div class="input-main">
+                                        <div class="img"><i class="icon iconfont icon-tupian picture-icon"></i></div>
+                                        <div class="prompt-msg">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="group-input">
-                                <div class="lable"></div>
-                                <div class="input-main">
-                                    <button class="submit-btn" @click="submit">提交退款申请</button>
+                                <div class="group-input">
+                                    <div class="lable"></div>
+                                    <div class="input-main">
+                                        <button class="submit-btn" @click="submit">提交退款申请</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div v-else-if="status === 2" class="applay-buyer">
-                    <div class="title title-buy">买家退款申请</div>
-                    <div class="buyer-box">
-                        <div class="buyer-main">
-                            <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
-                            <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
-                            </p>
-                            <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
-                            <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
-                        </div>
-                        <div class="trader-deal">
-                            <p class="title-caveat">
-                                <span class="caveat">!</span>
-                                <span class="caveat-msg">等待商家处理退款申请</span>
-                            </p>
-                            <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
-                            <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
-                            <p v-if="this.onOff" class="msg-main">
-                                如果
-                                <span class="price">
-                                    <end-timer @mistake="dosomething" @time-end="dosomething" :endTime='endTime'>
-                                    </end-timer>
-                                </span>
-                                内商家未处理，退款申请将会自动达成并将金额返还至您的账户
-                            </p>
-                            <p v-if="!this.onOff" class="msg-main">时间已经过期</p>
+                    <div v-else-if="status === 2" class="applay-buyer">
+                        <div class="title title-buy">买家退款申请</div>
+                        <div class="buyer-box">
+                            <div class="buyer-main">
+                                <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
+                                <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
+                                </p>
+                                <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
+                                <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
+                            </div>
+                            <div class="trader-deal">
+                                <p class="title-caveat">
+                                    <span class="caveat">!</span>
+                                    <span class="caveat-msg">等待商家处理退款申请</span>
+                                </p>
+                                <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
+                                <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
+                                <p v-if="this.onOff" class="msg-main">
+                                    如果
+                                    <span class="price">
+                                        <end-timer @mistake="dosomething" @time-end="dosomething" :endTime='endTime'>
+                                        </end-timer>
+                                    </span>
+                                    内商家未处理，退款申请将会自动达成并将金额返还至您的账户
+                                </p>
+                                <p v-if="!this.onOff" class="msg-main">时间已经过期</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div v-else="status === 3" class="applay-buyer">
+                    <div v-else="status === 3" class="applay-buyer">
                     <div class="title title-buy">买家退款申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main">
@@ -193,6 +198,7 @@
                         </div>
                     </div>
                 </div>
+                </i-form>
             </div>
         </div>
     </div>
