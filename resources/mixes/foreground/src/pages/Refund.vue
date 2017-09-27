@@ -54,6 +54,13 @@
                             validator: validatorMoney,
                         },
                     ],
+                    image: [
+                        {
+                            message: '上传凭证不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                 },
                 reasonList: [
                     {
@@ -244,11 +251,22 @@
                     <div class="title title-buy">买家退款申请</div>
                     <div class="buyer-box">
                         <div class="buyer-main">
-                            <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
-                            <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
+                            <p>
+                                <span class="msg-title">退款原因</span>
+                                <span class="msg-main">{{ refund.reason }}</span>
                             </p>
-                            <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
-                            <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
+                            <p>
+                                <span class="msg-title">退款金额</span>
+                                <span class="msg-main price">￥{{ refund.price }}</span>
+                            </p>
+                            <p>
+                                <span class="msg-title">退款编号</span>
+                                <span class="msg-main">{{ refund.number }}</span>
+                            </p>
+                            <p>
+                                <span class="msg-title">退款说明</span>
+                                <span class="msg-main">{{ refund.illustrate }}</span>
+                            </p>
                         </div>
                         <div class="trader-deal">
                             <p class="title-caveat">

@@ -68,6 +68,13 @@
                             validator: validatorNum,
                         },
                     ],
+                    image: [
+                        {
+                            message: '上传凭证不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                 },
                 company: [
                     {
