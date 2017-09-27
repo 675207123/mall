@@ -177,6 +177,18 @@
             expand(index) {
                 this.filters[index].expand = !this.filters[index].expand;
             },
+            changeFilterItems(item, subItem, e) {
+                window.console.log(e.target.checked);
+                if (e.target.checked) {
+                    this.filterItems.push(
+                        {
+                            name: item.name,
+                            sub: subItem,
+                        },
+                    );
+                }
+                window.console.log(this.filterItems);
+            },
             nextPage() {
                 if (this.currect_page < this.total_page) {
                     this.currect_page += 1;
@@ -189,18 +201,23 @@
             },
             sortPrice() {
                 this.priceSort = !this.priceSort;
-                window.console.log(this.priceSort);
             },
             switchPage(page) {
                 this.current_page = page;
             },
         },
         watch: {
-            filterItems: {
-                dedp: true,
-                handle() {
-                    window.console.log(this.filterItems);
-                },
+            filterItems() {
+//                const query = {};
+//                this.filterItems.forEach(item => {
+//
+//                });
+//                window.console.log(JSON.stringify(this.filterItems));
+//                this.$router.push({
+//                    path: '/mall/search',
+//                    query: {
+//                    },
+//                });
             },
         },
     };
@@ -209,8 +226,8 @@
     <div class="search container padding-attribute">
         <p class="search-result">全部结果
             <i class="icon iconfont "> ></i>
-            "尿不湿"&nbsp;&nbsp;&nbsp;&nbsp;商品共
-            <span class="result-num">522</span>个
+            "尿不湿"&nbsp;&nbsp;&nbsp;&nbsp;
+            <span v-for="item in filterItems">{{ item.name }}: <i>{{ item.sub }}</i><i class="icon iconfont icon-close"></i></span>
         </p>
         <div class="filter-box">
             <div class="row" v-for="(filterItem, filterIndex) in filters" :key="filterIndex">
@@ -219,7 +236,7 @@
                     <ul class="pull-left" :class="{ expand: filterItem.expand }">
                         <li v-for="(item, index) in filterItem.list" :key="index">
                             <label>
-                                <input type="checkbox" :value="item" v-model="filterItems">
+                                <input type="checkbox" @change="changeFilterItems(filterItem, item, $event)" :value="item">
                                 <a>{{ item }}</a>
                             </label>
                         </li>
