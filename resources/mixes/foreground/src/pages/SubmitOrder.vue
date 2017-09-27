@@ -518,7 +518,7 @@
                     <div slot="body">
                         <form class="signup-form">
                             <div class="signup-form-group clearfix">
-                                <label class="form-title">收货人姓名</label>
+                                <label class="form-title">发票类型</label>
                                 <label class="form-control-radio">
                                     <input type="radio" name="invoice" value="普通发票" v-model="invoice">
                                     <span>普通发票</span>
@@ -530,13 +530,13 @@
                             </div>
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">发票抬头</label>
-                                <Select v-model="invoice.title" class="invoice-select" style="width:200px">
-                                    <Option v-for="(item, index) in cityList"
+                                <i-select v-model="invoice.title" class="invoice-select" style="width:200px">
+                                    <i-option v-for="(item, index) in cityList"
                                             :value="item.value"
                                             :key="index">
                                         {{ item.label }}
-                                    </Option>
-                                </Select>
+                                    </i-option>
+                                </i-select>
                             </div>
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">发票内容</label>
