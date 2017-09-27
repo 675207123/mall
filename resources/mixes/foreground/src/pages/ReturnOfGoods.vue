@@ -92,6 +92,16 @@
                 this.onOff = n;
             },
             handleSuccess() {},
+            submit() {
+                const self = this;
+                self.$refs.refundForm.validate(valid => {
+                    if (valid) {
+                        self.status = 2;
+                    } else {
+                        window.console.log('提交申请失败！');
+                    }
+                });
+            },
         },
     };
 </script>
@@ -208,7 +218,8 @@
                                     <p class="input-tip">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</p>
                                 </form-item>
                                 <form-item>
-                                    <button class="btn-submit" @click.prevent="submit">提交退款申请</button>
+                                    <button class="btn-submit"
+                                            @click.prevent="submit">提交退货申请</button>
                                 </form-item>
                             </div>
                         </div>
