@@ -32,6 +32,8 @@
                     money: '',
                     description: '',
                     image: '',
+                    price: 99.00,
+                    freight: 0.00,
                 },
                 reasonList: [
                     {
@@ -114,7 +116,7 @@
                         <div class="buyer-box">
                             <div class="buyer-main border-none">
                                 <form-item label="退款原因" prop="reason">
-                                    <i-select style="width:200px" v-model="refundForm.reason">
+                                    <i-select style="width: 180px" v-model="refundForm.reason">
                                         <i-option v-for="(item, index) in reasonList"
                                                   :value="item.value"
                                                   :disabled="item.value === '1'"
@@ -123,10 +125,10 @@
                                         </i-option>
                                     </i-select>
                                 </form-item>
-                                <div class="group-input">
-                                    <div class="lable">退款金额</div>
-                                    <div class="input-main"><input type="text">最多￥{{goods.price }}元 ( 含运费0.00 )</div>
-                                </div>
+                                <form-item label="退款金额">
+                                    <i-input v-model="refundForm.money"></i-input>
+                                    <span>最多￥{{ refundForm.price }}元 ( 含运费{{ refundForm.freight }} )</span>
+                                </form-item>
                                 <div class="group-input">
                                     <div class="lable">退款说明</div>
                                     <div class="input-main">
