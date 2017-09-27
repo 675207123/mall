@@ -8,11 +8,21 @@
         },
         data() {
             const reg1 = /^\d+(\.\d+)?$/;
+            const reg2 = /^\d*$/;
             const validatorMoney = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('退款金额不能为空'));
                 } else if (!reg1.test(value)) {
                     callback(new Error('请输入正确的信息'));
+                } else {
+                    callback();
+                }
+            };
+            const validatorNum = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('退款数量不能为空'));
+                } else if (!reg2.test(value)) {
+                    callback(new Error('请输入正确的数量'));
                 } else {
                     callback();
                 }
@@ -39,6 +49,7 @@
                     image: [],
                     price: '99.00',
                     freight: '0.00',
+                    return_num: null,
                     logistics_companny: '',
                     logistics_num: '',
                 },
@@ -48,6 +59,13 @@
                             required: true,
                             trigger: 'blur',
                             validator: validatorMoney,
+                        },
+                    ],
+                    return_num: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            validator: validatorNum,
                         },
                     ],
                 },
@@ -200,8 +218,8 @@
                                     <i-input v-model="refundForm.money"></i-input>
                                     <span>最多￥{{ refundForm.price }}元 ( 含运费{{ refundForm.freight }} )</span>
                                 </form-item>
-                                <form-item label="退货数量" class="form-item-input" prop="num">
-                                    <i-input v-model="refundForm.num"></i-input>
+                                <form-item label="退货数量" class="form-item-input" prop="return_num">
+                                    <i-input v-model="refundForm.return_num"></i-input>
                                 </form-item>
                                 <form-item label="退货说明" class="form-item-textarea">
                                     <i-input v-model="refundForm.description"
@@ -283,11 +301,22 @@
                         <div class="title">买家退货申请</div>
                         <div class="buyer-box">
                             <div class="buyer-main">
-                                <p><span class="msg-title">退货原因</span><span class="msg-main">{{ refund.reason }}</span></p>
-                                <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
+                                <p>
+                                    <span class="msg-title">退货原因</span>
+                                    <span class="msg-main">{{ refund.reason }}</span>
                                 </p>
-                                <p><span class="msg-title">退货编号</span><span class="msg-main">{{ refund.number }}</span></p>
-                                <p><span class="msg-title">退货说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
+                                <p>
+                                    <span class="msg-title">退款金额</span>
+                                    <span class="msg-main price">￥{{ refund.price }}</span>
+                                </p>
+                                <p>
+                                    <span class="msg-title">退货编号</span>
+                                    <span class="msg-main">{{ refund.number }}</span>
+                                </p>
+                                <p>
+                                    <span class="msg-title">退货说明</span>
+                                    <span class="msg-main">{{ refund.illustrate }}</span>
+                                </p>
                             </div>
                             <div class="trader-deal complate">
                                 <p class="title-caveat">
@@ -366,7 +395,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!--第四步  退货处理完成-->
                     <div v-else-if="status ===5 " class="applay-buyer">
                         <div class="title">买家退货申请</div>
