@@ -27,7 +27,24 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                reasonList: ['请选择退货原因', '质量不好', '尺码不对', '卖家发错货了'],
+                reasonList: [
+                    {
+                        label: '请选择退货原因',
+                        value: '1',
+                    },
+                    {
+                        label: '质量不好',
+                        value: '2',
+                    },
+                    {
+                        label: '尺码不对',
+                        value: '3',
+                    },
+                    {
+                        label: '卖家发错货了',
+                        value: '4',
+                    },
+                ],
                 status: 1,
                 onOff: true,
             };
@@ -92,10 +109,13 @@
                             <div class="group-input">
                                 <div class="lable">退款原因</div>
                                 <div class="input-main">
-                                    <select class="form-control">
-                                        <option v-for="item in reasonList">{{ item }}</option>
-
-                                    </select>
+                                    <i-select style="width:200px" >
+                                        <i-option v-for="(item, index) in reasonList"
+                                                :value="item.value"
+                                                :key="index">
+                                            {{ item.label }}
+                                        </i-option>
+                                    </i-select>
                                 </div>
                             </div>
                             <div class="group-input">

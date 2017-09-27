@@ -31,8 +31,8 @@
         const clientTop = docEl.clientTop || 0;
         const clientLeft = docEl.clientLeft || 0;
         return {
-            top: rect.top + scrollTop - clientTop,
-            left: rect.left + scrollLeft - clientLeft,
+            top: (rect.top + scrollTop) - clientTop,
+            left: (rect.left + scrollLeft) - clientLeft,
         };
     }
     export default {
