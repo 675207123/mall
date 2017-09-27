@@ -371,7 +371,7 @@
                             {
                                 img: picture2,
                                 intro: '舒适耐实用儿童睡椅',
-                                title: '新品上架',
+                                title: '',
                             },
                         ],
                         offerList: [
