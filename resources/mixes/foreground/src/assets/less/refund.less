@@ -149,6 +149,33 @@
             .ivu-form {
                 .ivu-form-item {
                     margin-bottom: 20px;
+                    .ivu-input {
+                        padding: 0 10px;
+                    }
+                    .input-tip {
+                        color: #d0d0d0;
+                        line-height: 10px;
+                    }
+                }
+                .form-item-input {
+                    .ivu-input-wrapper {
+                        width: 140px;
+                        margin-right: 10px;
+                        .ivu-input {
+                            width: 140px;
+                            height: 24px;
+                        }
+                    }
+                }
+                .form-item-textarea {
+                    .ivu-input-wrapper {
+                        width: 512px;
+                        .ivu-input {
+                            width: 512px;
+                            height: 84px;
+                            resize: none;
+                        }
+                    }
                 }
                 .ivu-form-item-label {
                     text-align: right;
@@ -177,12 +204,38 @@
                             }
                         }
                     }
-                    .ivu-input-wrapper {
-                        width: 140px;
-                        margin-right: 10px;
-                        .ivu-input {
-                            width: 140px;
-                            height: 24px;
+                }
+                .real-imgs {
+                    margin-top: 0;
+                    > li {
+                        height: 80px;
+                    }
+                    .diamond-upload-file {
+                        position: relative;
+                        .icon-tupian {
+                            align-items: center;
+                            -webkit-align-items: center;
+                            background-color: #f7f7f7;
+                            color: #b0b0b0;
+                            display: flex;
+                            display: -webkit-flex;
+                            font-size: 40px;
+                            height: 100%;
+                            justify-content: center;
+                            -webkit-justify-content: center;
+                            width: 100%;
+                        }
+                    }
+                    .ivu-upload {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        .ivu-upload-input {
+                            visibility: hidden;
+                            height: 100%;
+                            width: 100%;
                         }
                     }
                 }

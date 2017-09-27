@@ -31,7 +31,7 @@
                     reason: '1',
                     money: '',
                     description: '',
-                    image: '',
+                    image: [],
                     price: 99.00,
                     freight: 0.00,
                 },
@@ -125,24 +125,36 @@
                                         </i-option>
                                     </i-select>
                                 </form-item>
-                                <form-item label="退款金额">
+                                <form-item label="退款金额" class="form-item-input">
                                     <i-input v-model="refundForm.money"></i-input>
                                     <span>最多￥{{ refundForm.price }}元 ( 含运费{{ refundForm.freight }} )</span>
                                 </form-item>
-                                <div class="group-input">
-                                    <div class="lable">退款说明</div>
-                                    <div class="input-main">
-                                        <textarea rows="3"></textarea>
-                                        <div class="prompt-msg">还可以输入200字</div>
-                                    </div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable">上传凭证</div>
-                                    <div class="input-main">
-                                        <div class="img"><i class="icon iconfont icon-tupian picture-icon"></i></div>
-                                        <div class="prompt-msg">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
-                                    </div>
-                                </div>
+                                <form-item label="退款说明" class="form-item-textarea">
+                                    <i-input v-model="refundForm.description" type="textarea"></i-input>
+                                    <p class="input-tip">还可以输入200字</p>
+                                </form-item>
+                                <form-item class="form-group clearfix col-flex" prop="image" label="上传凭证">
+                                    <ul class="real-imgs clearfix">
+                                        <li v-for="img in refundForm.image">
+                                            <img :src="img"/>
+                                            <div class="cover">
+                                                <i class="icon iconfont icon-icon_shanchu"
+                                                   @click="deleteImg(refundForm.image, img)"> </i>
+                                            </div>
+                                        </li>
+                                        <li class="diamond-upload-file"
+                                            v-if="refundForm.image.length<2">
+                                            <div class="icon iconfont icon-tupian"></div>
+                                            <upload
+                                                    ref="upload"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :on-success="handleSuccess"
+                                                    action="//jsonplaceholder.typicode.com/posts/">
+                                            </upload>
+                                        </li>
+                                    </ul>
+                                    <p class="p_prompt">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</p>
+                                </form-item>
                                 <div class="group-input">
                                     <div class="lable"></div>
                                     <div class="input-main">
