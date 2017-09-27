@@ -81,9 +81,17 @@
             };
         },
         methods: {
+            changeDescription() {
+                const self = this;
+                self.textLength = 200 - self.refundForm.description.length;
+                if (self.refundForm.description.length === 200) {
+                    self.textLength = 0;
+                }
+            },
             dosomething(n) {
                 this.onOff = n;
             },
+            handleSuccess() {},
         },
     };
 </script>
@@ -153,44 +161,55 @@
                         <div class="title">买家退货申请</div>
                         <div class="buyer-box">
                             <div class="buyer-main border-none">
-                                <div class="group-input">
-                                    <div class="lable">退货原因</div>
-                                    <div class="input-main">
-                                        <select class="form-control">
-                                            <option v-for="item in reasonList">{{ item }}</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable">退款金额</div>
-                                    <div class="input-main"><input type="text">最多￥{{goods.price }}元 ( 含运费0.00 )</div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable">退货数量</div>
-                                    <div class="input-main"><input type="text"></div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable">退货说明</div>
-                                    <div class="input-main">
-                                        <textarea rows="3"></textarea>
-                                        <div class="tishixinxi">还可以输入200字</div>
-                                    </div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable">上传凭证</div>
-                                    <div class="input-main">
-                                        <div class="img"><i class="icon iconfont icon-tupian picture-icon"></i>
-                                        </div>
-                                        <div class="tishixinxi">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
-                                    </div>
-                                </div>
-                                <div class="group-input">
-                                    <div class="lable"></div>
-                                    <div class="input-main">
-                                        <div class="submit-btn">提交退货申请</div>
-                                    </div>
-                                </div>
+                                <form-item label="退货原因" prop="reason">
+                                    <i-select style="width: 180px" v-model="refundForm.reason">
+                                        <i-option v-for="(item, index) in reasonList"
+                                                  :value="item.value"
+                                                  :disabled="item.value === '1'"
+                                                  :key="index">
+                                            {{ item.label }}
+                                        </i-option>
+                                    </i-select>
+                                </form-item>
+                                <form-item label="退款金额" class="form-item-input" prop="money">
+                                    <i-input v-model="refundForm.money"></i-input>
+                                    <span>最多￥{{ refundForm.price }}元 ( 含运费{{ refundForm.freight }} )</span>
+                                </form-item>
+                                <form-item label="退货数量" class="form-item-input" prop="num">
+                                    <i-input v-model="refundForm.num"></i-input>
+                                </form-item>
+                                <form-item label="退货说明" class="form-item-textarea">
+                                    <i-input v-model="refundForm.description"
+                                             @on-change="changeDescription"
+                                             :maxlength="200"
+                                             type="textarea"></i-input>
+                                    <p class="input-tip">还可以输入{{ textLength }}字</p>
+                                </form-item>
+                                <form-item class="form-group clearfix col-flex" prop="image" label="上传凭证">
+                                    <ul class="real-imgs clearfix">
+                                        <li v-for="img in refundForm.image">
+                                            <img :src="img"/>
+                                            <div class="cover">
+                                                <i class="icon iconfont icon-icon_shanchu"
+                                                   @click="deleteImg(refundForm.image, img)"> </i>
+                                            </div>
+                                        </li>
+                                        <li class="diamond-upload-file"
+                                            v-if="refundForm.image.length<2">
+                                            <div class="icon iconfont icon-tupian"></div>
+                                            <upload
+                                                    ref="upload"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :on-success="handleSuccess"
+                                                    action="//jsonplaceholder.typicode.com/posts/">
+                                            </upload>
+                                        </li>
+                                    </ul>
+                                    <p class="input-tip">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</p>
+                                </form-item>
+                                <form-item>
+                                    <button class="btn-submit" @click.prevent="submit">提交退款申请</button>
+                                </form-item>
                             </div>
                         </div>
                     </div>

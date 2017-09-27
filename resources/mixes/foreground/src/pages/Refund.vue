@@ -44,6 +44,7 @@
                     image: [],
                     price: '99.00',
                     freight: '0.00',
+                    num: null,
                 },
                 refundRules: {
                     money: [
