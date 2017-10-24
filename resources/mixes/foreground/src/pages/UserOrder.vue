@@ -10,6 +10,7 @@
                         time: '2017-02-09',
                         order_code: 11052616584585,
                         shop_name: 'xxx母婴用品店',
+                        selected: false,
                         logistics: {
                             name: '顺丰速运',
                             transport_code: 11265445952,
@@ -55,6 +56,7 @@
                         time: '2017-02-09',
                         order_code: 11052616584585,
                         shop_name: 'xxx母婴用品店',
+                        selected: false,
                         operating: [1, 7],
                         transport_price: 10.00,
                         status: [2, 7],
@@ -89,6 +91,7 @@
                     },
                     {
                         order_code: 11052616584585,
+                        selected: false,
                         products: [
                             {
                                 img: img1,
@@ -109,6 +112,7 @@
                         time: '2017-02-09',
                         order_code: 11052616584585,
                         shop_name: 'xxx母婴用品店',
+                        selected: false,
                         operating: [1, 9],
                         transport_price: 10.00,
                         status: [2, 7, 4],
@@ -145,6 +149,7 @@
                         time: '2017-02-09',
                         order_code: 11052616584585,
                         shop_name: 'xxx母婴用品店',
+                        selected: false,
                         operating: [1, 2],
                         transport_price: 10.00,
                         status: [3, 4],
@@ -219,9 +224,31 @@
                         name: '订单回收站',
                     },
                 ],
+                isAllChecked: false,
             };
         },
         methods: {
+            changeAllChecked() {
+                const self = this;
+                if (self.isAllChecked) {
+                    self.allOrder.forEach(data => {
+                        data.selected = true;
+                    });
+                } else {
+                    self.allOrder.forEach(data => {
+                        data.selected = false;
+                    });
+                }
+            },
+            changeTitleChecked() {
+                const self = this;
+                self.isAllChecked = true;
+                self.allOrder.forEach(item => {
+                    if (item.selected === false) {
+                        self.isAllChecked = false;
+                    }
+                });
+            },
             deleteProduct(item) {
                 const index = this.allOrder.indexOf(item);
                 this.allOrder.splice(index, 1);
@@ -277,7 +304,9 @@
                             <ul class="clearfix shop-info" >
                                 <li>
                                     <label class="checkProduct">
-                                        <input type="checkbox" name="product">
+                                        <input type="checkbox" name="product"
+                                               v-model="isAllChecked"
+                                               @change="changeAllChecked">
                                         <span></span>
                                     </label>
                                 </li>
@@ -295,7 +324,9 @@
                             <ul class="clearfix shop-info">
                                 <li>
                                     <label class="checkProduct">
-                                        <input type="checkbox" name="product">
+                                        <input type="checkbox" name="product"
+                                               v-model="order.selected"
+                                               @change="changeTitleChecked(order)">
                                         <span></span>
                                     </label>
                                 </li>
