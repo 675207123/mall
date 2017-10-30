@@ -1,7 +1,7 @@
 <script>
-    import injection from '../../../seller/src/helpers/injection';
-    import image1 from '../../../seller/src/assets/images/img_logo.png';
-    import image from '../../../seller/src/assets/images/adv.jpg';
+    import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
+    import image from '../assets/images/adv.jpg';
 
     export default {
         beforeRouteEnter(to, from, next) {
