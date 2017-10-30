@@ -434,21 +434,37 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(h) {
-                            return h('i-button', {
-                                on: {
-                                    click() {
-                                        self.reasonEdit();
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.reasonEdit();
+                                        },
                                     },
-                                },
-                                props: {
-                                    size: 'small',
-                                    type: 'ghost',
-                                },
-                            }, '编辑');
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.reasonData.splice(data.index, 1);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
-                        width: 140,
+                        width: 180,
                     },
                 ],
                 reasonData: [
