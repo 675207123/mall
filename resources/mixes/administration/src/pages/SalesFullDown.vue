@@ -111,11 +111,11 @@
                 ],
                 searchList: [
                     {
-                        label: '商品名称',
+                        label: '活动名称',
                         value: '1',
                     },
                     {
-                        label: '商品ID',
+                        label: '店铺名称',
                         value: '2',
                     },
                 ],
