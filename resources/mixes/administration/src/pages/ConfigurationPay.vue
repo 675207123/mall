@@ -39,20 +39,6 @@
                         },
                         title: '当前状态',
                     },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h) {
-                            return h('i-button', {
-                                props: {
-                                    size: 'small',
-                                    type: 'ghost',
-                                },
-                            }, '编辑');
-                        },
-                        title: '操作',
-                        width: 150,
-                    },
                 ],
                 list: [
                     {
