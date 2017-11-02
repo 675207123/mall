@@ -1,8 +1,4 @@
-import {
-    mixinNavigation,
-    mixinRouter,
-    mixinSidebar,
-} from '../mixins/injection';
+import mixinRouter from '../mixins/router';
 
 const injection = {};
 
@@ -14,11 +10,10 @@ function install(instance) {
         sidebar: instance.sidebar,
         trans: instance.trans,
     });
-    mixinNavigation(instance);
     mixinRouter(instance);
-    mixinSidebar(instance);
 }
 
 export default Object.assign(injection, {
     install,
+    type: 'module',
 });
