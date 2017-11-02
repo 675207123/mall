@@ -16,6 +16,9 @@ import UserAccount from '../pages/UserAccount.vue';
 import UserCollect from '../pages/UserCollect.vue';
 import UserNotice from '../pages/UserNotice.vue';
 import ResetPassword from '../pages/ResetPassword.vue';
+import UserPasswordEdit from '../pages/UserPasswordEdit.vue';
+import UserEmailEdit from '../pages/UserEmailEdit.vue';
+import UserEvaluation from '../pages/UserEvaluate.vue';
 
 import SignUp from '../pages/SignUp.vue';
 import SignIn from '../pages/SignIn.vue';
@@ -262,6 +265,21 @@ export default [
                         component: UserOrder,
                         name: 'order',
                         path: 'order',
+                    },
+                    {
+                        component: UserPasswordEdit,
+                        name: 'password-edit',
+                        path: 'password/edit',
+                    },
+                    {
+                        component: UserEmailEdit,
+                        name: 'email-edit',
+                        path: 'email/edit',
+                    },
+                    {
+                        component: UserEvaluation,
+                        name: 'user-evaluation',
+                        path: 'evaluation',
                     },
                     {
                         component: UserCoupon,

@@ -31,19 +31,19 @@
         const clientTop = docEl.clientTop || 0;
         const clientLeft = docEl.clientLeft || 0;
         return {
-            top: rect.top + scrollTop - clientTop,
-            left: rect.left + scrollLeft - clientLeft
+            top: (rect.top + scrollTop) - clientTop,
+            left: (rect.left + scrollLeft) - clientLeft,
         };
     }
     export default {
         props: {
             offsetTop: {
                 type: Number,
-                default: 0
+                default: 0,
             },
             offsetBottom: {
-                type: Number
-            }
+                type: Number,
+            },
         },
         data() {
             return {
@@ -52,14 +52,14 @@
             };
         },
         computed: {
-            offsetType () {
+            offsetType() {
                 let type = 'top';
                 if (this.offsetBottom >= 0) {
                     type = 'bottom';
                 }
                 return type;
             },
-            classes () {
+            classes() {
                 return [
                     {
                         [`${prefixCls}`]: this.affix,
@@ -67,23 +67,23 @@
                 ];
             },
         },
-        created () {
+        created() {
             window.addEventListener('scroll', this.handleScroll, false);
             window.addEventListener('resize', this.handleScroll, false);
         },
-        beforeDestroy () {
+        beforeDestroy() {
             window.removeEventListener('scroll', this.handleScroll, false);
             window.removeEventListener('resize', this.handleScroll, false);
         },
         methods: {
-            handleScroll () {
+            handleScroll() {
                 const affix = this.affix;
                 const scrollTop = getScroll(window, true);
                 const elOffset = getOffset(this.$el);
                 const windowHeight = window.innerHeight;
                 const elHeight = this.$el.getElementsByTagName('div')[0].offsetHeight;
                 // Fixed Top
-                if ((elOffset.top - this.offsetTop) < scrollTop && this.offsetType == 'top' && !affix) {
+                if ((elOffset.top - this.offsetTop) < scrollTop && this.offsetType === 'top' && !affix) {
                     this.affix = true;
                     this.styles = {
                         top: `${this.offsetTop}px`,
@@ -91,13 +91,13 @@
                         width: `${this.$el.offsetWidth}px`,
                     };
                     this.$emit('on-change', true);
-                } else if ((elOffset.top - this.offsetTop) > scrollTop && this.offsetType == 'top' && affix) {
+                } else if ((elOffset.top - this.offsetTop) > scrollTop && this.offsetType === 'top' && affix) {
                     this.affix = false;
                     this.styles = null;
                     this.$emit('on-change', false);
                 }
                 // Fixed Bottom
-                if ((elOffset.top + this.offsetBottom + elHeight) > (scrollTop + windowHeight) && this.offsetType == 'bottom' && !affix) {
+                if ((elOffset.top + this.offsetBottom + elHeight) > (scrollTop + windowHeight) && this.offsetType === 'bottom' && !affix) {
                     this.affix = true;
                     this.styles = {
                         bottom: `${this.offsetBottom}px`,
@@ -105,11 +105,11 @@
                         width: `${this.$el.offsetWidth}px`,
                     };
                     this.$emit('on-change', true);
-                } else if ((elOffset.top + this.offsetBottom + elHeight) < (scrollTop + windowHeight) && this.offsetType == 'bottom' && affix) {
+                } else if ((elOffset.top + this.offsetBottom + elHeight) < (scrollTop + windowHeight) && this.offsetType === 'bottom' && affix) {
                     this.affix = false;
                     this.styles = null;
                     this.$emit('on-change', false);
-                },
+                }
             },
         },
     };

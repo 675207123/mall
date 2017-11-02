@@ -84,10 +84,10 @@
                 const self = this;
                 self.$refs.identityForm.validateField('phone', valid => {
                     if (valid) {
-                        self.$message.success('提交成功!');
-                    } else {
                         self.loading = false;
                         self.$message.error('请输入正确手机号');
+                    } else {
+                        self.$message.success('提交成功!');
                     }
                 });
             },

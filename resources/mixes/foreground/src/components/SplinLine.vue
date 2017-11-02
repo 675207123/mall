@@ -37,13 +37,16 @@
 </script>
 <style lang="less" scoped>
     .spinner--spin-line {
-        background: #ffffff;
-        min-height: 680px;
+        background: rgba(255, 255, 255, 0.5);
     }
     .spinner {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: fixed;
+        height: 100%;
+        z-index: 600;
+        top: 0;
         * {
             line-height: 0;
             box-sizing: border-box;

@@ -90,13 +90,6 @@
                             trigger: 'blur',
                         },
                     ],
-                    agree: [
-                        {
-                            required: true,
-                            message: '您还没有同意协议条款',
-                            trigger: 'change',
-                        },
-                    ],
                 },
             };
         },
@@ -130,7 +123,11 @@
                 self.loading = true;
                 this.$refs[name].validate(valid => {
                     if (valid) {
-                        Message.success('提交成功!');
+                        if (this.signUpData.agree) {
+                            Message.success('提交成功!');
+                        } else {
+                            Message.error('请先同意用户注册协议!');
+                        }
                     } else {
                         self.loading = false;
                         Message.error('表单验证失败!');
@@ -179,7 +176,7 @@
                         <i v-if="!countdownStart">获取验证码</i>
                     </div>
                 </form-item>
-                <form-item prop="agree" label="协议条款">
+                <form-item label="协议条款">
                     <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
                         <span class="ivu-checkbox">
                             <input

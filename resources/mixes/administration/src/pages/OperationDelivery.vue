@@ -10,16 +10,20 @@
                 managementSearch: '',
                 searchList: [
                     {
+                        label: '店铺ID',
+                        value: '1',
+                    },
+                    {
                         label: '店铺名称',
-                        value: '订单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '店主账号',
+                        value: '3',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家账号',
+                        value: '4',
                     },
                 ],
                 columns: [

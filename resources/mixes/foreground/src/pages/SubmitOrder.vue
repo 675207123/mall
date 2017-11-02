@@ -2,13 +2,11 @@
     import Message from 'iview/src/components/message';
     import Modal from '../components/Modal.vue';
     import order from '../assets/images/details/order.png';
-    import RightSide from '../layouts/RightSide.vue';
 
     export default {
         components: {
             Modal,
             Message,
-            RightSide,
         },
         computed: {
             total_price() {
@@ -352,6 +350,10 @@
                     }
                 });
             },
+            delateAddress(item) {
+                const index = this.addressSelect.indexOf(item);
+                this.addressSelect.splice(index, 1);
+            },
             switchUseOffer(index) {
                 this.activeTab = index;
             },
@@ -380,8 +382,8 @@
                                     <i v-if="item.isdefault">默认地址</i>
                                     <span class="pull-right" v-if="item.isdefault === false">
                                         <span @click="editDefault(item)">设为默认地址</span>
-                                        <span>编辑</span>
-                                        <span>删除</span>
+                                        <span @click="addAddress">编辑</span>
+                                        <span @click="delateAddress(item)">删除</span>
                                     </span>
                                 </p>
                             </div>
@@ -516,7 +518,7 @@
                     <div slot="body">
                         <form class="signup-form">
                             <div class="signup-form-group clearfix">
-                                <label class="form-title">收货人姓名</label>
+                                <label class="form-title">发票类型</label>
                                 <label class="form-control-radio">
                                     <input type="radio" name="invoice" value="普通发票" v-model="invoice">
                                     <span>普通发票</span>
@@ -528,13 +530,13 @@
                             </div>
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">发票抬头</label>
-                                <Select v-model="invoice.title" class="invoice-select" style="width:200px">
-                                    <Option v-for="(item, index) in cityList"
+                                <i-select v-model="invoice.title" class="invoice-select" style="width:200px">
+                                    <i-option v-for="(item, index) in cityList"
                                             :value="item.value"
                                             :key="index">
                                         {{ item.label }}
-                                    </Option>
-                                </Select>
+                                    </i-option>
+                                </i-select>
                             </div>
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">发票内容</label>
@@ -655,6 +657,5 @@
                 </div>
             </div>
         </div>
-        <right-side></right-side>
     </div>
 </template>

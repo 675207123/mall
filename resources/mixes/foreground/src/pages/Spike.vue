@@ -1,7 +1,11 @@
 <script>
+    import Affix from '../components/Affix.vue';
     import phone from '../assets/images/phone.png';
 
     export default {
+        components: [
+            Affix,
+        ],
         data() {
             return {
                 active: 1,
@@ -100,7 +104,7 @@
 <template>
     <div class="spike">
         <div class="container">
-            <Affix :offsetTop-top="100">
+            <affix :offsetTop-top="100">
                 <ul class="time-list clearfix">
                     <li class="spike-time pull-left"
                         :class="{active:active===index}"
@@ -112,7 +116,7 @@
                         <i class="end" v-if="now < index">即将开始</i>
                     </li>
                 </ul>
-            </Affix>
+            </affix>
             <ul class="spike-list clearfix">
                 <li v-for="(product,index) in productList" class="pull-left" :key="index">
                     <router-link to="/mall/search/product-details">
