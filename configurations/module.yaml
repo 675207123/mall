@@ -1,0 +1,12 @@
+name: 商城
+identification: notadd/mall
+description: 'Notadd 商城模块'
+author:
+    - Notadd
+    - notadd@ibenchu.com
+version: 1.0.0
+csrf:
+    - 'api/mall*'
+entry: '/mall'
+migrations:
+    - databases/migrations
