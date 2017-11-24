@@ -27,7 +27,7 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
             chunks: true,
             chunkModules: true,
         }) + '\n\n');
-        var assetsPath = path.join(__dirname, '../../../../../../statics/assets/mall/administration');
+        var assetsPath = path.join(__dirname, '../../../../../../public/assets/mall/administration');
 
         console.log(chalk.cyan('  Moving files to path ' + assetsPath + '\n'));
 
